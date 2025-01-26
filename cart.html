@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MokeSell - Cart</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="cart-icon.png" alt="Cart Icon" width="25" height="25">
+        <span>MOKESELL</span>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+      <div class="search-container">
+        <input type="text" placeholder="Search for products">
+        <button class="search-btn">🔍</button>
+      </div>
+      <div class="icons">
+        <span class="chat-icon">💬</span>
+        <span class="cart-icon">🛒</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Cart Section -->
+  <main>
+    <section class="cart">
+      <h2>CART</h2>
+
+      <!-- Cart Item 1 -->
+      <div class="cart-item">
+        <!-- User Info Section -->
+        <div class="user-info">
+          <img src="images/user.png" alt="User Image" class="user-image">
+          <div class="item-details">
+            <span class="item-name">Eten Hunt</span>
+            
+            <!-- Promo Codes -->
+            <div class="promo-codes">
+              <span>use code <strong>FREESHIPPING</strong> for free delivery</span>
+              <span>use code <strong>NEWMEMBER</strong> for $2 off</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo Codes Available Text  -->
+        <div class="promo-codes-available">
+          % Promo codes available
+        </div>
+
+        <!-- Product Image Section -->
+        <div class="item-image-container">
+          <img src="images/candle.jpg" alt="candle" class="item-image">
+          <span class="brand-new-label">brand new</span>
+        </div>
+
+        <!-- Price Section -->
+        <div class="item-price">S$29.90</div>
+      </div>
+
+      <!-- Cart Item 2 -->
+      <div class="cart-item">
+        <div class="user-info">
+          <img src="images/user.png" alt="User Image" class="user-image">
+          <div class="item-details">
+            <span class="item-name">Jakob Saris</span>
+            
+            <!-- Promo Codes -->
+            <div class="promo-codes">
+              <span>use code <strong>FREESHIPPING</strong> for free delivery</span>
+              <span>use code <strong>NEWMEMBER</strong> for $2 off</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo Codes Available Text  -->
+        <div class="promo-codes-available">
+          % Promo codes available
+        </div>
+
+        <!-- Product Image Section -->
+        <div class="item-image-container">
+          <img src="images/casing.webp" alt="candle" class="item-image">
+          <span class="brand-new-label">brand new</span>
+        </div>
+
+        <!-- Price Section -->
+        <div class="item-price">S$59.90</div>
+      </div>
+
+      <!-- Cart Item 3 -->
+      <div class="cart-item">
+        <div class="user-info">
+          <img src="images/user.png" alt="User Image" class="user-image">
+          <div class="item-details">
+            <span class="item-name">Nadia Lauren</span>
+
+            <!-- Promo Codes -->
+            <div class="promo-codes">
+              <span>use code <strong>FREESHIPPING</strong> for free delivery</span>
+              <span>use code <strong>NEWMEMBER</strong> for $2 off</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo Codes Available Text  -->
+        <div class="promo-codes-available">
+          % Promo codes available
+        </div>
+
+        <!-- Product Image Section -->
+        <div class="item-image-container">
+          <img src="images/bottle.jpg" alt="candle" class="item-image">
+          <span class="brand-new-label">brand new</span>
+        </div>
+
+        <!-- Price Section -->
+        <div class="item-price">S$14.90</div>
+      </div>
+
+      <!-- Total Section -->
+      <div class="total-section">
+        <div class="select-all">
+          <input type="checkbox" id="select-all"> <label for="select-all">Select all</label>
+        </div>
+        <div class="total">
+          <span>Total (3 items):</span>
+          <span id="total-price">S$104.70</span>
+        </div>
+        <button id="checkout-btn">Checkout</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="cart-icon.png" alt="Cart Icon" width="40" height="40">
+        <p>MokeSell</p>
+        <p>Web Shop fulfilled by <a href="#">Star Editions</a></p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Account</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <p>Stanley House<br>Masterlord Village,<br>West Rd, Ipswich 9SX</p>
+      </div>
+      <div class="footer-legal">
+        <ul>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
