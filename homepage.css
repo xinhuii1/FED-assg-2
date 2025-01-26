@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+* {
+  font-family: 'Varela Round';
+}
+
+.home-box {
+  margin: 20px;
+}
+.Background_img{
+  width: 100%; 
+  height: 500px; 
+  background-image: url('Advertisement1.png'); 
+  background-size: cover; 
+  background-position: center;
+}
+.Background_img > button {
+  height: 55px;
+  width: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 10px;
+  color: #fbfbfb;
+  border: 1px solid #ffffff; 
+  margin-top: 322px;
+  margin-left: 158px;
+}
+
+
+/*Category*/
+.browse-category {
+  margin: 50px;
+  padding: 20px;
+  background-color: #F8F3EA;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-left: 33px;
+  color: #000000;
+  
+}
+
+.category-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.category-item {
+  width: 120px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #E1DAD5;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.category-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.category-item p {
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* Featured Items */
+.featured-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.item {
+  flex: 1 1;
+  max-width: 300px;
+  background-color: #FFF;
+  border: 1px solid #E1DAD5;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.item-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.item-title {
+  font-size: 12px;
+  margin-left: 0px;
+  color: #5E3E1A;
+}
+
+.item-price {
+  font-size: 16px;
+  color: #C1958C;
+  font-weight: bold;
+}
+
+/*featured products*/
+.featured-products{
+  font-size: 20px;
+  text-align: left; /* Aligns the title to the right */
+  margin-left: 30px; /* Adds spacing from the right edge */
+  
+}
+.Product1{
+  display: flex; 
+  justify-content: space-around;
+}
+.Product1 h4{
+   text-align: center;
+}
+.square-box {
+  width: 200px;           
+  height: 200px;          
+  border-radius: 20px;  
+  border: 2px solid black;
+  overflow: hidden;       
+}
+
+.square-image {
+  width: 100%;            
+  height: 100%;           
+  object-fit: cover;      
+}
+
+/* Advertisement */
+.advertisements {
+  display: flex; 
+  justify-content: center; 
+  gap: 20px; 
+  margin: 40px auto; 
+  padding: 20px;
+}
+
+/* Individual advertisements */
+.advertisement {
+  width: 48%;
+  height: auto; 
+  border-radius: 20px; 
+}
+
