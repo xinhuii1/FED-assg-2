@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+<div class="full-screen-wrapper">
+    <div class="modal-container">
+        <button class="close-button" onclick="closeModal()">
+            <i class="fa-solid fa-x"></i>
+        </button>
+        <br>
+        <img src="image/footer_img.png" class="modal-logo" alt="logo">
+        <div class="modal-content-container">
+            <button
+                    id="google-button"
+                    onclick="openContinueWithGoogleModal()"
+                    onmouseover="this.style.backgroundColor='#7B5424'"
+                    onmouseout="this.style.backgroundColor='#5E3E1A'">
+                <i class="fa-brands fa-google"></i>
+                Continue with Google
+            </button>
+            <button
+                    id="apple-button"
+                    onclick="openSuccessModal()"
+                    onmouseover="this.style.backgroundColor='#5E3E1A'; this.style.color='white';"
+                    onmouseout="this.style.backgroundColor='white'; this.style.color='#5E3E1A';">
+                <i class="fa-brands fa-apple"></i>
+                Continue with Apple ID
+            </button>
+        </div>
+        <p class="modal-footer">
+            Don’t have an account?
+            <a href="" onclick="openSignUpModal()">
+                Sign Up now
+            </a>
+        </p>
+    </div>
+</div>
+<script src="modal.js"></script>
+<script src="login.js"></script>
+</body>
+</html>
