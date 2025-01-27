@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="header_footer.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header>
+    <nav class="navigation-container">
+        <h1 class="signature">MOKESELL</h1>
+        <ul class="">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="www.google.com">Profile</a></li>
+        </ul>
+        <div class="Searchbar">
+            <i class="fa-solid fa-magnifying-glass" ></i>
+            <input type="text" placeholder="Search for products"/>
+        </div>
+        <div>
+            <i class="fa-solid fa-cart-shopping cart_icon"></i>
+            <button class="login-button">Login</button>
+            <button class="Register-button">Register</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="product-container">
+        <div class="product-header">
+            <div>
+                <h3 style="color: #C1958C;">Home> Products></h3>
+            </div>
+            
+            <div class="pagination">
+                <button class="arrow">&lt;</button>
+                <button class="page ">1</button>
+                <button class="page active">2</button>
+                <button class="page">3</button>
+                <span class="dots">...</span>
+                <button class="page">35</button>
+                <button class="arrow">&gt;</button>
+            </div>
+        </div>
+        <div class="product-grid" id="productGrid">
+        </div>
+    </div>
+</main>
+<footer id="footer">
+    <div style="text-align: center;">
+        <img src="img/logo.png" alt="product image">
+    </div>
+    <div id="footer1" style="margin-top: 0px;">
+        <div id="part1">
+            <h1 class="signature signature_footer">MOKESELL</h1>
+            <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
+            <div style="display: flex; justify-content: space-between">
+                <div class="part1-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <h2>Information</h2>
+            <p>About</p>
+            <p>Contact us</p>
+            <p>FAQs</p>
+            <p>Account</p>
+        </div>
+        <div>
+            <h2>Contact</h2>
+            <p>Stanley House </p>
+            <p>Masterlord Village,</p>
+            <p>West Rd, Ipswich<br> 95X</p>
+        </div>
+        <div>
+            <h2>Legal</h2>
+            <p>Cookie Policy</p>
+            <p>Privacy Policy</p>
+            <p>Privacy Policy</p>
+        </div>
+    </div>
+</footer>
+</div>
+<script src="product.js"></script>
+</body>
+</html>
