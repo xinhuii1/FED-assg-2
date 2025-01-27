@@ -7,12 +7,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
     <link rel="stylesheet" href="header_footer.css">
-    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="product_details.css">
     <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
 </head>
 <header>
     <nav class="navigation-container">
-        <h1 class="signature">Miffy</h1>
+        <h1 class="signature">MOKESELL</h1>
         <ul class="">
             <li><a href="homepage.html">Home</a></li>
             <li><a href="product.html">Products</a></li>
@@ -108,28 +108,92 @@
             </div>
             <hr>
         </div>
-        <h2 >Related products</h2>
-        <div class="Main-related-products">
-            <div class="related-product" >
-                <img class="related-product-image" src="image/product2.png" alt="Product 2" >
-                <div class="related-product-name" >miffy handmade and her new delft blue dress</div>
-                <div class="related-product-price">$36.99</div>
+        <div class="seller-container">
+            <h2>Meet the Seller</h2>
+            <div class="seller-info">
+                <img class="seller-icon" src="" alt="Seller Icon"> 
+                <div class="seller-details">
+                    <p class="seller-name">Seller Name</p> 
+                    <p class="seller-status"><span class="status-indicator"></span> Status</p>
+                    <p class="seller-joined">Years active</p> 
+                </div>
+                <div class="seller-tags">
+                    <div class="tag">
+                        <i class="fa-solid fa-thumbs-up"></i> Very responsive
+                    </div>
+                    <div class="tag">
+                        <i class="fa-solid fa-thumbs-up"></i> Excellent seller
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="follow-button">+Follow</button>
+                    <button class="visit-profile-button">Visit Profile</button>
+                </div>
             </div>
-            <div class="related-product" >
-                <img class="related-product-image" src="image/product2.png" alt="Product 2" >
-                <div class="related-product-name" >miffy handmade and her new delft blue dress</div>
-                <div class="related-product-price">$36.99</div>
+        
+            <h3>Reviews</h3>
+            <div class="reviews">
+                <div class="review-summary">
+                    <h1 class="review-rating">0</h1> 
+                    <p class="total-reviews">of 0 reviews</p> 
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <div class="review-breakdown">
+                    <div class="review-row">
+                      <span>Excellent</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-excellent"></div>
+                      </div>
+                
+                    </div>
+                    <div class="review-row">
+                      <span>Good</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-good"></div>
+                      </div>
+        
+                    </div>
+                    <div class="review-row">
+                      <span>Average</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-average"></div>
+                      </div>
+                    
+                    </div>
+                    <div class="review-row">
+                      <span>Below Average</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-belowaverage"></div>
+                      </div>
+            
+                    </div>
+                    <div class="review-row">
+                      <span>Poor</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-poor"></div>
+                      </div>
+                      <span class="value-poor"></span>
+                    </div>
+                  </div>
+                  
             </div>
-        </div>
+        
+        
     </div>
 </main>
 <footer id="footer">
     <div style="text-align: center;">
-        <img src="image/footer_img.png" alt="product image">
+        <img src="img/logo.png" alt="product image">
     </div>
     <div id="footer1" style="margin-top: 0px;">
         <div id="part1">
-            <h1 class="signature signature_footer">Miffy</h1>
+            <h1 class="signature signature_footer">MOKESELL</h1>
             <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
             <div style="display: flex; justify-content: space-between">
                 <div class="part1-icon">
@@ -144,7 +208,6 @@
                 <div class="part1-icon">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </div>
-
             </div>
         </div>
         <div>
@@ -156,8 +219,8 @@
         </div>
         <div>
             <h2>Contact</h2>
-            <p>Stanley House </p>
-            <p>Masterlord Village,</p>
+            <p>Stanley House </p> 
+            <p>Masterlord Village,</p> 
             <p>West Rd, Ipswich<br> 95X</p>
         </div>
         <div>
@@ -168,9 +231,6 @@
         </div>
     </div>
 </footer>
-<div id="modal-placeholder">
-</div>
-<script src="auth.js"></script>
 <script src="product_details.js"></script>
 </body>
 </html>
