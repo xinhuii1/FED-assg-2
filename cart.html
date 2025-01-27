@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MokeSell - Cart</title>
-  <link rel="stylesheet" href="cart.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <link rel="stylesheet" href="header_footer.css">
+    <link rel="stylesheet" href="cart.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Header Section -->
-  <header>
-    <nav>
-      <div class="logo">
-        <img src="cart-icon.png" alt="Cart Icon" width="25" height="25">
-        <span>MOKESELL</span>
-      </div>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Profile</a></li>
-      </ul>
-      <div class="search-container">
-        <input type="text" placeholder="Search for products">
-        <button class="search-btn">🔍</button>
-      </div>
-      <div class="icons">
-        <span class="chat-icon">💬</span>
-        <span class="cart-icon">🛒</span>
-      </div>
+<header>
+    <nav class="navigation-container">
+        <h1 class="signature">MOKESELL</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="www.google.com">Profile</a></li>
+        </ul>
+        <div class="Searchbar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search for products"/>
+        </div>
+        <div>
+            <i class="fa-solid fa-cart-shopping cart_icon"></i>
+            <button class="login-button">Login</button>
+            <button class="Register-button">Register</button>
+        </div>
     </nav>
-  </header>
-
-  <!-- Cart Section -->
+</header>
   <main>
     <section class="cart">
       <h2>CART</h2>
@@ -141,34 +139,51 @@
     </section>
   </main>
 
-  <!-- Footer Section -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="cart-icon.png" alt="Cart Icon" width="40" height="40">
-        <p>MokeSell</p>
-        <p>Web Shop fulfilled by <a href="#">Star Editions</a></p>
-      </div>
-      <div class="footer-links">
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact us</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Account</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <p>Stanley House<br>Masterlord Village,<br>West Rd, Ipswich 9SX</p>
-      </div>
-      <div class="footer-legal">
-        <ul>
-          <li><a href="#">Cookie Policy</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
+  <footer id="footer">
+    <div style="text-align: center;">
+        <img src="img/logo.png" alt="product image">
     </div>
-  </footer>
+    <div id="footer1" style="margin-top: 0px;">
+        <div id="part1">
+            <h1 class="signature signature_footer">MOKESELL</h1>
+            <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
+            <div style="display: flex; justify-content: space-between">
+                <div class="part1-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Information</h2>
+            <p>About</p>
+            <p>Contact us</p>
+            <p>FAQs</p>
+            <p>Account</p>
+        </div>
+        <div>
+            <h2>Contact</h2>
+            <p>Stanley House </p> 
+            <p>Masterlord Village,</p> 
+            <p>West Rd, Ipswich<br> 95X</p>
+        </div>
+        <div>
+            <h2>Legal</h2>
+            <p>Cookie Policy</p>
+            <p>Privacy Policy</p>
+            <p>Privacy Policy</p>
+        </div>
+    </div>
+</footer>
 
-  <script src="script.js"></script>
+  <script src="cart.css"></script>
 </body>
 </html>
