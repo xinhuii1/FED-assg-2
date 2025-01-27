@@ -1,0 +1,131 @@
+.product-container{
+  margin: 50px; 
+  margin-top: 50px;
+}
+
+.product-header{
+  display: flex;
+  justify-content: space-between
+}
+
+.pagination {
+    display: flex; /* Arrange pagination buttons in a row */
+    align-items: center;
+    gap: 8px;
+  }
+
+.page, .arrow {
+  width: 32px;  /*Width of box*/
+  height: 32px;
+  border: 1px solid #5E3E1A;
+  background-color: #F8F3EA;
+  color: #5e3e1a; /*Text colour*/
+  text-align: center;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.page.active {
+  background-color: #5e3e1a;
+  color: #f8f3ea;
+}
+
+.page:hover, .arrow:hover {  /* Hover effects for pagination buttons and arrows */
+  background-color: #5e3e1a;
+  color: #f8f3ea;
+}
+
+.arrow {
+  border-color: #c1958c;
+  color: #c1958c;
+}
+
+.arrow:hover {
+  border-color: #5e3e1a;
+  color: #5e3e1a;
+}
+
+.dots {
+  font-size: 14px;
+  color: #5e3e1a;
+  padding: 0 4px;
+}
+
+#underline-text{
+  text-decoration: underline;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /*5 products per row*/
+  gap: 20px;
+}
+
+.product-item { 
+  width: 220px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.product-item:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.product-header {
+  display: flex;
+}
+
+.product-icon {
+  width: 20px; 
+  height: 20px;
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.username {
+  font-size: 15px; 
+  color: #ffffff; 
+  margin-left: 10px;
+  margin-top: 12px; 
+}
+
+.product-price {
+  font-size: 15px; 
+  color: #ffffff; 
+  margin-top: 12px;
+  margin-right: 5px;
+  margin-left: auto; 
+}
+
+.product-item > img {
+  display: block;  
+  margin-left: auto; 
+  margin-right: auto;
+  max-width: 200px;
+  height: 200px;
+}
+
+.product-item > div {
+  background-color: #53589A;
+  width: 220px;
+  height: 70px;
+  color: white;
+  border-radius: 0 0 8px 8px; /* Ensure that that only bottom corners are round */
+}
+
+.product-title {
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+
+.product-item:hover > div {
+  background-color: rgb(220, 177, 224); /* Change background to pink on hover */
+  transition: background-color 0.3s ease; /* transition effect */
+}
+
+ 
