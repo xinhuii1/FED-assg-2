@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+
+<div class="full-screen-wrapper">
+    <div class="modal-container">
+        <button class="close-button" onclick="closeModal()">
+            <i class="fa-solid fa-x"></i>
+        </button>
+        <br>
+        <img src="img/logo.png" alt="logo" class="modal-logo">
+        <div class="modal-content-container" style="gap: 0">
+            <form onsubmit="signIn(event)">
+                <input type="text" id="email-input" placeholder="Enter your phone number/email" required>
+                <input type="password" id="password-input" placeholder="Enter your password" required>
+                <i id="eye-icon" onclick="togglePassword()" class="fa-solid fa-eye"></i>
+                <button id="sign-in-button" type="submit">
+                    Login
+                </button>
+            </form>
+            
+        </div>
+        <p class="modal-footer">
+            Don’t have an account?
+            <a href="" onclick="openSignUpModal()">
+                Sign Up now
+            </a>
+        </p>
+    </div>
+</div>
+<script src="modal.js"></script>
+<script src="continue_with_google.js"></script>
+</body>
+
+</html>
