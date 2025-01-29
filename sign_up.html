@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+
+<div class="full-screen-wrapper">
+    <div class="modal-container">
+        <button class="close-button" onclick="closeModal()">
+            <i class="fa-solid fa-x"></i>
+        </button>
+        <br>
+        <img src="img/logo.png" alt="logo" class="modal-logo">
+        <div class="modal-content-container" style="gap: 0">
+            <form onsubmit="signUp(event)">
+                <input type="text" id="email-input" placeholder="Enter your email" required>
+                <input type="text" id="phone-input" placeholder="Enter your phone number" required>
+                <input type="password" id="password-input" placeholder="Enter your password" required>
+                <i id="eye-icon" onclick="togglePassword('password-input')" class="fa-solid fa-eye"></i>
+                <input type="password" id="confirm-password-input" placeholder="Re-enter your password" required>
+                <i id="confirm-eye-icon" onclick="togglePassword('confirm-password-input')" class="fa-solid fa-eye"></i>
+                <p id="error-message" style="color: red; display: none;">Passwords do not match</p>
+                <button type="submit" id="sign-up-button">Sign Up</button>
+            </form>
+        </div>
+        <p class="modal-footer">
+            Already have an account?
+            <a href="#" onclick="openContinueWithGoogleModal()">
+                Log in now
+            </a>
+        </p>
+        <div id="modal-placeholder"></div>
+    </div>
+</div>
+<script src="modal.js"></script>
+<script src="sign_up.js"></script>
+</body>
+
+</html>

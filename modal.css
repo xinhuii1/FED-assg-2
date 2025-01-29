@@ -1,0 +1,260 @@
+/*General */
+.full-screen-wrapper {
+    margin: 0;
+    font-family: 'Varela Round';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.modal-container {
+    position: absolute;
+    top: -100%; /* Hide it at top, so it can have animation*/
+    left: 50%;
+    width: 480px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Trigger animation */
+.full-screen-wrapper.loaded .modal-container {
+    top: 0%; /* Slide into the center */
+    transform: translate(-50%, -50%);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+}
+
+.close-button > i {
+    color: #5E3E1A;
+}
+
+.modal-logo {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #555;
+}
+
+.modal-footer > a {
+    color: #FF630E;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* login.html */
+#google-button {
+    width: 90%;
+    padding: 15px;
+    background-color: #5E3E1A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    justify-items: center;
+}
+
+#google-button > i {
+    margin-right: 10px;
+}
+
+#apple-button {
+    width: 90%;
+    padding: 15px;
+    background-color: white;
+    color: #6B6B6B;
+    cursor: pointer;
+    border: 1px solid #5E3E1A;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#apple-button > i {
+    margin-right: 10px;
+}
+
+/*sign_up.html*/
+#email-input {
+    width: 90%;
+    padding: 15px;
+    background-color: #F8F3EA;
+    color: white;
+    margin: 0;
+    margin-bottom: 13px;
+    border: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#email-input::placeholder {
+    text-align: start;
+    color: #5E3E1A;
+    opacity: 0.9;
+}
+
+/*sign_up.html*/
+#phone-input {
+    width: 90%;
+    padding: 15px;
+    background-color: #F8F3EA;
+    color: white;
+    margin: 0;
+    margin-bottom: 13px;
+    border: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#phone-input::placeholder {
+    text-align: start;
+    color: #5E3E1A;
+    opacity: 0.9;
+}
+
+#password-input {
+    width: 90%;
+    background-color: #F8F3EA;
+    padding: 15px;
+    margin: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 2px;
+    text-align: center;
+    margin-bottom: 13px;
+}
+
+#password-input::placeholder {
+    text-align: start;
+    color: #5E3E1A;
+    opacity: 0.9;
+}
+
+#confirm-password-input {
+    width: 90%;
+    background-color: #F8F3EA;
+    padding: 15px;
+    margin: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 2px;
+    text-align: center;
+}
+
+#confirm-password-input::placeholder {
+    text-align: start;
+    color: #5E3E1A;
+    opacity: 0.9;
+}
+
+#eye-icon {
+    position: absolute;
+    right: 40px;
+    top: 71%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #333;
+}
+
+#confirm-eye-icon {
+    position: absolute;
+    right: 40px;
+    top: 79%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #333;
+}
+
+#sign-up-button {
+    margin-top: 30px;
+    width: 90%;
+    padding: 15px;
+    background-color: #C1958C;
+    color: #5E3E1A;
+    cursor: pointer;
+    border: 1px solid #5E3E1A;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/*continue_with_google.html*/
+#sign-in-button {
+    margin-top: 30px;
+    width: 90%;
+    padding: 15px;
+    background-color: #C1958C;
+    color: #5E3E1A;
+    cursor: pointer;
+    border: 1px solid #5E3E1A;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/*success_dialog.html*/
+#dialog-title {
+    color: #5E3E1A;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#dialog-details {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#success-button {
+    width: 90%;
+    padding: 15px;
+    background-color: #5E3E1A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+@media only screen and (max-width: 430px) {
+    .modal-container {
+        width: 400px;
+    }
+    #eye-icon {
+        right: 50px;
+        top:62%;
+    }
+}
+
