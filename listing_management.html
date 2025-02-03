@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listing Management Page</title>
+    <!-- included normalize.css for consistent styling-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
     <link rel="stylesheet" href="header_footer.css">
     <link rel="stylesheet" href="listing_management.css">
@@ -11,10 +12,11 @@
 </head>
 <body>
 <header>
+    <!-- main header with navigations -->
     <nav class="navigation-container">
-        <h1 class="signature">MOKESELL</h1>
+        <h1 class="signature">MOKESELL</h1>  <!-- Main Heading for the page -->
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="homepage.html">Home</a></li>
             <li><a href="product.html">Products</a></li>
             <li><a href="aboutus.html">About Us</a></li>
             <li><a href="www.google.com">Profile</a></li>
@@ -23,11 +25,11 @@
 </header>
 
 <main>
-    <!-- Profile Section -->
+    <!-- Profile Section displaying user information -->
     <div class="profile-header">
         <div class="profile-info-wrapper">
             <div class="profile-info">
-                <img src="images/user.png" alt="Profile" class="profile-img">
+                <img src="images/profile.jpg" alt="Profile" class="profile-img">
                 <div class="profile-text">
                     <h1>Eten Hunt</h1>
                     <p class="profile-status">pm to make a purchase!</p>
@@ -37,6 +39,7 @@
         </div>
     </div>
 
+    <!-- Tabs for navigating different sections of the profile -->
     <div class="profile-tabs">
         <ul class="tabs">
             <li><a href="#">listings</a></li>
@@ -49,19 +52,18 @@
         </div>
     </div>
     
+    <!-- Section to display active listings -->
     <div class="listings-container-wrapper">
         <!-- Active Listings Section -->
         <div class="active-listings">
-            <h1>Listings</h1>
-            Active Listings: <span id="active-listings-counts">3</span>/30
+            <h2>Listings</h2> <!-- Changed to h2 for better structure -->
+            Active Listings: <span id="active-listings-counts">4</span>/30
         </div>
     
         <!-- Search Bar Section -->
         <div class="listing-search">
-            <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()" />
+            <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()">
         </div>
-
-
     
         <!-- Individual Listings Grid -->
         <div class="listings-container">
@@ -72,30 +74,36 @@
                 <p class="item-condition">brand new</p>
                 <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
                 <p class="expiry-info">5 days left</p>
-            </div>
+            </div>   
+            
             <div class="listing-item">
                 <img src="images/bag.webp" alt="Product">
                 <h3>Retro Undermain Bag</h3>
                 <p>$20.90</p>
                 <p class="item-condition">brand new</p>
                 <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
+                <p class="expiry-info">0 days left</p>
             </div>
+            
             <div class="listing-item">
                 <img src="images/sticker.webp" alt="Sticky Notes">
                 <h3>Sticky Notes</h3>
                 <p>$3.50</p>
                 <p class="item-condition">brand new</p>
                 <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
+                <p class="expiry-info">0 days left</p> <!-- Correctly closed div -->
             </div>
+            
             <div class="listing-item">
                 <img src="images/cup.webp" alt="Mug">
                 <h3>Travel Mug</h3>
                 <p>$18.00</p>
                 <p class="item-condition">brand new</p>
                 <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
+                <p class="expiry-info">0 days left</p> <!-- Correctly closed div -->
             </div>
         </div>
-    </div>    
+    </div>
 </main>
 
 <footer id="footer">
@@ -104,7 +112,7 @@
     </div>
     <div id="footer1" style="margin-top: 0px;">
         <div id="part1">
-            <h1 class="signature signature_footer">MOKESELL</h1>
+            <h2 class="signature signature_footer">MOKESELL</h2> <!-- Changed to h2 for accessibility -->
             <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
             <div style="display: flex; justify-content: space-between">
                 <div class="part1-icon">
@@ -143,6 +151,7 @@
         <div id="modal-placeholder"></div>
     </div>
 </footer>
-<script src="homepage.js"></script>
+
+<script src="listing_managment.js"></script>
 </body>
 </html>
