@@ -1,0 +1,475 @@
+/* Profile Header Section */
+.profile-header {
+    background-color: #C1958C;
+    padding: 20px 0; /* Reduced padding for compact look */
+    text-align: left; /* Align content to the left */
+    border-bottom: 2px solid #E1DAD5;
+    max-height: 150px; /* Adjusted height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Wrapper for Profile Info */
+.profile-info-wrapper {
+    background-color: #F8F3EA;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds subtle shadow around the profile */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    width: 80%;
+    margin: 200px auto 0; /* Added margin-top to move profile content down */
+    max-height: 100px;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px; /* Removed the margin-bottom */
+    margin-left: 40px;
+}
+
+.profile-img {
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0px; /* Removed margin-bottom */
+}
+
+.profile-text {
+    text-align: left;
+}
+
+.profile-text h1 {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.profile-status {
+    font-size: 0.9rem;
+    color: black;
+    margin-top : 10px;
+}
+
+.profile-rating {
+    font-size: 1.9rem;
+    color: black;
+    margin-left: 650px;
+    margin-top: -35px;  /* Adjust margin-top to move rating up if needed */
+    margin-bottom: 0px;
+}
+
+/* Profile Tabs */
+.profile-tabs {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the tabs and buttons */
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Tabs (Listings, Reviews, Balance) */
+.tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 100px;
+    margin-left: 120px;
+}
+
+.tabs li {
+    margin-right: 30px; /* Space between each tab */
+}
+
+.tabs li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.tabs li a:hover {
+    border-color: #A87768; /* Border color when hovering */
+    color: #A87768;
+}
+
+/* Buttons (Manage Listings & Sell) */
+.manage-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 80px;
+    margin-right: 110px;
+}
+
+.manage-listings-btn, .sell-btn {
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.manage-listings-btn {
+    color: #A87768;
+}
+
+.manage-listings-btn:hover {
+    color: #A87768; /* Change text color on hover */
+    text-decoration: underline; /* Add underline effect on hover */
+}
+
+
+.sell-btn {
+    background-color: #5E3E1A;
+    color: #fff;
+    border: none;
+}
+
+.sell-btn:hover {
+    background-color: #5E3E1A;
+    text-decoration: underline;
+}
+
+/* Wrapper for Listings */
+.listings-container-wrapper {
+    border: 2px solid #E1DAD5; /* Border around the whole section */
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #F8F3EA;
+    margin: 20px 110px;
+}
+
+/* Active Listings Section */
+.active-listings {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space between active listings and search */
+    color: #A87768;
+}
+
+.active-listings h1 {
+    color: black;
+}
+
+/* Search Bar Section */
+.listing-search {
+    text-align: center;
+    margin-bottom: 20px; /* Space between search bar and listings */
+}
+
+#search-bar {
+    padding: 10px;
+    width: 50%;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+#search-bar:focus {
+    border-color: #A87768;
+}
+
+/* Listings Grid Section */
+.listings-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Space between items */
+}
+
+/* Profile Header Section */
+.profile-header {
+    background-color: #C1958C;
+    padding: 20px 0; /* Reduced padding for compact look */
+    text-align: left; /* Align content to the left */
+    border-bottom: 2px solid #E1DAD5;
+    max-height: 150px; /* Adjusted height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Wrapper for Profile Info */
+.profile-info-wrapper {
+    background-color: #F8F3EA;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds subtle shadow around the profile */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    width: 80%;
+    margin: 200px auto 0; /* Added margin-top to move profile content down */
+    max-height: 100px;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px; /* Removed the margin-bottom */
+    margin-left: 40px;
+}
+
+.profile-img {
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0px; /* Removed margin-bottom */
+}
+
+.profile-text {
+    text-align: left;
+}
+
+.profile-text h1 {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.profile-status {
+    font-size: 0.9rem;
+    color: black;
+    margin-top : 10px;
+}
+
+.profile-rating {
+    font-size: 1.9rem;
+    color: black;
+    margin-left: 650px;
+    margin-top: -35px;  /* Adjust margin-top to move rating up if needed */
+    margin-bottom: 0px;
+}
+
+/* Profile Tabs */
+.profile-tabs {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the tabs and buttons */
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Tabs (Listings, Reviews, Balance) */
+.tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 100px;
+    margin-left: 120px;
+}
+
+.tabs li {
+    margin-right: 30px; /* Space between each tab */
+}
+
+.tabs li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.tabs li a:hover {
+    border-color: #A87768; /* Border color when hovering */
+    color: #A87768;
+}
+
+/* Buttons (Manage Listings & Sell) */
+.manage-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 80px;
+    margin-right: 110px;
+}
+
+.manage-listings-btn, .sell-btn {
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.manage-listings-btn {
+    color: #A87768;
+}
+
+.manage-listings-btn:hover {
+    color: #A87768; /* Change text color on hover */
+    text-decoration: underline; /* Add underline effect on hover */
+}
+
+
+.sell-btn {
+    background-color: #5E3E1A;
+    color: #fff;
+    border: none;
+}
+
+.sell-btn:hover {
+    background-color: #5E3E1A;
+    text-decoration: underline;
+}
+
+/* Wrapper for Listings */
+.listings-container-wrapper {
+    border: 2px solid #E1DAD5; /* Border around the whole section */
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #F8F3EA;
+    margin: 20px 110px;
+}
+
+/* Active Listings Section */
+.active-listings {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space between active listings and search */
+    color: #A87768;
+}
+
+.active-listings h1 {
+    color: black;
+}
+
+/* Search Bar Section */
+.listing-search {
+    text-align: right;
+    margin-bottom: 20px; /* Space between search bar and listings */
+    position: relative;
+    z-index: 1; /* Make sure it is above other elements */
+}
+
+/* Search Bar Input Field */
+#search-bar {
+    padding: 10px;
+    width: 30%; /* Adjust width */
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-top: -30px; /* Adjust margin-top to move the search bar up */
+}
+
+/* Focused Search Bar */
+#search-bar:focus {
+    background-color: #C1958C;  /* Background color when focused */
+    color: white; /* Font color to white */
+    border-color: #A87768;  /* Brown border color when focused */
+}
+
+/* When the search bar is focused and text is white, ensure the placeholder doesn't override it */
+#search-bar:focus::placeholder {
+    color: white; /* Ensure placeholder text color changes to white when focused */
+}
+
+/* Make sure when the input has text, it doesn't override the focus style */
+#search-bar:not(:focus) {
+    color: black;
+}
+
+/* Add smooth transitions */
+#search-bar, #search-bar:focus {
+    transition: all 0.3s ease;
+}
+
+/* Listings Grid Section */
+.listings-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Space between items */
+}
+
+/* Individual Listing Item */
+.listing-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.listing-item:hover {
+    transform: scale(1.05);
+}
+
+.listing-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.listing-item h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.listing-item p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Bump Button */
+.bump-btn {
+    background-color: #A87768;
+    color: black;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bump-btn:hover {
+    background-color: #8f623e;
+}
+
+.bump-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Expiry Info */
+.expiry-info {
+    font-size: 0.9rem;
+    color: #e74c3c;
+}
+
+/* Bump Button */
+.bump-btn {
+    background-color: #A87768;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bump-btn:hover {
+    background-color: #8f623e;
+}
+
+.bump-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Expiry Info */
+.expiry-info {
+    font-size: 0.9rem;
+    color: #e74c3c;
+}
