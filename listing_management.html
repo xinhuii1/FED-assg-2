@@ -104,6 +104,30 @@
             </div>
         </div>
     </div>
+
+        <!-- Bump Listing Menu -->
+        <div id="bump-modal" class="modal">
+            <div class="modal-content">
+                <!-- close button for the bump modal -->
+                <span class="close-btn" onclick="closeBumpModal()">&times;</span>
+                <h3>Choose Bump Duration</h3>
+                <!-- option to bump for 1 week -->
+                <div class="bump-option" data-duration="1-week" data-price="10">
+                    <p>One Week Bump - $10</p>
+                </div> 
+                <!-- option to bump for one month -->
+                <div class="bump-option" data-duration="1-month" data-price="20">
+                    <p>One Month Bump - $20</p>
+                </div>
+                <!-- option to bump for three months -->
+                <div class="bump-option" data-duration="3-month" data-price="45">
+                    <p>Three Month Bump - $45</p>
+                </div>
+                <!-- Confirm button to purchase the bump -->
+                <button id="confirm-bump-btn" onclick="confirmBump()">Confirm Bump</button>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer id="footer">
@@ -153,5 +177,6 @@
 </footer>
 
 <script src="listing_managment.js"></script>
+
 </body>
 </html>

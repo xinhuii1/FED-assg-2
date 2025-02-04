@@ -429,7 +429,6 @@
     margin-bottom: 10px;
 }
 
-
 /* Bump Button */
 .bump-btn {
     background-color: transparent ;                                   /* background transparent color */
@@ -459,7 +458,6 @@
     cursor: not-allowed;
 }
 
-
 /* Expiry Info */
 .expiry-info {
     background-color: #5E3E1A;
@@ -473,4 +471,79 @@
     text-align: center;        /* Center the text horizontally */
 }
 
+/* Modal Styling for Bump Options */
+.modal {
+    display: none;             /* Initially hidden */
+    position: fixed;           /* Fixed position to cover the entire screen */
+    z-index: 1000;             /* Ensure it is above other content */
+    left: 50%; 
+    top: 50%; 
+    transform: translate(-50%, -50%);     /* Center the modal exactly */
+    width: 50%; 
+    max-width: 400px; 
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px; /* Padding inside the modal */
+}
 
+/* Modal content styling */
+.modal-content {
+    background-color: white; /* White background for the modal */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Close button styling */
+.close-btn {
+    color: #aaa; /* Light gray color */
+    font-size: 28px; /* Font size for the close button */
+    font-weight: bold;
+    position: absolute; /* Position it at the top right corner */
+    right: 10px;
+    top: 10px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Bump Option Styling */
+.bump-option {
+    padding: 10px;
+    background-color: #F8F3EA; /* Light background color */
+    border: 1px solid #ddd; 
+    margin: 10px 0; /* Margin between options */
+    cursor: pointer;
+    border-radius: 5px; 
+}
+
+/* Hover effect for bump options */
+.bump-option:hover {
+    background-color: #E1DAD5; 
+}
+
+/* Selected bump option */
+.bump-option.selected {
+    background-color: #A87768;      /* change color of the selected option */
+    color: white;               
+}
+
+/* Styling for the Confirm Bump button */
+#confirm-bump-btn {
+    padding: 10px 20px;
+    background-color: #5E3E1A;      /* Button background color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;                  /* Make the button block-level */
+    width: 100%; 
+}
+
+/* Disabled state for the confirm button */
+#confirm-bump-btn:disabled {
+    background-color: #ccc; /* Light gray color when disabled */
+}
