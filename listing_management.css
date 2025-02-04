@@ -547,3 +547,53 @@
 #confirm-bump-btn:disabled {
     background-color: #ccc; /* Light gray color when disabled */
 }
+
+#create-modal {
+    display: none; /* Ensure it's hidden initially */
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    width: 50%;
+    max-width: 600px;
+}
+
+
+#item-name,
+#price,
+#description,
+#category,
+#condition,
+#item-image {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#item-image {
+    padding: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #5E3E1A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8f623e;
+}
+
+/* Focus effect for form fields */
+input:focus, select:focus, textarea:focus {
+    border-color: #A87768;
+    outline: none;
+}

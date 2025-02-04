@@ -29,7 +29,7 @@
     <div class="profile-header">
         <div class="profile-info-wrapper">
             <div class="profile-info">
-                <img src="images/profile.jpg" alt="Profile" class="profile-img">
+                <img src="images/profile.png" alt="Profile" class="profile-img">
                 <div class="profile-text">
                     <h1>Eten Hunt</h1>
                     <p class="profile-status">pm to make a purchase!</p>
@@ -48,9 +48,69 @@
         </ul>
         <div class="manage-buttons">
             <a href="#" class="manage-listings-btn">Manage Listings</a>
-            <a href="#" class="sell-btn">SELL</a>
+            <a href="#" class="sell-btn" onclick="openCreateModal()">SELL</a>
         </div>
     </div>
+
+    <!-- Create Listing Modal -->
+    <div id="create-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCreateModal()">&times;</span>
+            <h3>Create New Listing</h3>
+            <form id="create-listing-form">
+                <!-- Category -->
+                <div>
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="home">Home</option>
+                        <option value="toys">Toys</option>
+                    </select>
+                </div>
+
+                <!-- Item Name -->
+                <div>
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" placeholder="Enter item name" required>
+                </div>
+
+                <!-- Price -->
+                <div>
+                    <label for="price">Price ($)</label>
+                    <input type="number" id="price" placeholder="Enter price" required>
+                </div>
+
+                <!-- Condition -->
+                <div>
+                    <label for="condition">Condition</label>
+                    <select id="condition" required>
+                        <option value="">Select Condition</option>
+                        <option value="brand-new">Brand New</option>
+                        <option value="used">Used</option>
+                        <option value="refurbished">Old</option>
+                    </select>
+                </div>
+
+                <!-- Image Upload -->
+                <div>
+                    <label for="item-image">Upload Image</label>
+                    <input type="file" id="item-image" accept="image/*" required>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter item description" required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="create-listing-btn">Create Listing</button>
+            </form>
+        </div>
+    </div>
+
     
     <!-- Section to display active listings -->
     <div class="listings-container-wrapper">
