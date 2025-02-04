@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Profile Page</title>
+    <!-- included normalize.css for consistent styling-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <link rel="stylesheet" href="header_footer.css">
+    <link rel="stylesheet" href="seller_profile.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav class="navigation-container">
+    <h1 class="signature">MOKESELL</h1>
+      
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="www.google.com">Profile</a></li>
+        </ul>
+        <div class="Searchbar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search for products"/>
+        </div>
+        <div>
+            <i class="fa-solid fa-cart-shopping cart_icon"></i>
+            <button class="login-button">Login</button>
+            <button class="Register-button">Register</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- Profile Section displaying user information -->
+    <!-- Profile Section displaying user information -->
+<!-- Profile Section displaying user information -->
+<!-- Profile Section displaying user information -->
+    <div class="profile-header">
+        <div class="profile-info-wrapper">
+            <div class="profile-info">
+                <!-- Profile Image -->
+                <img src="images/profile.png" alt="Profile" class="profile-img">
+
+                <!-- Profile Text -->
+                <div class="profile-text">
+                    <h1>Eten Hunt</h1>
+                    <p class="profile-active">Active</p> <!-- Active status -->
+                    <p class="profile-status">50min ago</p>
+                    <p class="profile-years">7 years ago</p>
+                </div>
+
+                <!-- Profile Comments (Like buttons) -->
+                <div class="profile-comments">
+                    <button class="comment-btn">
+                        <i class="fa-solid fa-thumbs-up"></i> Very good
+                    </button>
+                    <button class="comment-btn">
+                        <i class="fa-solid fa-thumbs-up"></i> Smooth transaction
+                    </button>
+                </div>
+
+                <!-- Profile Actions (Follow & Visit Profile) -->
+                <div class="profile-actions">
+                    <button class="follow-btn">+Follow</button>
+                    <button class="visit-btn">Visit Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tabs for navigating different sections of the profile -->
+    <div class="profile-tabs">
+        <ul class="tabs">
+            <li><a href="#">listings</a></li>
+            <li><a href="#">reviews</a></li>
+            <li><a href="#">balance</a></li>
+        </ul>
+    </div>
+    
+    <!-- Section to display active listings -->
+    <div class="listings-container-wrapper">
+    
+        <!-- Search Bar Section -->
+        <div class="listing-search">
+            <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()">
+        </div>
+        <div class="active-listings">
+            <p>Listings</p>
+        </div>
+    
+        <!-- Individual Listings Grid -->
+        <div class="listings-container">
+            <div class="listing-item">
+                <img src="images/casing.webp" alt="Product">
+                <h3>Clear Phone Case</h3>
+                <p>$10.90</p>
+                <p class="item-condition">brand new</p>
+            </div>   
+            
+            <div class="listing-item">
+                <img src="images/bag.webp" alt="Product">
+                <h3>Retro Undermain Bag</h3>
+                <p>$20.90</p>
+                <p class="item-condition">brand new</p>
+            </div>
+            
+            <div class="listing-item">
+                <img src="images/sticker.webp" alt="Sticky Notes">
+                <h3>Sticky Notes</h3>
+                <p>$3.50</p>
+                <p class="item-condition">brand new</p>
+            </div>
+            
+            <div class="listing-item">
+                <img src="images/cup.webp" alt="Mug">
+                <h3>Travel Mug</h3>
+                <p>$18.00</p>
+                <p class="item-condition">brand new</p>
+                
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+<footer id="footer">
+    <div style="text-align: center;">
+        <img src="img/logo.png" alt="product image">
+    </div>
+    <div id="footer1" style="margin-top: 0px;">
+        <div id="part1">
+            <h2 class="signature signature_footer">MOKESELL</h2> <!-- Changed to h2 for accessibility -->
+            <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
+            <div style="display: flex; justify-content: space-between">
+                <div class="part1-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Information</h2>
+            <p>About</p>
+            <p>Contact us</p>
+            <p>FAQs</p>
+            <p>Account</p>
+        </div>
+        <div>
+            <h2>Contact</h2>
+            <p>Stanley House </p> 
+            <p>Masterlord Village,</p> 
+            <p>West Rd, Ipswich<br> 95X</p>
+        </div>
+        <div>
+            <h2>Legal</h2>
+            <p>Cookie Policy</p>
+            <p>Privacy Policy</p>
+            <p>Privacy Policy</p>
+        </div>
+        <div id="modal-placeholder"></div>
+    </div>
+</footer>
+
+<script src="seller_profile.js"></script>
+
+</body>
+</html>
