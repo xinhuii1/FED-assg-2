@@ -18,7 +18,7 @@ fetch('products.json')                                              //Fetch the 
                 </div>
             `;
             productItem.addEventListener('click', () =>{                              //Add a click event
-                window.location.href = `product_details.html?id=${product.id}`;       //Navigates to a new URL, ? start of query parameter using the property
+                window.location.href = `product_details.html?id=${product.productId}`;       //Navigates to a new URL, ? start of query parameter using the property
             });                                                                       //used as key: value to pass the info to another page
             productGrid.appendChild(productItem);                                     //Append the product item to the 'productGrid' container
         });
