@@ -1,45 +1,64 @@
-let currentListing = null; // Make sure this is properly initialized globally
+let currentListing = null; // Stores the currently selected listing for bumping
 
-// Function to handle bumping a listing
+// Handles bumping a listing.
+// Opens the bump modal.
+// Applies a free 30-day expiry if not already set.
+ 
 function bumpListing(button) {
     if (button.disabled) return; // Prevent multiple clicks
 
-    // Display the modal
     document.getElementById('bump-modal').style.display = 'block';
-    currentListing = button.closest('.listing-item'); // Set current listing to the closest listing-item
+    currentListing = button.closest('.listing-item'); 
 
-    // If no expiry date is set for the listing, add a free 30 days expiry
+    // If no expiry date is set, apply a default 30-day expiry
     if (!currentListing.getAttribute('data-expiry-date')) {
         setFreeListingExpiry(currentListing);
     }
 }
 
-// Close the bump modal
+// Closes the bump modal. 
 function closeBumpModal() {
     document.getElementById('bump-modal').style.display = 'none';
 }
 
-// Function to set free listing expiry for listings (30 days from now)
+// Sets a free 30-day expiry for listings.
 function setFreeListingExpiry(listing) {
     const currentDate = new Date();
     const expiryDate = new Date(currentDate);
-    expiryDate.setDate(currentDate.getDate() + 30);  // Add 30 days to current date
-    
+    expiryDate.setDate(currentDate.getDate() + 30); // Adds 30 days
+
     listing.setAttribute('data-expiry-date', expiryDate.toISOString());
 
+    // Updates expiry info UI
     const expiryInfo = listing.querySelector('.expiry-info');
     if (expiryInfo) {
         expiryInfo.textContent = '30 days left (Free)';
     }
 }
 
-// Function to apply bump duration (1-week, 1-month, or 3-month)
+// Select all bump options and listen for click events
+document.querySelectorAll('.bump-option').forEach(option => {
+    option.addEventListener('click', function () {
+        // Remove 'selected' class from all options first
+        document.querySelectorAll('.bump-option').forEach(opt => opt.classList.remove('selected'));
+
+        // Add 'selected' class to the clicked option
+        this.classList.add('selected');
+
+        // Apply the bump to the listing
+        const duration = this.getAttribute('data-duration');
+        const price = this.getAttribute('data-price');
+        applyBump(duration, price);
+    });
+});
+
+
+// Applies the selected bump duration to the listing.
+ 
 function applyBump(duration, price) {
-    if (!currentListing) return; // If no listing is selected, return
+    if (!currentListing) return;
 
     let expiryDays;
-
-    // Set expiry based on duration
     if (duration === '1-week') {
         expiryDays = 7;
     } else if (duration === '1-month') {
@@ -48,47 +67,34 @@ function applyBump(duration, price) {
         expiryDays = 90;
     }
 
-    // Calculate the new expiry date
+    // Calculate new expiry date
     const currentExpiryDate = new Date(currentListing.getAttribute('data-expiry-date'));
-    currentExpiryDate.setDate(currentExpiryDate.getDate() + expiryDays);  // Add the bump duration
+    currentExpiryDate.setDate(currentExpiryDate.getDate() + expiryDays);
 
     currentListing.setAttribute('data-expiry-date', currentExpiryDate.toISOString());
 
-    // Update the expiry info text
+    // Update expiry info UI
     const expiryInfo = currentListing.querySelector('.expiry-info');
     if (expiryInfo) {
         expiryInfo.textContent = `${expiryDays + 30} days left`;
     }
-
-    // Highlight the selected bump option
-    const bumpOptions = document.querySelectorAll('.bump-option');
-    bumpOptions.forEach(option => {
-        option.classList.remove('selected');
-    });
-
-    // Mark the clicked option as selected
-    const selectedOption = document.querySelector(`.bump-option[data-duration="${duration}"]`);
-    if (selectedOption) {
-        selectedOption.classList.add('selected');
-    }
 }
 
-// Function to confirm and apply the bump
+// Confirms and applies the bump effect.
+ 
 function confirmBump() {
-    if (!currentListing) return; // If no current listing, do nothing
+    if (!currentListing) return;
 
     const button = currentListing.querySelector('.bump-btn');
-    button.textContent = 'Bumped'; // Change text to 'Bumped'
-    button.disabled = true;        // Disable the button to prevent further clicks
+    button.textContent = 'Bumped';
+    button.disabled = true;
 
-    // Update the expiry info for the listing
     updateExpiryInfo(currentListing);
-
-    // Close the bump modal after confirmation
     closeBumpModal();
 }
 
-// Function to update expiry info (display remaining days or expired)
+// Updates expiry information dynamically.
+ 
 function updateExpiryInfo(listing) {
     const expiryDate = new Date(listing.getAttribute('data-expiry-date'));
     const currentDate = new Date();
@@ -96,15 +102,12 @@ function updateExpiryInfo(listing) {
 
     const expiryInfo = listing.querySelector('.expiry-info');
     if (expiryInfo) {
-        if (expiryDate < currentDate) {
-            expiryInfo.textContent = 'Expired';
-        } else {
-            expiryInfo.textContent = `${remainingDays} days left`;
-        }
+        expiryInfo.textContent = expiryDate < currentDate ? 'Expired' : `${remainingDays} days left`;
     }
 }
 
-// Function to handle the search functionality
+// Filters listings based on user input.
+ 
 function filterListings() {
     const searchInput = document.getElementById('search-bar').value.toLowerCase();
     const listings = document.querySelectorAll('.listing-item');
@@ -130,7 +133,7 @@ document.querySelectorAll('.bump-option').forEach(option => {
     option.addEventListener('click', function() {
         const duration = this.getAttribute('data-duration');
         const price = this.getAttribute('data-price');
-        applyBump(duration, price);  // Apply the bump based on the selected option
+        applyBump(duration, price);
     });
 });
 
@@ -140,62 +143,99 @@ window.onload = () => {
     listings.forEach(listing => {
         const expiryDate = listing.getAttribute('data-expiry-date');
         if (expiryDate) {
-            updateExpiryInfo(listing); // If expiry date exists, update it
+            updateExpiryInfo(listing);
         } else {
-            setFreeListingExpiry(listing); // If no expiry, set the free listing expiry (30 days)
+            setFreeListingExpiry(listing);
         }
     });
 };
 
-// Open the modal
+// Opens the "Create Listing" modal. 
+ 
 function openCreateModal() {
-    document.getElementById('create-modal').style.display = 'block';  // Make the modal visible
+    document.getElementById('create-modal').style.display = 'block';  
 }
 
-// Close the modal
+// Closes the "Create Listing" modal. 
+ 
 function closeCreateModal() {
-    document.getElementById('create-modal').style.display = 'none';  // Hide the modal
+    document.getElementById('create-modal').style.display = 'none';  
 }
 
-// Handle form submission to create a new listing
-document.getElementById('create-listing-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form from reloading the page
+// Handles the form submission for creating a new listing.
+ 
+document.getElementById("create-listing-form").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Prevent page reload
 
-    // Get form values
-    const category = document.getElementById('category').value;
-    const itemName = document.getElementById('item-name').value;
-    const price = document.getElementById('price').value;
-    const condition = document.getElementById('condition').value;
-    const description = document.getElementById('description').value;
-    const image = document.getElementById('item-image').files[0];
+    // Get form data
+    const category = document.getElementById("category").value;
+    const itemName = document.getElementById("item-name").value;
+    const price = document.getElementById("price").value;
+    const condition = document.getElementById("condition").value;
+    const description = document.getElementById("description").value;
 
-    // Validate form data (you can add more validation here)
-    if (!category || !itemName || !price || !condition || !description || !image) {
-        alert('Please fill in all fields!');
-        return;
+    // Hardcoded Direct Image URL 
+    const imageUrl = "https://i.ibb.co/5xBHMh9Y/sweater.webp"; 
+
+    console.log("📸 Image URL being sent:", imageUrl); // Debugging
+
+    // MockAPI URL
+    const mockAPI_URL = "https://67a24866409de5ed5254ed20.mockapi.io/api/mocktest/apifirst";
+
+    try {
+        // Prepare JSON data
+        const listingData = {
+            category,
+            itemName,
+            price,
+            condition,
+            description,
+            image: imageUrl, // Store the image URL in MockAPI
+        };
+
+        // Send to MockAPI
+        const response = await fetch(mockAPI_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(listingData),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`MockAPI Error ${response.status}: ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log("MockAPI Response:", data); // Debugging
+
+        // Create Listing Element
+        const newListing = document.createElement("div");
+        newListing.classList.add("listing-item");
+        newListing.setAttribute("data-id", data.id);
+
+        newListing.innerHTML = `
+            <img src="${data.image}" alt="${itemName}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
+            <h3>${itemName}</h3>
+            <p>$${price}</p>
+            <p class="item-condition">${condition}</p>
+            <p>${description}</p>
+            <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
+            <p class="expiry-info">30 days left (Free)</p>
+        `;
+
+        document.querySelector(".listings-container").appendChild(newListing);
+
+        // Update active listings count
+        const activeCountElement = document.getElementById("active-listings-counts");
+        activeCountElement.textContent = parseInt(activeCountElement.textContent) + 1;
+
+        // Close the modal
+        closeCreateModal();
+
+        alert("New listing successfully created!");
+
+    } catch (error) {
+        console.error("Fetch error:", error);
+        alert("Error creating listing: " + error.message);
     }
-
-    // Create a new listing item
-    const newListing = document.createElement('div');
-    newListing.classList.add('listing-item');
-    
-    // Create the image URL
-    const imageUrl = URL.createObjectURL(image);
-
-    // Add the item details
-    newListing.innerHTML = `
-        <img src="${imageUrl}" alt="${itemName}">
-        <h3>${itemName}</h3>
-        <p>$${price}</p>
-        <p class="item-condition">${condition}</p>
-        <p>${description}</p>
-        <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
-        <p class="expiry-info">30 days left (Free)</p>
-    `;
-
-    // Append the new listing to the listings container
-    document.querySelector('.listings-container').appendChild(newListing);
-
-    // Close the modal
-    closeCreateModal();
 });

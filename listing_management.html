@@ -12,14 +12,14 @@
 </head>
 <body>
 <header>
-    <!-- main header with navigations -->
+    <!-- Main navigation bar with site title and links -->
     <nav class="navigation-container">
         <h1 class="signature">MOKESELL</h1>  <!-- Main Heading for the page -->
         <ul>
             <li><a href="homepage.html">Home</a></li>
             <li><a href="product.html">Products</a></li>
             <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="www.google.com">Profile</a></li>
+            <li><a href="listing_management.css">Profile</a></li>
         </ul>
     </nav>
 </header>
@@ -31,9 +31,9 @@
             <div class="profile-info">
                 <img src="images/profile.png" alt="Profile" class="profile-img">
                 <div class="profile-text">
-                    <h1>Eten Hunt</h1>
-                    <p class="profile-status">pm to make a purchase!</p>
-                    <p class="profile-rating">4.9⭐  | 2y 8m</p>
+                    <h2>Eten Hunt</h2>  <!-- Profile name -->
+                    <p class="profile-status">pm to make a purchase!</p> <!-- Profile status -->
+                    <p class="profile-rating">4.9⭐  | 2y 8m</p> <!-- Profile rating -->
                 </div>
             </div>
         </div>
@@ -46,43 +46,44 @@
             <li><a href="#">reviews</a></li>
             <li><a href="#">balance</a></li>
         </ul>
+        <!-- Buttons to manage listings and sell items -->
         <div class="manage-buttons">
             <a href="#" class="manage-listings-btn">Manage Listings</a>
-            <a href="#" class="sell-btn" onclick="openCreateModal()">SELL</a>
+            <a href="#" class="sell-btn" onclick="openCreateModal()">SELL</a> <!-- Open create listing modal -->
         </div>
     </div>
 
     <!-- Create Listing Modal -->
     <div id="create-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeCreateModal()">&times;</span>
+            <span class="close-btn" onclick="closeCreateModal()">&times;</span>  <!-- Close modal button -->
             <h3>Create New Listing</h3>
             <form id="create-listing-form">
-                <!-- Category -->
+                <!-- Category Selection -->
                 <div>
                     <label for="category">Category</label>
                     <select id="category" required>
                         <option value="">Select Category</option>
                         <option value="electronics">Electronics</option>
                         <option value="clothing">Clothing</option>
-                        <option value="home">Home</option>
+                        <option value="home">Home and Living</option>
                         <option value="toys">Toys</option>
                     </select>
                 </div>
 
-                <!-- Item Name -->
+                <!-- Item Name Input -->
                 <div>
                     <label for="item-name">Item Name</label>
                     <input type="text" id="item-name" placeholder="Enter item name" required>
                 </div>
 
-                <!-- Price -->
+                <!-- Price Input -->
                 <div>
                     <label for="price">Price ($)</label>
                     <input type="number" id="price" placeholder="Enter price" required>
                 </div>
 
-                <!-- Condition -->
+                <!-- Condition Selection -->
                 <div>
                     <label for="condition">Condition</label>
                     <select id="condition" required>
@@ -93,40 +94,40 @@
                     </select>
                 </div>
 
-                <!-- Image Upload -->
+                <!-- Image Upload Input -->
                 <div>
                     <label for="item-image">Upload Image</label>
                     <input type="file" id="item-image" accept="image/*" required>
                 </div>
 
-                <!-- Description -->
+                <!-- Description Input -->
                 <div>
                     <label for="description">Description</label>
                     <textarea id="description" placeholder="Enter item description" required></textarea>
                 </div>
 
-                <!-- Submit Button -->
+                <!-- Submit Button for Listing -->
                 <button type="submit" id="create-listing-btn">Create Listing</button>
             </form>
         </div>
     </div>
 
-    
     <!-- Section to display active listings -->
     <div class="listings-container-wrapper">
         <!-- Active Listings Section -->
         <div class="active-listings">
             <h2>Listings</h2> <!-- Changed to h2 for better structure -->
-            Active Listings: <span id="active-listings-counts">4</span>/30
+            Active Listings: <span id="active-listings-counts">4</span>/30 <!-- Active listings count -->
         </div>
     
         <!-- Search Bar Section -->
         <div class="listing-search">
-            <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()">
+            <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()"> <!-- Search input -->
         </div>
     
         <!-- Individual Listings Grid -->
         <div class="listings-container">
+            <!-- Listing Item Example -->
             <div class="listing-item">
                 <img src="images/casing.webp" alt="Product">
                 <h3>Clear Phone Case</h3>
@@ -144,48 +145,42 @@
                 <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
                 <p class="expiry-info">0 days left</p>
             </div>
-            
+
             <div class="listing-item">
                 <img src="images/sticker.webp" alt="Sticky Notes">
                 <h3>Sticky Notes</h3>
                 <p>$3.50</p>
                 <p class="item-condition">brand new</p>
                 <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
-                <p class="expiry-info">0 days left</p> <!-- Correctly closed div -->
+                <p class="expiry-info">0 days left</p> 
             </div>
-            
+
             <div class="listing-item">
                 <img src="images/cup.webp" alt="Mug">
                 <h3>Travel Mug</h3>
                 <p>$18.00</p>
                 <p class="item-condition">brand new</p>
                 <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
-                <p class="expiry-info">0 days left</p> <!-- Correctly closed div -->
+                <p class="expiry-info">0 days left</p>
             </div>
         </div>
     </div>
 
-        <!-- Bump Listing Menu -->
-        <div id="bump-modal" class="modal">
-            <div class="modal-content">
-                <!-- close button for the bump modal -->
-                <span class="close-btn" onclick="closeBumpModal()">&times;</span>
-                <h3>Choose Bump Duration</h3>
-                <!-- option to bump for 1 week -->
-                <div class="bump-option" data-duration="1-week" data-price="10">
-                    <p>One Week Bump - $10</p>
-                </div> 
-                <!-- option to bump for one month -->
-                <div class="bump-option" data-duration="1-month" data-price="20">
-                    <p>One Month Bump - $20</p>
-                </div>
-                <!-- option to bump for three months -->
-                <div class="bump-option" data-duration="3-month" data-price="45">
-                    <p>Three Month Bump - $45</p>
-                </div>
-                <!-- Confirm button to purchase the bump -->
-                <button id="confirm-bump-btn" onclick="confirmBump()">Confirm Bump</button>
+    <!-- Bump Listing Menu -->
+    <div id="bump-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBumpModal()">&times;</span>
+            <h3>Choose Bump Duration</h3>
+            <div class="bump-option" data-duration="1-week" data-price="10">
+                <p>One Week Bump - $10</p>
+            </div> 
+            <div class="bump-option" data-duration="1-month" data-price="20">
+                <p>One Month Bump - $20</p>
             </div>
+            <div class="bump-option" data-duration="3-month" data-price="45">
+                <p>Three Month Bump - $45</p>
+            </div>
+            <button id="confirm-bump-btn" onclick="confirmBump()">Confirm Bump</button>
         </div>
     </div>
 </main>
@@ -196,7 +191,7 @@
     </div>
     <div id="footer1" style="margin-top: 0px;">
         <div id="part1">
-            <h2 class="signature signature_footer">MOKESELL</h2> <!-- Changed to h2 for accessibility -->
+            <h2 class="signature signature_footer">MOKESELL</h2>
             <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
             <div style="display: flex; justify-content: space-between">
                 <div class="part1-icon">
