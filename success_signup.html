@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+<div class="full-screen-wrapper">
+    <div class="modal-container" style="width: 400px; padding: 30px;">
+        <h2 id="dialog-title">Sign Up Successful!</h2>
+        <p id="dialog-details">
+            Welcome back! You have successfully signed up.
+        </p>
+        <button id="success-button" onclick="closeModalAndRedirect()" >
+            Go to Dashboard
+        </button>
+        <p class="modal-footer">
+            Need help?
+            <a href="#" >
+                Contact Support
+            </a>
+        </p>
+        <div id="modal-placeholder"></div>
+    </div>
+</div>
+<script src="modal.js"></script>
+<script src="success_dialog.js"></script>
+</body>
+</html>

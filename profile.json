@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "icon": "img/Advertisement1.png",
+    "username": "kaz_1",
+    "status": "Online",
+    "years": 3,
+    "rating": 4.8,
+    "totalReview": 120,
+    "comments": ["Very good", "Excellent seller"]
+  },
+  {
+    "id": 2,
+    "icon": "img/Advertisement1.png",
+    "username": "lyn.7",
+    "status": "5min ago",
+    "years": 5,
+    "rating": 3.7,
+    "totalReview": 98,
+    "comments": ["Great service", "Would buy again"]
+  },
+  {
+    "id": 3,
+    "icon": "img/Advertisement1.png",
+    "username": "joy_z",
+    "status": "Online",
+    "years": 2,
+    "rating": 2.9,
+    "totalReview": 75,
+    "comments": ["Good quality", "Satisfied"]
+  },
+  {
+    "id": 4,
+    "icon": "img/Advertisement1.png",
+    "username": "lex_5",
+    "status": "25min ago",
+    "years": 4,
+    "rating": 5.0,
+    "totalReview": 200,
+    "comments": ["Excellent seller", "Very responsive"]
+  },
+  {
+    "id": 5,
+    "icon": "img/Advertisement1.png",
+    "username": "nic_3",
+    "status": "Online",
+    "years": 1,
+    "rating": 3.2,
+    "totalReview": 50,
+    "comments": ["Fast shipping", "Product as described"]
+  },
+  {
+    "id": 6,
+    "icon": "img/Advertisement1.png",
+    "username": "ted_4",
+    "status": "40min ago",
+    "years": 6,
+    "rating": 4.4,
+    "totalReview": 180,
+    "comments": ["Good communication", "Would recommend"]
+  },
+  {
+    "id": 7,
+    "icon": "img/Advertisement1.png",
+    "username": "jay_9",
+    "status": "Online",
+    "years": 2,
+    "rating": 3.5,
+    "totalReview": 70,
+    "comments": ["Good packaging", "Decent quality"]
+  },
+  {
+    "id": 8,
+    "icon": "img/Advertisement1.png",
+    "username": "sam.1",
+    "status": "50min ago",
+    "years": 5,
+    "rating": 4.9,
+    "totalReview": 150,
+    "comments": ["Outstanding service", "Top-notch quality"]
+  },
+  {
+    "id": 9,
+    "icon": "img/Advertisement1.png",
+    "username": "kat.2",
+    "status": "Online",
+    "years": 3,
+    "rating": 2.8,
+    "totalReview": 40,
+    "comments": ["Good value", "Will order again"]
+  },
+  {
+    "id": 10,
+    "icon": "img/Advertisement1.png",
+    "username": "mya_8",
+    "status": "35min ago",
+    "years": 1,
+    "rating": 1.5,
+    "totalReview": 25,
+    "comments": ["Average experience", "Needs improvement"]
+  },
+  {
+    "id": 11,
+    "icon": "img/Advertisement1.png",
+    "username": "eva.3",
+    "status": "Online",
+    "years": 4,
+    "rating": 4.1,
+    "totalReview": 80,
+    "comments": ["Good service", "Nice seller"]
+  },
+  {
+    "id": 12,
+    "icon": "img/Advertisement1.png",
+    "username": "leo_7",
+    "status": "45min ago",
+    "years": 2,
+    "rating": 3.3,
+    "totalReview": 60,
+    "comments": ["Fast response", "Helpful seller"]
+  },
+  {
+    "id": 13,
+    "icon": "img/Advertisement1.png",
+    "username": "ivy_6",
+    "status": "10min ago",
+    "years": 3,
+    "rating": 4.7,
+    "totalReview": 90,
+    "comments": ["Smooth transaction", "Highly recommended"]
+  }
+]

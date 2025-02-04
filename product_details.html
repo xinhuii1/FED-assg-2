@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <link rel="stylesheet" href="header_footer.css">
+    <link rel="stylesheet" href="product_details.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+</head>
+<header>
+    <nav class="navigation-container">
+        <h1 class="signature">MOKESELL</h1>
+        <ul class="">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="www.google.com">Profile</a></li>
+        </ul>
+        <div class="Searchbar">
+            <input type="text" placeholder="Search for products"/>
+
+        </div>
+        <div>
+            <i class="fa-solid fa-cart-shopping" style=" font-size: 19px; margin-right: 15px;"></i>
+            <button class="login-button">Login</button>
+            <button class="Register-button">Register</button>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="product-container">
+        <div id="test-box" style="display: flex;justify-content: space-between">
+            <div>
+                <h3 style="color: #C1958C;">Home> Products> Product details</h3>
+            </div>
+        </div>
+        <div class="product-details-container" >
+            <div class="product-image-box">
+                <div>
+                    <img class="product-image Img" src="image/product5.png" alt="product image">
+                </div>
+            </div>
+            <div >
+                <div class="product-details-box">
+                    <h1 class="product-title">Around the world coloring cards</h1>
+                    <div class="review-box" >
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span style="color: #333;" class="product-rating">5.0</span>
+                        <span style="color: #666;" class="product-total-review">(121 Reviews)</span>
+                    </div>
+                    <h1 class="product-price">$9.99</h1>
+                    <h3 style="margin-top: 0px">Size</h3>
+                    <div class="size-box" >
+                        <button class="selected-size">F</button>
+                        <button>S</button>
+                        <button>M</button>
+                        <button>L</button>
+                        <button>XL</button>
+                    </div>
+                    <br>
+                    <h3 style="margin-top: 0px">Color</h3>
+                    <div class="color-box">
+                        <button style="background-color: #5E3E1A;"></button>
+                        <button style="background-color: #FF5733;"></button>
+                        <button style="background-color: #33FF57;"></button>
+                        <button style="background-color: #337BFF;"></button>
+                        <button style="background-color: #FFC733;"></button>
+                    </div>
+                    <br>
+                    <div class="other-box">
+                        <div class="quantity-box">
+                            <button><i class="fa-solid fa-minus"></i></button>
+                            <input type="number" value="1" />
+                            <button><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <button class="buy-button">
+                            Buy now
+                        </button>
+                        <button class="add-cart-button">
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-box">
+            <div class="tab-header">
+                <div id="tab-descriptions" style="border-bottom: 5px solid #5E3E1A;" onclick="showTabContent('descriptions')" >Descriptions</div>             <!--Create a function with parameters */ -->
+                <div id="tab-additional" style="border-bottom: 5px solid transparent;" onclick="showTabContent('additional')">Additional Information</div>
+                <div id="tab-reviews" style="border-bottom: 5px solid transparent;" onclick="showTabContent('reviews')" >Reviews</div>
+            </div>
+            <div id="content-descriptions" style="display: block; padding: 10px">
+                <p class="product-description">This is the description of the product. Here you can add detailed information about the product's features.</p>
+            </div>
+            <div id="content-additional"  style="display: none; padding: 10px">
+                <p class="product-weight">Weight: 0.441 lbs</p>
+                <p class="product-dimension">Dimensions: 5.7 × 5.7 × 0.8 in</p>
+            </div>
+            <div id="content-reviews" style="display: none; padding: 10px">
+                <p>No reviews yet. Be the first to write one!</p>
+            </div>
+            <hr>
+        </div>
+        <div class="seller-container">
+            <h2>Meet the Seller</h2>
+            <div class="seller-info">
+                <img class="seller-icon" src="" alt="Seller Icon"> <!-- Placeholder for seller's profile icon -->
+                <div class="seller-details">
+                    <p class="seller-name">Seller Name</p> <!-- Placeholder for seller's name -->
+                    <p class="seller-status"><span class="status-indicator"></span> Status</p> <!-- Placeholder for status (Online or X min ago) -->
+                    <p class="seller-joined">Years active</p> <!-- Placeholder for years active -->
+                </div>
+                <div class="seller-tags">
+                    <!-- Add tags dynamically if required -->
+                    <div class="tag">
+                        <i class="fa-solid fa-thumbs-up"></i> Very responsive
+                    </div>
+                    <div class="tag">
+                        <i class="fa-solid fa-thumbs-up"></i> Excellent seller
+                    </div>
+                </div>
+            </div>
+        
+            <h3>Reviews</h3>
+            <div class="reviews">
+                <div class="review-summary">
+                    <h1 class="review-rating">0</h1> <!-- Placeholder for average rating -->
+                    <p class="total-reviews">of 0 reviews</p> <!-- Placeholder for total reviews -->
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <div class="review-breakdown">
+                    <div class="review-row">
+                      <span>Excellent</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-excellent"></div>
+                      </div>
+                
+                    </div>
+                    <div class="review-row">
+                      <span>Good</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-good"></div>
+                      </div>
+        
+                    </div>
+                    <div class="review-row">
+                      <span>Average</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-average"></div>
+                      </div>
+                    
+                    </div>
+                    <div class="review-row">
+                      <span>Below Average</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-belowaverage"></div>
+                      </div>
+            
+                    </div>
+                    <div class="review-row">
+                      <span>Poor</span>
+                      <div class="bar-container">
+                        <div class="bar-filled bar-poor"></div>
+                      </div>
+                      <span class="value-poor"></span>
+                    </div>
+                  </div>
+                  
+            </div>
+        
+        
+    </div>
+</main>
+<footer id="footer">
+    <div style="text-align: center;">
+        <img src="img/logo.png" alt="product image">
+    </div>
+    <div id="footer1" style="margin-top: 0px;">
+        <div id="part1">
+            <h1 class="signature signature_footer">MOKESELL</h1>
+            <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
+            <div style="display: flex; justify-content: space-between">
+                <div class="part1-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+                <div class="part1-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Information</h2>
+            <p>About</p>
+            <p>Contact us</p>
+            <p>FAQs</p>
+            <p>Account</p>
+        </div>
+        <div>
+            <h2>Contact</h2>
+            <p>Stanley House </p> 
+            <p>Masterlord Village,</p> 
+            <p>West Rd, Ipswich<br> 95X</p>
+        </div>
+        <div>
+            <h2>Legal</h2>
+            <p>Cookie Policy</p>
+            <p>Privacy Policy</p>
+            <p>Privacy Policy</p>
+        </div>
+    </div>
+</footer>
+<script src="product_details.js"></script>
+</body>
+</html>
