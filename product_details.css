@@ -164,10 +164,25 @@
 }
 
 .seller-container {
+<<<<<<< HEAD
+  background-color: #f0eee9;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+ 
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+=======
   background-color: #f0eae8;
   padding: 20px;
   border-radius: 8px;
   max-width: 800px;
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
 }
 
 .seller-info {
@@ -206,6 +221,8 @@
   border-radius: 50%;
   margin-right: 5px;
 }
+<<<<<<< HEAD
+=======
 .profile-header {
   display: flex;
   align-items: center; /* Align items vertically */
@@ -267,6 +284,7 @@
 .visit-profile-button:hover {
   background-color: #e1dad5; /* Slightly darker beige on hover */
 }
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
 
 .seller-joined {
   font-size: 12px;
@@ -277,7 +295,10 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+<<<<<<< HEAD
+=======
   margin: 0px;
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
 }
 
 .tag {

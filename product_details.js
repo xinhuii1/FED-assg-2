@@ -58,6 +58,13 @@ fetch('profile.json')
                 }
             }
 
+<<<<<<< HEAD
+            document.querySelector(".review-rating").textContent = profile.rating;
+            document.querySelector(".total-reviews").textContent =
+                "of " + profile.totalReview + " reviews";
+            document.querySelector(".seller-comments").textContent =
+                profile.comments.join(", ");
+=======
             document.querySelector(".review-rating").textContent = profile.rating.toFixed(1);
             document.querySelector(".total-reviews").textContent =
                 "of " + profile.totalReview + " reviews";
@@ -69,6 +76,7 @@ fetch('profile.json')
                 tagDiv.innerHTML = `<i class="fa-solid fa-thumbs-up"></i> ${comment}`;
                 tagsContainer.appendChild(tagDiv);
             });
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
         } 
     })
 
