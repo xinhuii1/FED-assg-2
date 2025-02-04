@@ -5,7 +5,11 @@
     "username": "kaz_1",
     "status": "Online",
     "years": 3,
+<<<<<<< HEAD
     "rating": 4.8,
+=======
+    "rating": 4.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 120,
     "comments": ["Very good", "Excellent seller"]
   },
@@ -15,7 +19,11 @@
     "username": "lyn.7",
     "status": "5min ago",
     "years": 5,
+<<<<<<< HEAD
     "rating": 3.7,
+=======
+    "rating": 3.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 98,
     "comments": ["Great service", "Would buy again"]
   },
@@ -25,7 +33,11 @@
     "username": "joy_z",
     "status": "Online",
     "years": 2,
+<<<<<<< HEAD
     "rating": 2.9,
+=======
+    "rating": 2.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 75,
     "comments": ["Good quality", "Satisfied"]
   },
@@ -35,7 +47,11 @@
     "username": "lex_5",
     "status": "25min ago",
     "years": 4,
+<<<<<<< HEAD
     "rating": 5.0,
+=======
+    "rating": 4.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 200,
     "comments": ["Excellent seller", "Very responsive"]
   },
@@ -45,7 +61,11 @@
     "username": "nic_3",
     "status": "Online",
     "years": 1,
+<<<<<<< HEAD
     "rating": 3.2,
+=======
+    "rating": 3.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 50,
     "comments": ["Fast shipping", "Product as described"]
   },
@@ -55,7 +75,11 @@
     "username": "ted_4",
     "status": "40min ago",
     "years": 6,
+<<<<<<< HEAD
     "rating": 4.4,
+=======
+    "rating": 4.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 180,
     "comments": ["Good communication", "Would recommend"]
   },
@@ -65,7 +89,11 @@
     "username": "jay_9",
     "status": "Online",
     "years": 2,
+<<<<<<< HEAD
     "rating": 3.5,
+=======
+    "rating": 3.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 70,
     "comments": ["Good packaging", "Decent quality"]
   },
@@ -75,7 +103,11 @@
     "username": "sam.1",
     "status": "50min ago",
     "years": 5,
+<<<<<<< HEAD
     "rating": 4.9,
+=======
+    "rating": 4.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 150,
     "comments": ["Outstanding service", "Top-notch quality"]
   },
@@ -85,7 +117,11 @@
     "username": "kat.2",
     "status": "Online",
     "years": 3,
+<<<<<<< HEAD
     "rating": 2.8,
+=======
+    "rating": 2.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 40,
     "comments": ["Good value", "Will order again"]
   },
@@ -95,7 +131,11 @@
     "username": "mya_8",
     "status": "35min ago",
     "years": 1,
+<<<<<<< HEAD
     "rating": 1.5,
+=======
+    "rating": 1.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 25,
     "comments": ["Average experience", "Needs improvement"]
   },
@@ -105,7 +145,11 @@
     "username": "eva.3",
     "status": "Online",
     "years": 4,
+<<<<<<< HEAD
     "rating": 4.1,
+=======
+    "rating": 4.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 80,
     "comments": ["Good service", "Nice seller"]
   },
@@ -115,7 +159,11 @@
     "username": "leo_7",
     "status": "45min ago",
     "years": 2,
+<<<<<<< HEAD
     "rating": 3.3,
+=======
+    "rating": 3.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 60,
     "comments": ["Fast response", "Helpful seller"]
   },
@@ -125,7 +173,11 @@
     "username": "ivy_6",
     "status": "10min ago",
     "years": 3,
+<<<<<<< HEAD
     "rating": 4.7,
+=======
+    "rating": 4.0,
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
     "totalReview": 90,
     "comments": ["Smooth transaction", "Highly recommended"]
   }

@@ -58,11 +58,25 @@ fetch('profile.json')
                 }
             }
 
+<<<<<<< HEAD
             document.querySelector(".review-rating").textContent = profile.rating;
             document.querySelector(".total-reviews").textContent =
                 "of " + profile.totalReview + " reviews";
             document.querySelector(".seller-comments").textContent =
                 profile.comments.join(", ");
+=======
+            document.querySelector(".review-rating").textContent = profile.rating.toFixed(1);
+            document.querySelector(".total-reviews").textContent =
+                "of " + profile.totalReview + " reviews";
+            const tagsContainer = document.querySelector(".seller-tags");
+            tagsContainer.innerHTML = ""; // Clear any existing tags
+            profile.comments.forEach((comment) => {
+                const tagDiv = document.createElement("div");
+                tagDiv.classList.add("tag");
+                tagDiv.innerHTML = `<i class="fa-solid fa-thumbs-up"></i> ${comment}`;
+                tagsContainer.appendChild(tagDiv);
+            });
+>>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
         } 
     })
 
