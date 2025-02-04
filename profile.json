@@ -1,184 +1,262 @@
 [
   {
-    "id": 1,
-    "icon": "img/Advertisement1.png",
-    "username": "kaz_1",
-    "status": "Online",
-    "years": 3,
-<<<<<<< HEAD
-    "rating": 4.8,
-=======
-    "rating": 4.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 120,
-    "comments": ["Very good", "Excellent seller"]
+      "userId": 1,
+      "icon": "img/Advertisement1.png",
+      "username": "user_1",
+      "status": "50min ago",
+      "years": 2,
+      "rating": 4,
+      "totalReview": 87,
+      "comments": [
+          "Very good",
+          "Highly recommended"
+      ]
   },
   {
-    "id": 2,
-    "icon": "img/Advertisement1.png",
-    "username": "lyn.7",
-    "status": "5min ago",
-    "years": 5,
-<<<<<<< HEAD
-    "rating": 3.7,
-=======
-    "rating": 3.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 98,
-    "comments": ["Great service", "Would buy again"]
+      "userId": 2,
+      "icon": "img/Advertisement1.png",
+      "username": "user_2",
+      "status": "40min ago",
+      "years": 1,
+      "rating": 4,
+      "totalReview": 103,
+      "comments": [
+          "Excellent seller",
+          "Highly recommended"
+      ]
   },
   {
-    "id": 3,
-    "icon": "img/Advertisement1.png",
-    "username": "joy_z",
-    "status": "Online",
-    "years": 2,
-<<<<<<< HEAD
-    "rating": 2.9,
-=======
-    "rating": 2.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 75,
-    "comments": ["Good quality", "Satisfied"]
+      "userId": 3,
+      "icon": "img/Advertisement1.png",
+      "username": "user_3",
+      "status": "5min ago",
+      "years": "4y 7m",
+      "rating": 3,
+      "totalReview": 49,
+      "comments": [
+          "Excellent seller",
+          "Nice seller"
+      ]
   },
   {
-    "id": 4,
-    "icon": "img/Advertisement1.png",
-    "username": "lex_5",
-    "status": "25min ago",
-    "years": 4,
-<<<<<<< HEAD
-    "rating": 5.0,
-=======
-    "rating": 4.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 200,
-    "comments": ["Excellent seller", "Very responsive"]
+      "userId": 4,
+      "icon": "img/Advertisement1.png",
+      "username": "user_4",
+      "status": "5min ago",
+      "years": 8,
+      "rating": 5,
+      "totalReview": 86,
+      "comments": [
+          "Very good",
+          "Good service"
+      ]
   },
   {
-    "id": 5,
-    "icon": "img/Advertisement1.png",
-    "username": "nic_3",
-    "status": "Online",
-    "years": 1,
-<<<<<<< HEAD
-    "rating": 3.2,
-=======
-    "rating": 3.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 50,
-    "comments": ["Fast shipping", "Product as described"]
+      "userId": 5,
+      "icon": "img/Advertisement1.png",
+      "username": "user_5",
+      "status": "5min ago",
+      "years": 8,
+      "rating": 4,
+      "totalReview": 45,
+      "comments": [
+          "Very good",
+          "Highly recommended"
+      ]
   },
   {
-    "id": 6,
-    "icon": "img/Advertisement1.png",
-    "username": "ted_4",
-    "status": "40min ago",
-    "years": 6,
-<<<<<<< HEAD
-    "rating": 4.4,
-=======
-    "rating": 4.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 180,
-    "comments": ["Good communication", "Would recommend"]
+      "userId": 6,
+      "icon": "img/Advertisement1.png",
+      "username": "user_6",
+      "status": "40min ago",
+      "years": 4,
+      "rating": 4,
+      "totalReview": 286,
+      "comments": [
+          "Fast shipping",
+          "Nice seller"
+      ]
   },
   {
-    "id": 7,
-    "icon": "img/Advertisement1.png",
-    "username": "jay_9",
-    "status": "Online",
-    "years": 2,
-<<<<<<< HEAD
-    "rating": 3.5,
-=======
-    "rating": 3.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 70,
-    "comments": ["Good packaging", "Decent quality"]
+      "userId": 7,
+      "icon": "img/Advertisement1.png",
+      "username": "user_7",
+      "status": "40min ago",
+      "years": 9,
+      "rating": 2,
+      "totalReview": 46,
+      "comments": [
+          "Helpful seller",
+          "Highly recommended"
+      ]
   },
   {
-    "id": 8,
-    "icon": "img/Advertisement1.png",
-    "username": "sam.1",
-    "status": "50min ago",
-    "years": 5,
-<<<<<<< HEAD
-    "rating": 4.9,
-=======
-    "rating": 4.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 150,
-    "comments": ["Outstanding service", "Top-notch quality"]
+      "userId": 8,
+      "icon": "img/Advertisement1.png",
+      "username": "user_8",
+      "status": "5min ago",
+      "years": 5,
+      "rating": 3,
+      "totalReview": 118,
+      "comments": [
+          "Would buy again",
+          "Good service"
+      ]
   },
   {
-    "id": 9,
-    "icon": "img/Advertisement1.png",
-    "username": "kat.2",
-    "status": "Online",
-    "years": 3,
-<<<<<<< HEAD
-    "rating": 2.8,
-=======
-    "rating": 2.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 40,
-    "comments": ["Good value", "Will order again"]
+      "userId": 9,
+      "icon": "img/Advertisement1.png",
+      "username": "user_9",
+      "status": "5min ago",
+      "years": 8,
+      "rating": 4,
+      "totalReview": 94,
+      "comments": [
+          "Fast shipping",
+          "Highly recommended"
+      ]
   },
   {
-    "id": 10,
-    "icon": "img/Advertisement1.png",
-    "username": "mya_8",
-    "status": "35min ago",
-    "years": 1,
-<<<<<<< HEAD
-    "rating": 1.5,
-=======
-    "rating": 1.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 25,
-    "comments": ["Average experience", "Needs improvement"]
+      "userId": 10,
+      "icon": "img/Advertisement1.png",
+      "username": "user_10",
+      "status": "5min ago",
+      "years": 5,
+      "rating": 4,
+      "totalReview": 267,
+      "comments": [
+          "Excellent seller",
+          "Highly recommended"
+      ]
   },
   {
-    "id": 11,
-    "icon": "img/Advertisement1.png",
-    "username": "eva.3",
-    "status": "Online",
-    "years": 4,
-<<<<<<< HEAD
-    "rating": 4.1,
-=======
-    "rating": 4.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 80,
-    "comments": ["Good service", "Nice seller"]
+      "userId": 11,
+      "icon": "img/Advertisement1.png",
+      "username": "user_11",
+      "status": "25min ago",
+      "years": 7,
+      "rating": 5,
+      "totalReview": 75,
+      "comments": [
+          "Very good",
+          "Top-notch quality"
+      ]
   },
   {
-    "id": 12,
-    "icon": "img/Advertisement1.png",
-    "username": "leo_7",
-    "status": "45min ago",
-    "years": 2,
-<<<<<<< HEAD
-    "rating": 3.3,
-=======
-    "rating": 3.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 60,
-    "comments": ["Fast response", "Helpful seller"]
+      "userId": 12,
+      "icon": "img/Advertisement1.png",
+      "username": "user_12",
+      "status": "50min ago",
+      "years": 6,
+      "rating": 3,
+      "totalReview": 103,
+      "comments": [
+          "Would buy again",
+          "Nice seller"
+      ]
   },
   {
-    "id": 13,
-    "icon": "img/Advertisement1.png",
-    "username": "ivy_6",
-    "status": "10min ago",
-    "years": 3,
-<<<<<<< HEAD
-    "rating": 4.7,
-=======
-    "rating": 4.0,
->>>>>>> cb07ec670382de4ff704393ec915e1cf8620ad8e
-    "totalReview": 90,
-    "comments": ["Smooth transaction", "Highly recommended"]
+      "userId": 13,
+      "icon": "img/Advertisement1.png",
+      "username": "user_13",
+      "status": "50min ago",
+      "years": 9,
+      "rating": 4,
+      "totalReview": 216,
+      "comments": [
+          "Very good",
+          "Highly recommended"
+      ]
+  },
+  {
+      "userId": 14,
+      "icon": "img/Advertisement1.png",
+      "username": "user_14",
+      "status": "50min ago",
+      "years": 7,
+      "rating": 5,
+      "totalReview": 35,
+      "comments": [
+          "Very good",
+          "Smooth transaction"
+      ]
+  },
+  {
+      "userId": 15,
+      "icon": "img/Advertisement1.png",
+      "username": "user_15",
+      "status": "50min ago",
+      "years": 6,
+      "rating": 4,
+      "totalReview": 105,
+      "comments": [
+          "Very good",
+          "Highly recommended"
+      ]
+  },
+  {
+      "userId": 16,
+      "icon": "img/Advertisement1.png",
+      "username": "user_16",
+      "status": "50min ago",
+      "years": 8,
+      "rating": 5,
+      "totalReview": 72,
+      "comments": [
+          "Fast shipping",
+          "Nice seller"
+      ]
+  },
+  {
+      "userId": 17,
+      "icon": "img/Advertisement1.png",
+      "username": "user_17",
+      "status": "40min ago",
+      "years": 8,
+      "rating": 4,
+      "totalReview": 231,
+      "comments": [
+          "Helpful seller",
+          "Good service"
+      ]
+  },
+  {
+      "userId": 18,
+      "icon": "img/Advertisement1.png",
+      "username": "user_18",
+      "status": "5min ago",
+      "years": 7,
+      "rating": 3,
+      "totalReview": 121,
+      "comments": [
+          "Fast shipping",
+          "Top-notch quality"
+      ]
+  },
+  {
+      "userId": 19,
+      "icon": "img/Advertisement1.png",
+      "username": "user_19",
+      "status": "25min ago",
+      "years": 7,
+      "rating": 3,
+      "totalReview": 44,
+      "comments": [
+          "Fast shipping",
+          "Nice seller"
+      ]
+  },
+  {
+      "userId": 20,
+      "icon": "img/Advertisement1.png",
+      "username": "user_20",
+      "status": "5min ago",
+      "years": 7,
+      "rating": 3,
+      "totalReview": 67,
+      "comments": [
+          "Very good",
+          "Highly recommended"
+      ]
   }
 ]
