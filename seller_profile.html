@@ -76,13 +76,15 @@
     
     <!-- Section to display active listings -->
     <div class="listings-container-wrapper">
+        <!-- Active Listings Section -->
+        <div class="active-listings">
+            <h2>Listings</h2> <!-- Changed to h2 for better structure -->
+            Active Listings: <span id="active-listings-counts">4</span>/30 <!-- Active listings count -->
+        </div>
     
         <!-- Search Bar Section -->
         <div class="listing-search">
-            <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()">
-        </div>
-        <div class="active-listings">
-            <p>Listings</p>
+            <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()"> <!-- Search input -->
         </div>
     
         <!-- Individual Listings Grid -->

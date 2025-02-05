@@ -111,7 +111,7 @@
 .profile-actions {
     display: flex;
     align-items: center;
-    gap: 2px; /* Reduce space */
+    gap: 70px; /* Reduce space */
     margin-right: 110px;
     margin-top: 80px;
 
@@ -148,7 +148,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 20px; 
-    color: #000;
+    color: #A87768;
 }
 
 .active-listings h2 {

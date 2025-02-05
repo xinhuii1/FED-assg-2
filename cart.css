@@ -162,15 +162,17 @@ ul li a {
 
 /* Promo Codes Text */
 .promo-codes {
-  font-size: 12px;
+  font-size: 15px;
   color: #C1958C;
-  margin-top: 5px;
+  margin-top: 68px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  gap: 10px;
 }
 
 .promo-codes span {
   margin-top: 5px;
+  white-space: nowrap;
 }
 
 /* Product Image Section */
@@ -178,7 +180,9 @@ ul li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 45px;
+  margin-left: 340px;
+
 }
 
 .item-image {
@@ -186,7 +190,6 @@ ul li a {
   height: 100px;
   border-radius: 8px;
   object-fit: cover;
-  margin-bottom: 10px;
 }
 
 .brand-new-label {
@@ -207,7 +210,7 @@ ul li a {
   font-size: 18px;
   align-self: flex-end;
   margin-top: auto;
-  margin-right: 20px;
+  margin-left: -70px;
 }
 
 /* Total Section */
@@ -242,6 +245,11 @@ ul li a {
   cursor: pointer;
   font-size: 18px;
   border-radius: 5px;
+}
+
+#checkout-btn:hover
+{
+  background-color: #5E3E1A;
 }
 
 /* Footer Styles */
