@@ -122,6 +122,43 @@ ul li a {
   position: relative;
 }
 
+/* hide the default check box */
+.item-checkbox {
+  display: block;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #5E3E1A; /* Border color */
+  border-radius: 4px; /* Slightly rounded corners */
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.item-checkbox:checked + .custom-checkbox::after {
+  color: #5E3E1A;
+  font-size: 14px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Align checkbox beside cart item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Adjust spacing */
+.custom-checkbox {
+  margin-left: -30px; /* Adjust to align it properly */
+}
+
 /* User Info Section */
 .user-info {
   display: flex;
@@ -164,7 +201,7 @@ ul li a {
 .promo-codes {
   font-size: 15px;
   color: #C1958C;
-  margin-top: 68px;
+  margin-top: 28px;
   display: flex;
   flex-direction: column-reverse;
   gap: 10px;
@@ -180,8 +217,8 @@ ul li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 45px;
-  margin-left: 340px;
+  margin-top: 15px;
+  margin-left: 280px;
 
 }
 
@@ -194,8 +231,8 @@ ul li a {
 
 .brand-new-label {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 35px;
+  left: 60px;
   background-color: #F1E6D4;
   padding: 5px;
   border-radius: 5px;
@@ -210,7 +247,7 @@ ul li a {
   font-size: 18px;
   align-self: flex-end;
   margin-top: auto;
-  margin-left: -70px;
+  margin-left: -90px;
 }
 
 /* Total Section */
