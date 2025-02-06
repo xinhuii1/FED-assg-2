@@ -3,7 +3,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const userId = parseInt(urlParams.get('id')); // Get seller ID from URL
 
 // Function to fetch and display seller profile details
-// Function to fetch and display seller profile details
 function fetchSellerProfile(userId) {
     fetch('profile.json') // Fetch profile data
         .then(response => response.json())
@@ -11,16 +10,14 @@ function fetchSellerProfile(userId) {
             const profile = profiles.find(p => p.userId === userId); // Find profile by userId
 
             if (profile) {
-                // Update seller profile information dynamically
                 document.querySelector(".profile-img").src = profile.icon;
-                document.querySelector(".profile-text h1").textContent = profile.username;
+                document.querySelector(".profile-text h2").textContent = profile.username; // Match your HTML
                 document.querySelector(".profile-status").textContent = profile.status;
                 document.querySelector(".profile-rating").textContent = 
-                    `${profile.rating.toFixed(1)}⭐ | ${profile.years}`; // Directly use "7y8m" from JSON
+                    `${profile.rating.toFixed(1)}⭐ | ${profile.years}`;
             }
         });
 }
-
 
 // Function to fetch and display seller's product listings
 function fetchSellerListings(userId) {
@@ -44,7 +41,6 @@ function fetchSellerListings(userId) {
                         <p class="price">${product.price}</p>
                     `;
 
-                    // Add event listener to navigate to product details page
                     listingItem.querySelector(".product-img").addEventListener("click", () => {
                         window.location.href = `product_details.html?id=${product.productId}`;
                     });
@@ -57,20 +53,19 @@ function fetchSellerListings(userId) {
         });
 }
 
-// Call functions to load the seller profile and listings
-fetchSellerProfile(userId);
-fetchSellerListings(userId);
-
+// Filter product listings by search input
 function filterListings() {
-    let input = document.getElementById("search-bar").value.toLowerCase(); // Get search value
-    let listings = document.querySelectorAll(".listing-item"); // Get all listings
+    let input = document.getElementById("search-bar").value.toLowerCase();
+    let listings = document.querySelectorAll(".listing-item");
 
     listings.forEach(item => {
-        let title = item.querySelector("h3").textContent.toLowerCase(); // Get product title
-        if (title.includes(input)) {
-            item.style.display = "block"; // Show item if it matches
-        } else {
-            item.style.display = "none"; // Hide item if it doesn't match
-        }
+        let title = item.querySelector("h3").textContent.toLowerCase();
+        item.style.display = title.includes(input) ? "" : "none"; 
     });
 }
+
+// Ensure the script runs after the page is fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+    fetchSellerProfile(userId);
+    fetchSellerListings(userId);
+});
