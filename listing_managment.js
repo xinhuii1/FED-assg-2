@@ -1,9 +1,9 @@
+
 let currentListing = null; // Stores the currently selected listing for bumping
 
 // Handles bumping a listing.
 // Opens the bump modal.
 // Applies a free 30-day expiry if not already set.
- 
 function bumpListing(button) {
     if (button.disabled) return; // Prevent multiple clicks
 
@@ -52,9 +52,7 @@ document.querySelectorAll('.bump-option').forEach(option => {
     });
 });
 
-
 // Applies the selected bump duration to the listing.
- 
 function applyBump(duration, price) {
     if (!currentListing) return;
 
@@ -81,7 +79,6 @@ function applyBump(duration, price) {
 }
 
 // Confirms and applies the bump effect.
- 
 function confirmBump() {
     if (!currentListing) return;
 
@@ -94,7 +91,6 @@ function confirmBump() {
 }
 
 // Updates expiry information dynamically.
- 
 function updateExpiryInfo(listing) {
     const expiryDate = new Date(listing.getAttribute('data-expiry-date'));
     const currentDate = new Date();
@@ -107,7 +103,6 @@ function updateExpiryInfo(listing) {
 }
 
 // Filters listings based on user input.
- 
 function filterListings() {
     const searchInput = document.getElementById('search-bar').value.toLowerCase();
     const listings = document.querySelectorAll('.listing-item');
@@ -150,20 +145,15 @@ window.onload = () => {
     });
 };
 
-// Opens the "Create Listing" modal. 
- 
+// Handle Create Listing Modal visibility and form submission
 function openCreateModal() {
     document.getElementById('create-modal').style.display = 'block';  
 }
 
-// Closes the "Create Listing" modal. 
- 
 function closeCreateModal() {
     document.getElementById('create-modal').style.display = 'none';  
 }
 
-// Handles the form submission for creating a new listing.
- 
 document.getElementById("create-listing-form").addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent page reload
 
@@ -173,45 +163,43 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
     const price = document.getElementById("price").value;
     const condition = document.getElementById("condition").value;
     const description = document.getElementById("description").value;
+    // Hardcoded image URL (change this to your own image URL)
+    const imageUrl = "https://mokesell-0891.restdb.io/mokesell-0891/mokesell-0891/mediaarchive/3d61c044c98380638c460ed7c70096bcsweater.webp"; 
 
-    // Hardcoded Direct Image URL 
-    const imageUrl = "https://i.ibb.co/5xBHMh9Y/sweater.webp"; 
+    // Prepare listing data with the static image URL
+    const listingData = {
+        category,
+        item_name: itemName,
+        price,
+        condition,
+        description,
+        image: imageUrl,  // Use the new image URL
+    };
 
-    console.log("Image URL being sent:", imageUrl); // Debugging
-
-    // MockAPI URL
-    const mockAPI_URL = "https://67a24866409de5ed5254ed20.mockapi.io/api/mocktest/apifirst";
 
     try {
-        // Prepare JSON data
-        const listingData = {
-            category,
-            itemName,
-            price,
-            condition,
-            description,
-            image: imageUrl, // Store the image URL in MockAPI
-        };
-
-        // Send to MockAPI
-        const response = await fetch(mockAPI_URL, {
+        // Now create the listing with the static image URL
+        const listingResponse = await fetch("https://mokesell-0891.restdb.io/rest/listings", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": "67a4eec1fd5d5864f9efe119",  // API key for creating listings
+            },
             body: JSON.stringify(listingData),
         });
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`MockAPI Error ${response.status}: ${errorText}`);
+        if (!listingResponse.ok) {
+            const errorText = await listingResponse.text();
+            throw new Error(`Listing Creation Failed: ${errorText}`);
         }
 
-        const data = await response.json();
-        console.log("MockAPI Response:", data); // Debugging
+        const data = await listingResponse.json();
+        console.log("RestDB Response:", data);
 
-        // Create Listing Element
+        // Create the listing element in the DOM
         const newListing = document.createElement("div");
         newListing.classList.add("listing-item");
-        newListing.setAttribute("data-id", data.id);
+        newListing.setAttribute("data-id", data._id);
 
         newListing.innerHTML = `
             <img src="${data.image}" alt="${itemName}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
@@ -229,7 +217,7 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
         const activeCountElement = document.getElementById("active-listings-counts");
         activeCountElement.textContent = parseInt(activeCountElement.textContent) + 1;
 
-        // Close the modal
+        // Close modal after successful listing creation
         closeCreateModal();
 
         alert("New listing successfully created!");
