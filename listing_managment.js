@@ -177,7 +177,7 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
     // Hardcoded Direct Image URL 
     const imageUrl = "https://i.ibb.co/5xBHMh9Y/sweater.webp"; 
 
-    console.log("📸 Image URL being sent:", imageUrl); // Debugging
+    console.log("Image URL being sent:", imageUrl); // Debugging
 
     // MockAPI URL
     const mockAPI_URL = "https://67a24866409de5ed5254ed20.mockapi.io/api/mocktest/apifirst";
