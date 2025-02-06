@@ -30,3 +30,27 @@ function Animation1(modalSelector, containerSelector) {
     // Prevent background scrolling
     document.body.style.overflow = 'hidden';
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const loginButton = document.querySelector('.login-button');
+    const registerButton = document.querySelector('.Register-button');
+
+    const isLoggedIn = localStorage.getItem('isLogin'); // Check if user is logged in
+    const username = localStorage.getItem('loginUser'); // Get saved username
+
+    if (isLoggedIn) {
+        loginButton.textContent = "Logout"; // Change Login to Logout
+        registerButton.textContent = username; // Display username instead of Register
+
+        // Make register button unclickable as it now shows username
+        registerButton.style.cursor = "default";
+        registerButton.removeAttribute("onclick");
+
+        // Logout functionality
+        loginButton.addEventListener("click", function () {
+            localStorage.removeItem('isLogin'); // Remove login status
+            localStorage.removeItem('loginUser'); // Remove stored username
+            window.location.reload(); // Reload page to reset buttons
+        });
+    }
+});
