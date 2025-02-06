@@ -35,12 +35,12 @@
       <h2>CART</h2>
 
       <!-- Cart Item 1 -->
-      <div class="cart-item">
-        <input type="checkbox" id="select-item" class="item-checkbox">
-        <label for="select-item" class="custom-chechbox"></label>
+      <div class="cart-item" data-id="1">
+        <input type="checkbox" id="select-item-1" class="item-checkbox">
+        <label for="select-item-1" class="custom-checkbox"></label> 
         <!-- User Info Section -->
         <div class="user-info">
-          <img src="images/profile.png" alt="User Image" class="user-image">
+          <img src="img/profile.png" alt="User Image" class="user-image">
           <div class="item-details">
             <span class="item-name">Eten Hunt</span>
             
@@ -52,59 +52,69 @@
           </div>
         </div>
 
-        <!-- Promo Codes Available Text  -->
-        <div class="promo-codes-available">
-          % Promo codes available
-        </div>
-
         <!-- Product Image Section -->
         <div class="item-image-container">
-          <img src="images/cup.webp" alt="cup" class="item-image">
+          <img src="img/cup.webp" alt="cup" class="item-image">
           <span class="brand-new-label">brand new</span>
         </div>
 
         <!-- Price Section -->
         <div class="item-price">S$29.90</div>
+
+        <!-- Item Quantity Section -->
+        <div class="item-quantity">
+          <button class="decrement">-</button>
+          <span class="quantity">1</span>          <!-- display quantity -->
+          <button class="increment">+</button>
+        </div>
+
+        <!-- Remove Button -->
+        <button class="remove-item" data-id="1">X</button>
       </div>
 
       <!-- Cart Item 2 -->
-      <div class="cart-item">
-        <input type="checkbox" id="select-item" class="item-checkbox">
-        <label for="select-item" class="custom-chechbox"></label>
+      <div class="cart-item" data-id="2">
+        <input type="checkbox" id="select-item-2" class="item-checkbox">
+        <label for="select-item-2" class="custom-checkbox"></label>
         <div class="user-info">
-          <img src="images/profile.png" alt="User Image" class="user-image">
-          <div class="item-details">
-            <span class="item-name">Jakob Saris</span>
-            
-            <!-- Promo Codes -->
-            <div class="promo-codes">
-              <span>use code <strong>FREESHIPPING</strong> for free delivery</span>
-              <span>use code <strong>NEWMEMBER</strong> for $2 off</span>
+            <img src="img/profile.png" alt="User Image" class="user-image">
+            <div class="item-details">
+                <span class="item-name">Jakob Saris</span>
+                
+                <!-- Promo Codes -->
+                <div class="promo-codes">
+                    <span>use code <strong>FREESHIPPING</strong> for free delivery</span>
+                    <span>use code <strong>NEWMEMBER</strong> for $2 off</span>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Promo Codes Available Text  -->
-        <div class="promo-codes-available">
-          % Promo codes available
         </div>
 
         <!-- Product Image Section -->
         <div class="item-image-container">
-          <img src="images/casing.webp" alt="candle" class="item-image">
+          <img src="img/casing.webp" alt="candle" class="item-image">
           <span class="brand-new-label">brand new</span>
         </div>
 
         <!-- Price Section -->
         <div class="item-price">S$59.90</div>
+
+         <!-- Item Quantity Section -->
+        <div class="item-quantity">
+          <button class="decrement">-</button>
+          <span class="quantity">1</span>          <!-- display quantity -->
+          <button class="increment">+</button>
+        </div>
+
+        <!-- Remove Button  -->
+        <button class="remove-item" data-id="2">X</button>
       </div>
 
       <!-- Cart Item 3 -->
-      <div class="cart-item">
-        <input type="checkbox" id="select-item" class="item-checkbox">
-        <label for="select-item" class="custom-chechbox"></label>
+      <div class="cart-item" data-id="3">
+        <input type="checkbox" id="select-item-3" class="item-checkbox">
+        <label for="select-item-3" class="custom-checkbox"></label> 
         <div class="user-info">
-          <img src="images/profile.png" alt="User Image" class="user-image">
+          <img src="img/profile.png" alt="User Image" class="user-image">
           <div class="item-details">
             <span class="item-name">Nadia Lauren</span>
 
@@ -116,19 +126,24 @@
           </div>
         </div>
 
-        <!-- Promo Codes Available Text  -->
-        <div class="promo-codes-available">
-          % Promo codes available
-        </div>
-
         <!-- Product Image Section -->
         <div class="item-image-container">
-          <img src="images/sticker.webp" alt="sticker" class="item-image">
+          <img src="img/sticker.webp" alt="sticker" class="item-image">
           <span class="brand-new-label">brand new</span>
         </div>
 
         <!-- Price Section -->
         <div class="item-price">S$14.90</div>
+
+        <!-- Item Quantity Section -->
+        <div class="item-quantity">
+          <button class="decrement">-</button>
+          <span class="quantity">1</span>          <!-- display quantity -->
+          <button class="increment">+</button>
+        </div>
+
+        <!-- Remove Button  -->
+        <button class="remove-item" data-id="3">X</button>
       </div>
 
       <!-- Total Section -->
@@ -138,11 +153,16 @@
         </div>
         <div class="total">
           <span>Total (3 items):</span>
-          <span id="total-price">S$104.70</span>
+          <span id="total-price">S$0.00</span>
         </div>
         <button id="checkout-btn">Checkout</button>
       </div>
     </section>
+
+    <!-- Empty Cart Alert -->
+    <div id="empty-cart-alert">
+      <p>You have no items in your cart currently.</p>
+    </div>
   </main>
 
   <footer id="footer">
@@ -194,3 +214,5 @@
   <script src="modal.js"></script>
 </body>
 </html>
+
+
