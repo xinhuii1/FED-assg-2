@@ -82,21 +82,34 @@ function updateTotalPrice() {
   selectedItemCountElement.textContent = `(${itemCount} items selected)`;
 }
 
-// Function to handle successful checkout message
+// Function 6:  Handle successful checkout message (popup modal)
 function showCheckoutMessage() {
   const checkoutMessage = document.createElement('div');
   checkoutMessage.classList.add('checkout-message');
   checkoutMessage.innerHTML = '<h3>Successfully Checked Out!</h3>';
+
+  // Style the checkout message as a popup/modal
+  checkoutMessage.style.position = 'fixed';
+  checkoutMessage.style.top = '50%';
+  checkoutMessage.style.left = '50%';
+  checkoutMessage.style.transform = 'translate(-50%, -50%)';
+  checkoutMessage.style.padding = '20px';
+  checkoutMessage.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  checkoutMessage.style.color = '#fff';
+  checkoutMessage.style.fontSize = '18px';
+  checkoutMessage.style.textAlign = 'center';
+  checkoutMessage.style.borderRadius = '10px';
+  checkoutMessage.style.zIndex = '1000';
+
   document.body.appendChild(checkoutMessage);
 
-  // Hide the checkout modal after a delay
+  // Hide the checkout message after 3 seconds
   setTimeout(() => {
-    closeModal(); // Hide the modal
     checkoutMessage.style.display = 'none'; // Hide the success message after 3 seconds
-  }, 2000);
+  }, 3000);
 }
 
-// Function to close the modal when the close button is clicked
+// Function 7: Close the modal when the close button is clicked
 function closeModal() {
   const modal = document.getElementById('checkout-modal');
   if (modal) {
@@ -104,6 +117,42 @@ function closeModal() {
   } else {
     console.error('Modal element not found');
   }
+}
+
+// Function 8: Handle checkout (show the modal)
+function checkout() {
+  const modal = document.getElementById('checkout-modal');
+  if (modal) {
+    modal.style.display = 'flex';    // Show the modal using 'flex'
+  } else {
+    console.error('Modal element not found');
+  }
+}
+
+// Function 9: Handle Checkout form submission (show success message and close form)
+function handleCheckout(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  // Display checkout success message
+  showCheckoutMessage();
+
+  // Empty the cart (remove all cart items)
+  const cartItems = document.querySelectorAll('.cart-item');
+  cartItems.forEach(item => {
+    item.remove();  // Remove each item from the cart
+  });
+
+  // Show empty cart alert if the cart is now empty
+  const emptyCartAlert = document.querySelector('#empty-cart-alert');
+  if (emptyCartAlert) {
+    emptyCartAlert.style.display = 'block';
+  }
+
+  // Recalculate total price (it should be 0 now)
+  updateTotalPrice();
+
+  // Close the checkout modal automatically after successful checkout
+  closeModal();
 }
 
 // Ensure that the DOM content is fully loaded before adding event listeners
@@ -175,14 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add event listener for select/deselect all checkbox
   document.querySelector('#select-all').addEventListener('change', toggleSelectAll);
-});
 
-// Function 6: Checkout (shows the modal)
-function checkout() {
-  const modal = document.getElementById('checkout-modal');
-  if (modal) {
-    modal.style.display = 'flex';    // Show the modal using 'flex'
-  } else {
-    console.error('Modal element not found');
+  // Add event listener for the checkout form submit action
+  const checkoutForm = document.querySelector('#checkout-form');
+  if (checkoutForm) {
+    checkoutForm.addEventListener('submit', handleCheckout);
   }
-}
+});

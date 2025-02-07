@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="header_footer.css">
@@ -76,7 +76,6 @@
                 <div class="part1-icon">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </div>
-
             </div>
         </div>
         <div>
@@ -103,5 +102,36 @@
 </div>
 <script src="product.js"></script>
 <script src="modal.js"></script>
+
+<script>
+    // Fetch product data from products.json and dynamically display it
+    fetch('/mnt/data/products.json')  // Ensure this points to the correct path where the JSON file is stored
+        .then(response => response.json())
+        .then(products => {
+            const productGrid = document.querySelector("#productGrid");
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" class="product-img">
+                    <div class="product-details">
+                        <div class="product-title">${product.title}</div>
+                        <div class="product-header">
+                            <img class="product-icon" src="${product.icon}" alt="${product.title}">
+                            <span class="username">${product.username}</span>
+                            <div class="product-price">${product.price}</div>
+                        </div>
+                    </div>
+                `;
+                // Add click event to navigate to the product details page
+                productItem.addEventListener('click', () => {
+                    window.location.href = `product_details.html?id=${product.productId}`;
+                });
+                productGrid.appendChild(productItem);
+            });
+        });
+</script>
+
 </body>
 </html>
+

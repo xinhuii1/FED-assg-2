@@ -1,3 +1,52 @@
+// Function to handle adding a product to the cart
+function addToCart(event) {
+    const productElement = event.target.closest('.product-details-container');
+    const itemId = productElement.dataset.id; // Assuming you have a data-id attribute on the container
+    const itemName = productElement.querySelector('.product-title').textContent;
+    const itemPrice = parseFloat(productElement.querySelector('.product-price').textContent.replace('$', ''));
+    const itemQuantity = parseInt(productElement.querySelector('input[type="number"]').value); // Quantity from the input field
+
+    // Call the function to send this data to RestDB (cart API)
+    addCartItem(itemId, itemName, itemPrice, itemQuantity);
+
+    // Redirect to the Cart Page after adding item to the cart
+    window.location.href = "cart.html"; // Redirect to cart page
+}
+
+// Add event listener to the "Add to Cart" button
+document.querySelector('.add-cart-button').addEventListener('click', addToCart);
+
+// Function to add item to the cart (RestDB API)
+function addCartItem(itemId, itemName, itemPrice, itemQuantity) {
+    const apiUrl = 'https://mokesell-0891.restdb.io/rest/cartitems'; // RestDB API URL for cart items
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-apikey': '67a4eec1fd5d5864f9efe119'  // Your RestDB API key
+    };
+
+    const newItem = {
+        itemId,
+        itemName,
+        itemPrice,
+        itemQuantity,
+        isSelected: true    // Item is selected by default
+    };
+
+    // Send the item to RestDB using a POST request
+    fetch(apiUrl, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(newItem)  // Send the item data as JSON to RestDB
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Item added:', data);
+        // Optionally, show a success message or update the cart UI here
+    })
+    .catch(error => console.error('Error adding item:', error));
+}
+
+// Fetch product details based on productId from URL
 const urlParams = new URLSearchParams(window.location.search); // Get query params
 const productId = parseInt(urlParams.get('id')); // Get product ID from URL
 
@@ -7,7 +56,7 @@ fetch('products.json') // Fetch the products.json
         const product = products.find(p => p.productId === productId); // Find product using productId
 
         if (product) { // If the product exists
-            document.querySelector(".product-title").textContent = product.title; 
+            document.querySelector(".product-title").textContent = product.title;
             document.querySelector(".product-price").textContent = product.price;
             document.querySelector(".product-image").src = product.image;
 
@@ -34,6 +83,7 @@ fetch('products.json') // Fetch the products.json
         }
     });
 
+// Fetch the seller profile
 function fetchProfile(userId) {
     fetch('profile.json') // Fetch profile.json using userId
         .then(response => response.json())
@@ -79,17 +129,4 @@ function fetchProfile(userId) {
                 });
             }
         });
-}
-
-function showTabContent(tabName) {
-    document.querySelector("#content-descriptions").style.display = 'none';
-    document.querySelector("#content-additional").style.display = 'none';
-    document.querySelector("#content-reviews").style.display = 'none';
-
-    document.querySelector("#tab-descriptions").style.borderBottom = '5px solid transparent';
-    document.querySelector("#tab-additional").style.borderBottom = '5px solid transparent';
-    document.querySelector("#tab-reviews").style.borderBottom = '5px solid transparent';
-
-    document.querySelector(`#content-${tabName}`).style.display = 'block';
-    document.querySelector(`#tab-${tabName}`).style.borderBottom = '5px solid #5E3E1A';
 }
