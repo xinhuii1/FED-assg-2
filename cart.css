@@ -187,10 +187,11 @@ ul li a {
 /* Empty Cart Alert */
 #empty-cart-alert {
   display: none;                  /* hidden by default */
-  text-align: center;
+  text-align: left;
   font-size: 20px;
-  color:#4C2C1E;
-  margin-top: 20px;
+  color: black;
+  margin-top: 80px;
+  border-radius: 10px;
 }
 
 /* Promo Codes Text */
@@ -306,6 +307,152 @@ ul li a {
 #checkout-btn:hover
 {
   background-color: #5E3E1A;
+}
+
+/* Styles for the Checkout Modal */
+#checkout-modal {
+  display: none;             /* hide modal by default */
+  position: fixed;
+  z-index: 1000;             /* ensure it's displayed on top of other content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark background */
+  display: flex; /* Flexbox to center */
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+}
+
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;                          
+  max-width: 500px; 
+  height: 80%; 
+  overflow-y: auto;                         /* Allow scrolling if content overflows */
+  box-sizing: border-box;
+}
+
+.close-btn {
+  position: fixed;
+  margin-top: 70px;
+  margin-right: 340px;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Modal Content Box Styling */
+.checkout-modal .modal-content {
+  margin: 15% auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;        /* rounded corners for the modal */
+  width: 60%;
+  max-width: 800px;
+}
+
+/* Styles for the Close Button */
+#close-modal {
+  position: absolute;  /* position absolutely in the top right corner */
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;     /* change cursor to pointer */
+}
+
+/* Input Fields Styling */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="radio"] {
+  width: 90%; 
+  padding: 10px;            /* add padding inside the input field */
+  margin: 10px 0;           /* space out the inputs vertically */
+  border: 1px solid #ccc; 
+  border-radius: 5px;       /* slightly rounded corners for inputs */
+}
+
+/* Labels for Input Fields */
+label {
+  font-weight: bold;        /* make label text bold */
+  margin-top: 10px;
+  display: block;           /* make labels block element to sit on their own lines */
+}
+
+/* Order summary section styling */
+.order-summary {
+  margin-top: 10px;         /* add space at the top */
+  padding: 20px;
+  background-color: #f4f4f4; 
+  border-radius: 5px;       /* slightly rounded corners */
+  width: 87%;
+}
+
+.product-item {
+  display: flex;                       /* align name and price side by side */
+  justify-content: space-between;      /* space between product name and price */
+  margin-bottom: 10px;                 /* Space between products */
+}
+
+/* Apply style to the promo code section */
+#promo-code {
+  width: 70%; 
+  display: inline-block;                /* display the input inline with the button */
+}
+
+#apply-coupon {
+  display: inline-block;                /* display the apply coupon button next to the input field */
+  padding: 10px 20px; 
+  margin-bottom: 10px; 
+  background-color: #C1958C; 
+  color: white; 
+  border: none; 
+  border-radius: 5px;                   /* slightly rounded corners */
+  cursor: pointer;                      /* change cursor to pointer when hovering over the button */
+}
+
+#apply-coupon:hover {
+  background-color: #A87768; 
+}
+
+/* Place order button styling */
+#place-order-btn {
+  padding: 10px 20px; 
+  background-color: #4D5978; 
+  color: white; 
+  border: none;                           /* remove border */
+  border-radius: 5px;                     /* slightly rounded corners */
+  cursor: pointer;                        /* change cursor to pointer to show it’s clickable */
+  display: block;                         
+  width: 93%; 
+}
+
+#place-order-btn:hover {
+  background-color: #4C2C1E;
+}
+
+/* Close Modal when Clicking Outside Of it */
+.checkout-modal {
+  display: none;                            /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);    
 }
 
 /* Footer Styles */

@@ -17,7 +17,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="product.html">Products</a></li>
             <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="www.google.com">Profile</a></li>
+            <li><a href="listing_management.html">Profile</a></li>
         </ul>
         <div class="Searchbar">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -138,7 +138,7 @@
         <!-- Item Quantity Section -->
         <div class="item-quantity">
           <button class="decrement">-</button>
-          <span class="quantity">1</span>          <!-- display quantity -->
+          <span class="quantity">1</span> <!-- display quantity -->
           <button class="increment">+</button>
         </div>
 
@@ -146,73 +146,115 @@
         <button class="remove-item" data-id="3">X</button>
       </div>
 
-      <!-- Total Section -->
-      <div class="total-section">
-        <div class="select-all">
-          <input type="checkbox" id="select-all"> <label for="select-all">Select all</label>
-        </div>
-        <div class="total">
-          <span>Total (3 items):</span>
-          <span id="total-price">S$0.00</span>
-        </div>
-        <button id="checkout-btn">Checkout</button>
-      </div>
-    </section>
-
+    
     <!-- Empty Cart Alert -->
     <div id="empty-cart-alert">
       <p>You have no items in your cart currently.</p>
     </div>
+
+    <!-- Total Section -->
+    <div class="total-section">
+      <div class="select-all">
+        <input type="checkbox" id="select-all"> <label for="select-all">Select all</label>
+      </div>
+      <div class="total">
+        <span>Total:</span>
+        <span id="total-price">S$0.00</span>
+      </div>
+      <div id="selected-item-count"></div> <!-- Display count of selected items -->
+      <button id="checkout-btn">Checkout</button>
+    </div>
+    
+    </section>
   </main>
 
-  <footer id="footer">
-    <div style="text-align: center;">
-        <img src="img/logo.png" alt="product image">
+  <!-- Checkout Modal-->
+  <div id="checkout-modal" class="checkout-modal" style="display:none;">
+    <!-- Modal Content -->
+    <div class="modal-content">
+      <!-- Close Button -->
+      <span class="close-btn" id="close-modal">&times;</span>
+
+      <!-- Billing Details Section -->
+      <h2>Billing Details</h2>
+      <form id="checkout-form">
+        <div class="billing-details">
+
+          <!-- First Name Input-->
+          <label for="first-name">First Name*</label>
+          <input type="text" id="first-name" name="first-name" required>
+
+          <!-- Last Name Input-->
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name">
+
+          <!-- Stress Address Input  -->
+          <label for="street-address">Street Address*</label>
+          <input type="text" id="street-address" name="street-address" required>
+
+          <!-- Apartment/Floor Input -->
+          <label for="apartment">Apartment, Floor, etc. (optional)</label>
+          <input type="text" id="apartment" name="apartment">
+
+          <!-- Town/City Input  -->
+          <label for="town">Town/City*</label>
+          <input type="text" id="town" name="town" required>
+
+          <!-- Phone Number Input  -->
+          <label for="phone">Phone Number*</label>
+          <input type="text" id="phone" name="phone" required>
+
+          <!-- Email Address Input-->
+          <label for="email">Email Address*</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Order Summary Section-->
+        <h3>Order Summary</h3>
+        <div class="order-summary">
+          <!-- Product Item 1 -->
+          <div class="product-item">
+            <span class="product-name">Miffy Keychain</span>
+            <span class="product-price">S$6.50</span>
+          </div>
+
+          <!-- Product Item 2 -->
+          <div class="product-item">
+            <span class="product-name">Colouring Pad</span>
+            <span class="product-price">S$11.50</span>
+          </div>
+
+          <!-- SUbtotal Section -->
+          <div class="total">
+            <span>Subtotal:</span>
+            <span id="subtotal">$17.50</span>
+          </div>
+
+          <!-- Shipping Section -->
+          <div class="shipping">
+            <span>Shipping:</span>
+            <span>Free</span>
+          </div>
+
+          <!-- Total Amount Section -->
+          <div class="total-amount">
+            <span>Total:</span>
+            <span id="total">$17.50</span>
+          </div>
+        </div>
+
+        <!-- Promo Code Section -->
+        <label for="promo-code">Promo Code</label>
+        <input type="text" id="promo-code" name="promo-code">
+        <button type="button" id="apply-coupon">Apply Coupon</button>
+  
+        <!-- Place Order Button -->
+        <button type="submit" id="place-order-btn">Place Order</button>
+      </form>
     </div>
-    <div id="footer1" style="margin-top: 0px;">
-        <div id="part1">
-            <h1 class="signature signature_footer">MOKESELL</h1>
-            <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
-            <div style="display: flex; justify-content: space-between">
-                <div class="part1-icon">
-                    <i class="fa-brands fa-facebook"></i>
-                </div>
-                <div class="part1-icon">
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
-                <div class="part1-icon">
-                    <i class="fa-brands fa-twitter"></i>
-                </div>
-                <div class="part1-icon">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h2>Information</h2>
-            <p>About</p>
-            <p>Contact us</p>
-            <p>FAQs</p>
-            <p>Account</p>
-        </div>
-        <div>
-            <h2>Contact</h2>
-            <p>Stanley House </p> 
-            <p>Masterlord Village,</p> 
-            <p>West Rd, Ipswich<br> 95X</p>
-        </div>
-        <div>
-            <h2>Legal</h2>
-            <p>Cookie Policy</p>
-            <p>Privacy Policy</p>
-            <p>Privacy Policy</p>
-        </div>
-    </div>
-</footer>
+  </div>
 
   <script src="cart.js"></script>
   <script src="modal.js"></script>
 </body>
 </html>
-
-

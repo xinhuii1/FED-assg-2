@@ -1,89 +1,148 @@
-
-// NOTE FUNCTIONS LEFT:
-// display empty cart message
-// api (link transaction history)
-// increment and decrement not working
-// active count cart items update
-// individual checkbox not working
-// checkout to be done
-// tbc 
-
-// function 1: increase or decrease the quantity of cart item
+// Function 1: Increase or decrease the quantity of cart item
 function adjustQuantity(itemId, action) {
-  const quantityElement = document.querySelector(`#cart-item-${itemId} .quantity`);
-  let quantity = parseInt(quantityElement.textContent);
+  const quantityElement = document.querySelector(`[data-id="${itemId}"] .quantity`); // Use data-id selector
 
-  if (action === 'increment') {
-    quantity++;
-  } else if (action === 'decrement' && quantity > 1) {
-    quantity--;
+  if (quantityElement) {
+    let quantity = parseInt(quantityElement.textContent);
+
+    if (action === 'increment') {
+      quantity++;
+    } else if (action === 'decrement' && quantity > 1) {
+      quantity--;
+    }
+
+    quantityElement.textContent = quantity; // Update the quantity in the DOM
+    updateTotalPrice();                     // Recalculate the total price after adjusting quantity
+  } else {
+    console.error('Quantity element not found for item:', itemId);
   }
-
-  quantityElement.textContent = quantity;
-  updateTotalPrice();  // update the total price after selecting the quantity
 }
 
-
-// function 2: remove a specific item from the cart when the user clicks the 'X' button
+// Function 2: Remove a specific item from the cart when the user clicks the 'X' button
 function removeItem(itemId) {
   const item = document.querySelector(`.cart-item[data-id="${itemId}"]`);
-  item.remove();
 
-  // check if the cart is empty 
-  if (document.querySelectorAll('.cart-item').Length ===0) {
-    document.querySelector('#empty-cart-alert').style.display = 'block'
+  if (item) {
+    item.remove();
+
+    // Check if the cart is empty and show the empty cart alert
+    const cartItems = document.querySelectorAll('.cart-item');
+    if (cartItems.length === 0) {
+      document.querySelector('#empty-cart-alert').style.display = 'block';
+    } else {
+      document.querySelector('#empty-cart-alert').style.display = 'none';
+    }
+
+    // Recalculate the total price after the item is removed
+    updateTotalPrice();
+  } else {
+    console.error('Item not found for removal:', itemId);
   }
-  updateTotalPrice();  // update the total price after user chooses to remove the item
 }
 
-
-// function 3: select/deselect an item when the checkbox is clicked
+// Function 3: Select/deselect an item when the checkbox is clicked
 function toggleItemSelection(itemId) {
-  const checkbox = document.querySelector(`#select-item-${itemId}`);
-  checkbox.checked = !checkbox.checked;
-  updateTotalPrice();  // update the total price after selecting/deselecting items
+  updateTotalPrice();  // Recalculate the total price after selection change
 }
 
-// function 4: select/deselect all items in the cart when the select all checkbox is clicked
+// Function 4: Select/deselect all items in the cart when the select all checkbox is clicked
 function toggleSelectAll() {
   const selectAllCheckbox = document.querySelector('#select-all');
   const itemCheckboxes = document.querySelectorAll('.item-checkbox');
 
   itemCheckboxes.forEach(checkbox => {
-    checkbox.checked = selectAllCheckbox.checked;
+    checkbox.checked = selectAllCheckbox.checked;         // Set all checkboxes to match the 'Select All' checkbox
   });
 
-  updateTotalPrice();  // update the total price after selecting/deselecting all items
+  updateTotalPrice();  // Recalculate the total price after selecting/deselecting all items
 }
 
-// function 5: calculate and display the total price based on selected items and their quantities
+// Function 5: Calculate and display the total price based on selected items and their quantities
 function updateTotalPrice() {
-  let total = 0;  // initialize total as 0
+  let total = 0;      // Initialize total as 0
+  let itemCount = 0;  // Track the number of selected items
 
-  // calculate the total price for selected items
+  // Calculate the total price for selected items
   document.querySelectorAll('.cart-item').forEach(item => {
     const checkbox = item.querySelector('.item-checkbox');
+    const quantity = parseInt(item.querySelector('.quantity').textContent);
     if (checkbox.checked) {
       const price = parseFloat(item.querySelector('.item-price').textContent.replace('S$', ''));
-      const quantity = parseInt(item.querySelector('.quantity').textContent);
       total += price * quantity;
+      itemCount++;  // Increment selected item count
     }
   });
-  
 
-  // update the total price display
+  // Update the total price display
   const totalPriceElement = document.querySelector('#total-price');
   totalPriceElement.textContent = `S$${total.toFixed(2)}`;
+
+  // Update the count of selected items
+  const selectedItemCountElement = document.querySelector('#selected-item-count');
+  selectedItemCountElement.textContent = `(${itemCount} items selected)`;
 }
 
- // function 6: checkout
- function checkout() {
-  alert('Proceeding to checkout...');
+// Function to handle successful checkout message
+function showCheckoutMessage() {
+  const checkoutMessage = document.createElement('div');
+  checkoutMessage.classList.add('checkout-message');
+  checkoutMessage.innerHTML = '<h3>Successfully Checked Out!</h3>';
+  document.body.appendChild(checkoutMessage);
 
+  // Hide the checkout modal after a delay
+  setTimeout(() => {
+    closeModal(); // Hide the modal
+    checkoutMessage.style.display = 'none'; // Hide the success message after 3 seconds
+  }, 2000);
 }
 
+// Function to close the modal when the close button is clicked
+function closeModal() {
+  const modal = document.getElementById('checkout-modal');
+  if (modal) {
+    modal.style.display = 'none';  // Hide the modal
+  } else {
+    console.error('Modal element not found');
+  }
+}
+
+// Ensure that the DOM content is fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', () => {
-  // Event listeners for increment and decrement buttons
+  const modal = document.getElementById('checkout-modal');
+  const closeButton = document.getElementById('close-modal');
+
+  // Debug logs to check if modal and close button are found
+  console.log(modal);  // Ensure modal element is found
+  console.log(closeButton);  // Ensure close button is found
+
+  // Check if both modal and close button exist before adding event listener
+  if (modal && closeButton) {
+    closeButton.addEventListener('click', () => {
+      // Hide the modal
+      modal.style.display = 'none';
+    });
+
+    // Ensure clicking outside the modal content closes the modal
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none'; // Close modal when clicked outside
+      }
+    });
+  } else {
+    console.error('Modal or Close button not found!');
+  }
+
+  // Event listener for the checkout button to show the modal
+  const checkoutButton = document.querySelector('#checkout-btn');
+  if (checkoutButton) {
+    checkoutButton.addEventListener('click', () => {
+      if (modal) {
+        modal.style.display = 'flex';  // Show the modal
+      }
+    });
+  }
+
+  // Add event listeners for cart interactions like increment/decrement, remove items, etc.
   document.querySelectorAll('.increment').forEach(button => {
     button.addEventListener('click', (e) => {
       const itemId = e.target.closest('.cart-item').dataset.id;
@@ -98,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event listeners for remove buttons
+  // Add event listeners for remove item buttons
   document.querySelectorAll('.remove-item').forEach(button => {
     button.addEventListener('click', (e) => {
       const itemId = e.target.dataset.id;
@@ -106,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event listener for select/deselect item
+  // Add event listener for select item checkboxes
   document.querySelectorAll('.item-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', (e) => {
       const itemId = e.target.id.replace('select-item-', '');
@@ -114,9 +173,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event listener for select/deselect all checkbox
+  // Add event listener for select/deselect all checkbox
   document.querySelector('#select-all').addEventListener('change', toggleSelectAll);
-
-  // Event listener for checkout button
-  document.querySelector('#checkout-btn').addEventListener('click', checkout);
 });
+
+// Function 6: Checkout (shows the modal)
+function checkout() {
+  const modal = document.getElementById('checkout-modal');
+  if (modal) {
+    modal.style.display = 'flex';    // Show the modal using 'flex'
+  } else {
+    console.error('Modal element not found');
+  }
+}
