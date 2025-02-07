@@ -82,7 +82,7 @@ function updateTotalPrice() {
   selectedItemCountElement.textContent = `(${itemCount} items selected)`;
 }
 
-// Function 6:  Handle successful checkout message (popup modal)
+// Function 6: Handle successful checkout message (popup modal)
 function showCheckoutMessage() {
   const checkoutMessage = document.createElement('div');
   checkoutMessage.classList.add('checkout-message');
@@ -129,9 +129,16 @@ function checkout() {
   }
 }
 
-// Function 9: Handle Checkout form submission (show success message and close form)
+// Function 9: Handle Checkout form submission (show success message, close form, clear cart)
 function handleCheckout(event) {
   event.preventDefault(); // Prevent the default form submission behavior
+
+  // Check if any item is selected
+  const selectedItems = document.querySelectorAll('.item-checkbox:checked');
+  if (selectedItems.length === 0) {
+    alert('You have not selected any items to checkout.');
+    return;  // Stop further execution if no items are selected
+  }
 
   // Display checkout success message
   showCheckoutMessage();
@@ -185,8 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const checkoutButton = document.querySelector('#checkout-btn');
   if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
-      if (modal) {
-        modal.style.display = 'flex';  // Show the modal
+      // Check if at least one item is selected before showing the modal
+      const selectedItems = document.querySelectorAll('.item-checkbox:checked');
+      if (selectedItems.length === 0) {
+        alert('You have not selected any items to checkout.');
+      } else {
+        if (modal) {
+          modal.style.display = 'flex';  // Show the modal
+        }
       }
     });
   }
