@@ -1,47 +1,87 @@
-// Function to handle adding a product to the cart in Firebase
+// Function to handle adding a product to the cart
 function addToCart(event) {
     const productElement = event.target.closest('.product-details-container');
-    const itemId = productElement.dataset.id; // Get item ID
-    const itemName = productElement.querySelector('.product-title').textContent; // Get product name
-    const itemPrice = parseFloat(productElement.querySelector('.product-price').textContent.replace('$', '')); // Get product price
-    const itemQuantity = parseInt(productElement.querySelector('input[type="number"]').value); // Get quantity
+    const itemId = productElement.dataset.id; // Assuming you have a data-id attribute on the container
+    const itemName = productElement.querySelector('.product-title').textContent;
+    const itemPrice = parseFloat(productElement.querySelector('.product-price').textContent.replace('$', ''));
+    const itemQuantity = parseInt(productElement.querySelector('input[type="number"]').value); // Quantity from the input field
 
-    // Call Firebase function to add this item to the cart
-    addCartItemToFirebase(itemId, itemName, itemPrice, itemQuantity);
+    // Call the function to send this data to RestDB (cart API)
+    addCartItem(itemId, itemName, itemPrice, itemQuantity);
 
-    // Optionally, show a success message or update the UI
-    alert('Item added to cart!');
+    // Redirect to the Cart Page after adding item to the cart
+    window.location.href = "cart.html"; // Redirect to cart page
 }
 
-// Firebase function to add item to the cart in Firebase Realtime Database
-function addCartItemToFirebase(itemId, itemName, itemPrice, itemQuantity) {
-    const cartRef = firebase.database().ref('cartItems'); // Reference to cartItems in Firebase
+// Add event listener to the "Add to Cart" button
+document.querySelector('.add-cart-button').addEventListener('click', addToCart);
+
+// Function to add item to the cart (RestDB API)
+function addCartItem(itemId, itemName, itemPrice, itemQuantity) {
+    const apiUrl = 'https://mokesell-0891.restdb.io/rest/cartitems'; // RestDB API URL for cart items
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-apikey': '67a4eec1fd5d5864f9efe119'  // Your RestDB API key
+    };
 
     const newItem = {
         itemId,
         itemName,
         itemPrice,
         itemQuantity,
-        isSelected: true  // Item is selected by default
+        isSelected: true    // Item is selected by default
     };
 
-    // Push the new item to Firebase
-    cartRef.push(newItem)
-        .then(() => {
-            console.log('Item added to Firebase');
-        })
-        .catch((error) => {
-            console.error('Error adding item to Firebase:', error);
-        });
+    // Send the item to RestDB using a POST request
+    fetch(apiUrl, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(newItem)  // Send the item data as JSON to RestDB
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Item added:', data);
+        // Optionally, show a success message or update the cart UI here
+    })
+    .catch(error => console.error('Error adding item:', error));
 }
 
-// Dynamically add event listeners to all Add to Cart buttons when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.add-cart-button').forEach(button => {
-        button.addEventListener('click', addToCart);
-    });
-});
+// Fetch product details based on productId from URL
+const urlParams = new URLSearchParams(window.location.search); // Get query params
+const productId = parseInt(urlParams.get('id')); // Get product ID from URL
 
+fetch('products.json') // Fetch the products.json
+    .then(response => response.json()) // Parses info into an array
+    .then(products => {
+        const product = products.find(p => p.productId === productId); // Find product using productId
+
+        if (product) { // If the product exists
+            document.querySelector(".product-title").textContent = product.title;
+            document.querySelector(".product-price").textContent = product.price;
+            document.querySelector(".product-image").src = product.image;
+
+            let rating = product.rating;
+            let stars = document.querySelectorAll(".review-box i");
+
+            for (let i = 0; i < stars.length; i++) { // Update stars based on rating
+                if (i < rating) {
+                    stars[i].classList.remove("fa-regular");
+                    stars[i].classList.add("fa-solid");
+                } else {
+                    stars[i].classList.remove("fa-solid");
+                    stars[i].classList.add("fa-regular");
+                }
+            }
+            document.querySelector(".product-rating").textContent = product.rating.toFixed(1);
+            document.querySelector(".product-total-review").textContent = `(${product.totalReview} Reviews)`;
+            document.querySelector(".product-description").textContent = product.description;
+            document.querySelector(".product-weight").textContent = `Weight: ${product.weight} lbs`;
+            document.querySelector(".product-dimension").textContent = `Dimensions: ${product.dimensions} in`;
+
+            // Fetch profile using userId from product
+            fetchProfile(product.userId);
+        }
+    });
 
 // Fetch the seller profile
 function fetchProfile(userId) {
