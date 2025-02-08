@@ -163,8 +163,7 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
     const price = document.getElementById("price").value;
     const condition = document.getElementById("condition").value;
     const description = document.getElementById("description").value;
-    // Hardcoded image URL (change this to your own image URL)
-    const imageUrl = "https://mokesell-0891.restdb.io/mokesell-0891/mokesell-0891/mediaarchive/3d61c044c98380638c460ed7c70096bcsweater.webp"; 
+    const imageValue = document.getElementById("image").value; 
 
     // Prepare listing data with the static image URL
     const listingData = {
@@ -173,11 +172,52 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
         price,
         condition,
         description,
-        image: imageUrl,  // Use the new image URL
+        image: imageValue,  // Use the new image URL
     };
+
+    if (!image) {
+        console.error("Image input field not found.");
+        alert("Image upload field is missing.");
+        return;
+    }
+
+    if (!image.files.length) {
+        alert("Please select an image.");
+        return;
+    }
+
+    const imageFile = image.files[0];
+
+    // Upload image to RestDB
+    const imageFormData = new FormData();
+    imageFormData.append("image", imageFile);
 
 
     try {
+        const imageResponse = await fetch("https://rdb-simpledb.restdb.io/media", {
+            method: "POST",
+            headers: {
+                "x-apikey": "67a4eec1fd5d5864f9efe119"
+            },
+            body: imageFormData
+        });
+
+        if (!imageResponse.ok) {
+            throw new Error("Image upload failed.");
+        }
+
+        const imageData = await imageResponse.json();
+        const imageUrl = imageData._id; 
+
+        listingData = {
+            category,
+            item_name: itemName,
+            price,
+            condition,
+            description,
+            image: imageUrl,  // Use the new image URL
+        };
+
         // Now create the listing with the static image URL
         const listingResponse = await fetch("https://mokesell-0891.restdb.io/rest/listings", {
             method: "POST",
@@ -227,3 +267,81 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
         alert("Error creating listing: " + error.message);
     }
 });
+
+
+
+// document.getElementById("create-listing-form").addEventListener("submit", function (event) {
+//     event.preventDefault(); // Prevent page reload
+
+//     const category = document.getElementById("category").value;
+//     const itemName = document.getElementById("item-name").value;
+//     const price = document.getElementById("price").value;
+//     const condition = document.getElementById("condition").value;
+//     const description = document.getElementById("description").value;
+//     const imageInput = document.getElementById("image");
+
+//     if (!imageInput) {
+//         console.error("Image input field not found.");
+//         alert("Image upload field is missing.");
+//         return;
+//     }
+
+//     if (!imageInput.files.length) {
+//         alert("Please select an image.");
+//         return;
+//     }
+
+//     const imageFile = imageInput.files[0];
+
+//     // Upload image to RestDB
+//     const imageFormData = new FormData();
+//     imageFormData.append("image", imageFile);
+//     imageFormData.append("cors", "true"); // Required for CORS support in RestDB
+
+//     const imageUploadRequest = new XMLHttpRequest();
+//     imageUploadRequest.open("POST", "https://your-restdb-url/rest/images", true);
+//     imageUploadRequest.setRequestHeader("x-apikey", "YOUR_RESTDB_API_KEY");
+
+//     imageUploadRequest.onreadystatechange = function () {
+//         if (imageUploadRequest.readyState === 4) {
+//             if (imageUploadRequest.status === 201) {
+//                 const imageData = JSON.parse(imageUploadRequest.responseText);
+//                 const imageUrl = imageData._id; // Adjust based on RestDB response
+
+//                 // Now create listing with uploaded image
+//                 const listingData = {
+//                     category,
+//                     itemName,
+//                     price,
+//                     condition,
+//                     description,
+//                     image: imageUrl // Store image reference
+//                 };
+
+//                 const listingRequest = new XMLHttpRequest();
+//                 listingRequest.open("POST", "https://mokesell-0891.restdb.io/rest/listings", true);
+//                 listingRequest.setRequestHeader("Content-Type", "application/json");
+//                 listingRequest.setRequestHeader("x-apikey", API_KEY);
+
+//                 listingRequest.onreadystatechange = function () {
+//                     if (listingRequest.readyState === 4) {
+//                         if (listingRequest.status === 201) {
+//                             alert("Listing created successfully!");
+//                             document.getElementById("create-listing-form").reset();
+//                         } else {
+//                             alert("Failed to create listing.");
+//                             console.error("Listing creation error:", listingRequest.responseText);
+//                         }
+//                     }
+//                 };
+
+//                 listingRequest.send(JSON.stringify(listingData));
+//             } else {
+//                 alert("Image upload failed.");
+//                 console.error("Image upload error:", imageUploadRequest.responseText);
+//             }
+//         }
+//     };
+
+//     imageUploadRequest.send(imageFormData);
+// });

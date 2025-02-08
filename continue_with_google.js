@@ -13,6 +13,13 @@ function signIn(event) {
 
     // Define your restdb.io API endpoint and API key
     const API_KEY = '6797a9b3f9d2bb2d72181e49';
+    $.ajaxPrefilter(function( options ) {
+        if ( !options.beforeSend) {
+            options.beforeSend = function (xhr) { 
+                xhr.setRequestHeader('x-apikey', API_KEY);
+            }
+        }
+    });
     const DATABASE_URL = 'https://interactivedev-98b2.restdb.io/rest/usersdemo'; // Replace with your actual URL
 
     // Headers for the GET request
