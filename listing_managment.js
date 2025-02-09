@@ -1,4 +1,5 @@
 let currentListing = null; // Stores the currently selected listing for bumping
+var myListing = []
 
 // Handles bumping a listing.
 // Opens the bump modal.
@@ -295,5 +296,47 @@ async function displayInfo() {
 
 // Run when the document is fully loaded
 document.addEventListener("DOMContentLoaded", displayInfo);
+
+
+
+document.addEventListener("DOMContentLoaded", async function() {
+    // Retrieve user ID from localStorage
+    const userId = localStorage.getItem('userid'); // Ensure 'userid' is stored in localStorage during login
+
+    if (!userId) {
+        console.error("User ID not found. Please ensure the user is logged in.");
+        return; // Exit the function if the user is not logged in
+    }
+
+    // Construct the API URL dynamically using the userId
+    const API_URL = `https://mokesell-0891.restdb.io/rest/listings?q={"ownerId":"${userId}"}`;
+    const API_KEY = "67a4eec1fd5d5864f9efe119"; // Make sure this is your valid API key
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-apikey': API_KEY
+    };
+
+    try {
+        // Fetch data from the API
+        const response = await fetch(API_URL, {
+            method: "GET",
+            headers: headers,  // Use headers variable here
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error fetching listings. Status: ${response.status}`);
+        }
+
+        const myListing = await response.json(); // Parse the response body
+        console.log(myListing); // Log the listings
+
+        // Process the listings if needed, e.g., render them on the page
+
+    } catch (error) {
+        console.error('Error during fetching data:', error.message);
+        alert('Failed to fetch your listings. Please try again later.');
+    }
+});
 
 

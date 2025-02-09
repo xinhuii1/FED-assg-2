@@ -52,21 +52,26 @@ function signUp(event) {
     }
 
     // Prepare the user data for restdb.io
-    const userData = { "username": username,"gmail": email, "password": password, "phoneNumber": phone };
-
+    const userData = { 
+        "username": username,
+        "gmail": email,
+        "password": password,
+        "phoneNumber": phone 
+    };
+    
     // Replace with your restdb.io API endpoint and API key
     const API_KEY = '67a4eec1fd5d5864f9efe119'; 
     const DATABASE_URL = 'https://mokesell-0891.restdb.io/rest/user-profile';
-
+    
     // Headers for the request
     const headers = {
         'Content-Type': 'application/json',
         'x-apikey': API_KEY
     };
-
+    
     console.log('Sending request to:', DATABASE_URL); // Debugging
     console.log('Request body:', userData); // Debugging
-
+    
     // Send a POST request to restdb.io
     fetch(DATABASE_URL, {
         method: 'POST',
@@ -85,51 +90,51 @@ function signUp(event) {
         })
         .then(data => {
             console.log('User created successfully!', data);
-
+    
             // Save user data to localStorage (optional)
             localStorage.setItem('loginUser', email.split('@')[0]); // Save username
             localStorage.isLogin = true; // Update login status
-
+    
             // Show success message or redirect
-
-            localStorage.setItem('userid', )
-            openSuccessModal();
+    
+            getUserIdByEmail(email);  // Call getUserId function here
         })
         .catch(error => {
             console.error('Error:', error.message);
             alert('Signup failed. Please try again.');
         });
-}
-
-async function getuserid() {
-fetch(DATABASE_URL, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(userData)
-})
-    .then(response => {
-        console.log('Response status:', response.status); // Debugging
-        if (response.ok) {
-            return response.json();
-        } else {
-            return response.json().then(err => {
-                throw new Error(`Failed to get userid. Status: ${response.status}. Message: ${err.message}`);
+    
+    // Function to get the user ID based on email
+    async function getUserIdByEmail(email) {
+        try {
+            // Construct the query string properly with email
+            const response = await fetch(`https://mokesell-0891.restdb.io/rest/user-profile?q={"gmail":"${email}"}`, {
+                method: 'GET',
+                headers: headers,
             });
+    
+            if (!response.ok) {
+                throw new Error(`Failed to fetch user. Status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log('User ID successfully retrieved!', data);
+    
+            // Assuming the first result in the response data contains the user ID
+            if (data.length > 0) {
+                const userId = data[0].userId; // Modify according to your data structure
+                localStorage.setItem('userid', userId);  // Store the user ID
+                openSuccessModal();  // Open success modal
+            } else {
+                alert('No user found with this email!');
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+            alert('Error fetching user data. Please try again later.');
         }
-    })
-    .then(data => {
-        console.log('Userid successfully receives!', data);
-
-        // Save user data to localStorage (optional)
-        localStorage.setItem('loginUser', email.split('@')[0]); // Save username
-        localStorage.isLogin = true; // Update login status
-
-        // Show success message or redirect
-
-        localStorage.setItem('userid', )
-        openSuccessModal();
-    })
+    }
 }
+
 
 function openContinueWithGoogleModal() {
     event.preventDefault();                                                        // Prevent default behavior, refreshing
