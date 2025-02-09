@@ -1,0 +1,121 @@
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F8F3EA; /* Light beige for background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #A87768; /* Warm brown color */
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+}
+
+/* Main Content */
+main {
+    padding: 30px;
+}
+
+
+/* Table Container */
+#feedback-list {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Table Styling */
+#feedback-table {
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin-top: 100px;
+    margin-left: 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#feedback-table th,
+#feedback-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1rem;
+}
+
+#feedback-table th {
+    background-color: #5E3E1A; /* Dark brown for headers */
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#feedback-table td {
+    color: #555;
+}
+
+/* Hover effects for rows */
+#feedback-table tr:hover {
+    background-color: #F1E6D4; /* Soft light yellow when hovered */
+    cursor: pointer;
+}
+
+/* Action Buttons */
+button {
+    background-color: #5E3E1A; /* Dark brown */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #A87768; /* Lighter brown on hover */
+}
+
+/* Column Styling for Actions */
+#feedback-table td button {
+    margin-right: 10px;
+}
+
+/* No feedback found message */
+#feedback-table td[colspan="7"] {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #A87768; /* Lighter brown footer */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Button container */
+button-container {
+    display: flex;
+    justify-content: center;
+}
+
+
