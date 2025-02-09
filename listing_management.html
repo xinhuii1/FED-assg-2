@@ -6,12 +6,14 @@
     <title>Listing Management Page</title>
     <!-- included normalize.css for consistent styling-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <!-- linked to listing_management + header_footer style-->
     <link rel="stylesheet" href="header_footer.css">
     <link rel="stylesheet" href="listing_management.css">
     <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
+
     <!-- Main navigation bar with site title and links -->
     <nav class="navigation-container">
         <h1 class="signature">MOKESELL</h1>  <!-- Main Heading for the page -->
@@ -128,10 +130,15 @@
             <h2>Listings</h2> <!-- Changed to h2 for better structure -->
             Active Listings: <span id="active-listings-counts">4</span>/30 <!-- Active listings count -->
         </div>
-    
+
         <!-- Search Bar Section -->
         <div class="listing-search">
             <input type="text" id="search-bar" placeholder="Search for products" oninput="filterListings()"> <!-- Search input -->
+        </div>
+
+        <!-- Individual Listings Grid -->
+        <div id="listings-container" class="listings-container">
+            <!-- Listing items will be appended here dynamically -->
         </div>
     
         <!-- Individual Listings Grid -->
@@ -241,6 +248,5 @@
 </footer>
 
 <script src="listing_managment.js"></script>
-<script src="modal.js"></script>
 </body>
 </html>

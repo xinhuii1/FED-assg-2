@@ -1,4 +1,3 @@
-
 let currentListing = null; // Stores the currently selected listing for bumping
 
 // Handles bumping a listing.
@@ -145,15 +144,17 @@ window.onload = () => {
     });
 };
 
-// Handle Create Listing Modal visibility and form submission
+// Opens the "Create Listing" modal. 
 function openCreateModal() {
     document.getElementById('create-modal').style.display = 'block';  
 }
 
+// Closes the "Create Listing" modal. 
 function closeCreateModal() {
     document.getElementById('create-modal').style.display = 'none';  
 }
 
+// Handles the form submission for creating a new listing.
 document.getElementById("create-listing-form").addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent page reload
 
@@ -163,83 +164,48 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
     const price = document.getElementById("price").value;
     const condition = document.getElementById("condition").value;
     const description = document.getElementById("description").value;
-    const imageValue = document.getElementById("image").value; 
 
-    // Prepare listing data with the static image URL
-    const listingData = {
-        category,
-        item_name: itemName,
-        price,
-        condition,
-        description,
-        image: imageValue,  // Use the new image URL
-    };
+    // Hardcoded Direct Image URL 
+    const imageUrl = "https://i.ibb.co/5xBHMh9Y/sweater.webp"; 
 
-    if (!image) {
-        console.error("Image input field not found.");
-        alert("Image upload field is missing.");
-        return;
-    }
+    console.log("Image URL being sent:", imageUrl); // 
 
-    if (!image.files.length) {
-        alert("Please select an image.");
-        return;
-    }
-
-    const imageFile = image.files[0];
-
-    // Upload image to RestDB
-    const imageFormData = new FormData();
-    imageFormData.append("image", imageFile);
-
+    // RestDB URL (Replace with your actual API URL)
+    const restDB_URL = "https://mokesell-0891.restdb.io/rest/listings";  
 
     try {
-        const imageResponse = await fetch("https://rdb-simpledb.restdb.io/media", {
-            method: "POST",
-            headers: {
-                "x-apikey": "67a4eec1fd5d5864f9efe119"
-            },
-            body: imageFormData
-        });
-
-        if (!imageResponse.ok) {
-            throw new Error("Image upload failed.");
-        }
-
-        const imageData = await imageResponse.json();
-        const imageUrl = imageData._id; 
-
-        listingData = {
+        // Prepare JSON data
+        const listingData = {
             category,
-            item_name: itemName,
+            'item-name': itemName,
             price,
             condition,
             description,
-            image: imageUrl,  // Use the new image URL
+            image: imageUrl, // Store the image URL in RestDB
         };
 
-        // Now create the listing with the static image URL
-        const listingResponse = await fetch("https://mokesell-0891.restdb.io/rest/listings", {
+        // Send to RestDB
+        const response = await fetch(restDB_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-apikey": "67a4eec1fd5d5864f9efe119",  // API key for creating listings
+                "x-apikey": "67a4eec1fd5d5864f9efe119", // API key for creating listings
             },
             body: JSON.stringify(listingData),
         });
 
-        if (!listingResponse.ok) {
-            const errorText = await listingResponse.text();
-            throw new Error(`Listing Creation Failed: ${errorText}`);
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`RestDB Error ${response.status}: ${errorText}`);
         }
 
-        const data = await listingResponse.json();
-        console.log("RestDB Response:", data);
+        const data = await response.json();
+        console.log("RestDB Response:", data); // Debugging
 
-        // Create the listing element in the DOM
+        // Create Listing Element
         const newListing = document.createElement("div");
         newListing.classList.add("listing-item");
-        newListing.setAttribute("data-id", data._id);
+        newListing.setAttribute("data-id", data._id);  // Use the ID returned from RestDB
 
         newListing.innerHTML = `
             <img src="${data.image}" alt="${itemName}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
@@ -251,13 +217,14 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
             <p class="expiry-info">30 days left (Free)</p>
         `;
 
+        // Append new listing below existing listings
         document.querySelector(".listings-container").appendChild(newListing);
 
         // Update active listings count
         const activeCountElement = document.getElementById("active-listings-counts");
         activeCountElement.textContent = parseInt(activeCountElement.textContent) + 1;
 
-        // Close modal after successful listing creation
+        // Close the modal
         closeCreateModal();
 
         alert("New listing successfully created!");
@@ -267,81 +234,3 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
         alert("Error creating listing: " + error.message);
     }
 });
-
-
-
-// document.getElementById("create-listing-form").addEventListener("submit", function (event) {
-//     event.preventDefault(); // Prevent page reload
-
-//     const category = document.getElementById("category").value;
-//     const itemName = document.getElementById("item-name").value;
-//     const price = document.getElementById("price").value;
-//     const condition = document.getElementById("condition").value;
-//     const description = document.getElementById("description").value;
-//     const imageInput = document.getElementById("image");
-
-//     if (!imageInput) {
-//         console.error("Image input field not found.");
-//         alert("Image upload field is missing.");
-//         return;
-//     }
-
-//     if (!imageInput.files.length) {
-//         alert("Please select an image.");
-//         return;
-//     }
-
-//     const imageFile = imageInput.files[0];
-
-//     // Upload image to RestDB
-//     const imageFormData = new FormData();
-//     imageFormData.append("image", imageFile);
-//     imageFormData.append("cors", "true"); // Required for CORS support in RestDB
-
-//     const imageUploadRequest = new XMLHttpRequest();
-//     imageUploadRequest.open("POST", "https://your-restdb-url/rest/images", true);
-//     imageUploadRequest.setRequestHeader("x-apikey", "YOUR_RESTDB_API_KEY");
-
-//     imageUploadRequest.onreadystatechange = function () {
-//         if (imageUploadRequest.readyState === 4) {
-//             if (imageUploadRequest.status === 201) {
-//                 const imageData = JSON.parse(imageUploadRequest.responseText);
-//                 const imageUrl = imageData._id; // Adjust based on RestDB response
-
-//                 // Now create listing with uploaded image
-//                 const listingData = {
-//                     category,
-//                     itemName,
-//                     price,
-//                     condition,
-//                     description,
-//                     image: imageUrl // Store image reference
-//                 };
-
-//                 const listingRequest = new XMLHttpRequest();
-//                 listingRequest.open("POST", "https://mokesell-0891.restdb.io/rest/listings", true);
-//                 listingRequest.setRequestHeader("Content-Type", "application/json");
-//                 listingRequest.setRequestHeader("x-apikey", API_KEY);
-
-//                 listingRequest.onreadystatechange = function () {
-//                     if (listingRequest.readyState === 4) {
-//                         if (listingRequest.status === 201) {
-//                             alert("Listing created successfully!");
-//                             document.getElementById("create-listing-form").reset();
-//                         } else {
-//                             alert("Failed to create listing.");
-//                             console.error("Listing creation error:", listingRequest.responseText);
-//                         }
-//                     }
-//                 };
-
-//                 listingRequest.send(JSON.stringify(listingData));
-//             } else {
-//                 alert("Image upload failed.");
-//                 console.error("Image upload error:", imageUploadRequest.responseText);
-//             }
-//         }
-//     };
-
-//     imageUploadRequest.send(imageFormData);
-// });

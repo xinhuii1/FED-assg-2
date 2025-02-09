@@ -380,13 +380,19 @@
 #description,
 #category,
 #condition,
-#item-image {
+#image {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
     
+}
+
+
+/* Add a gap between the current and new listings */
+.listings-container .listing-item {
+    margin-bottom: 20px; /* Adjust the value as per your preference */
 }
 
 #item-image {
