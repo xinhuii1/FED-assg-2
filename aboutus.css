@@ -1,0 +1,413 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F8F3EA;
+}
+
+/* Header Styles */
+header {
+    background-color: #A87768;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Navigation List */
+ul {
+    list-style-type: none;
+    display: flex;
+}
+
+ul li {
+    margin-right: 20px;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: #F1E6D4; /* Light color on hover */
+}
+
+/* Search Bar Styles */
+header .Searchbar {
+    width: 280px;
+}
+
+header .Searchbar input {
+    width: 80%;
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+header .Searchbar input:focus {
+    border-color: #A87768;
+    outline: none;
+}
+
+/* Main Content Section */
+main {
+    padding-top: 120px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+/* About Us Section */
+.about-us {
+    padding: 50px 10%;
+    background-color: #F8F3EA;
+    text-align: center;
+}
+
+/* Our Story Section */
+.about-header {
+    margin-bottom: 50px;
+}
+
+.about-header h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #5E3E1A; /* Rich brown color */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.about-header p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: justify; /* Justified text for better flow */
+}
+
+/* Consumer Image Styling */
+.shopping-image {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center the image */
+    align-items: center; /* Vertically center the image */
+}
+
+.shopping-image img {
+    width: 72%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; /* Ensures the image covers the container while maintaining its aspect ratio */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 80px;
+}
+
+/* Card Style for Stats */
+.stat-card {
+    background-color: #fff;
+    border-radius: 15px; /* Rounded corners for a modern touch */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px); /* Subtle lift effect */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.stat-card.red {
+    background-color: #5E3E1A;
+    color: white;
+}
+
+.stat-card.red .stat-desc {
+    color: white;
+}
+
+.stat-title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.stat-desc {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+/* Team Section */
+.team {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* Team Member Card */
+.team-member {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+.team-member:hover {
+    transform: translateY(-10px); /* Hover effect for team members */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    color: #5E3E1A;
+    margin-bottom: 5px;
+    font-weight: 600;
+    
+}
+
+.team-member p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 20px /* increased space between the social media icons and paragraphs */
+}
+
+.social-icons {
+    margin-bottom: 20px; /* shift the icons further from paragraphs */
+}
+
+.social-icons i {
+    font-size: 20px;
+    color: #A87768;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+    color: #5E3E1A; /* Hover effect for social icons */
+}
+
+/* Feedback Button Styles */
+.feedback-button {
+    background-color: #5E3E1A;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+.feedback-button:hover {
+    background-color: #A87768;
+}
+
+/* Feedback Message Styling */
+.feedback-message {
+    text-align: center;
+    margin-top: 40px;
+    background-color: #FFF6E5;  /* Soft yellow background for the message */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.feedback-message h3 {
+    font-size: 2rem;
+    color: #5E3E1A;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+/* Feedback Modal Styles */
+.feedback-modal {
+    display: none;  /* Hidden by default */
+    position: fixed; /* Fixed in the center of the screen */
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: #5E3E1A;
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.modal-content select,
+.modal-content textarea,
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.modal-content button {
+    background-color: #5E3E1A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal-content button:hover {
+    background-color: #A87768;
+}
+
+/* Close button */
+.close-btn {
+    font-size: 2rem;
+    color: #A87768;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #5E3E1A;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #A87768;
+    padding: 40px 20px;
+    color: white;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.footer-logo p {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.footer-links ul,
+.footer-legal ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.footer-links li,
+.footer-legal li {
+    margin-right: 20px;
+}
+
+.footer-links li a,
+.footer-legal li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links li a:hover,
+.footer-legal li a:hover {
+    color: #F1E6D4; /* Hover color for footer links */
+}
+
+.footer-contact p {
+    font-size: 14px;
+}
+
+.footer-logo {
+    flex: 2;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links {
+    flex: 2;
+}
+
+.footer-contact {
+    flex: 3;
+}
+
+.footer-legal {
+    flex: 2;
+}
