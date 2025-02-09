@@ -59,8 +59,8 @@
 .profile-rating {
     font-size: 1.9rem;
     color: black;
-    margin-left: 650px;
-    margin-top: -35px;  
+    margin-left: 930px;
+    margin-top: -55px;  
     margin-bottom: 0px;
 }
 
@@ -374,7 +374,6 @@
     max-width: 600px;
 }
 
-
 #item-name,
 #price,
 #description,
@@ -386,9 +385,7 @@
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    
 }
-
 
 /* Add a gap between the current and new listings */
 .listings-container .listing-item {
@@ -416,4 +413,39 @@ button:hover {
 input:focus, select:focus, textarea:focus {
     border-color: #A87768;
     outline: none;
+}
+
+/* New Styles for Full Page Fit */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.main-wrapper {
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+.listings-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        padding: 10px;
+    }
+    .profile-info-wrapper {
+        width: 100%;
+    }
 }
