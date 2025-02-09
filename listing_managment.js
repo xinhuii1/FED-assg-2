@@ -234,3 +234,66 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
         alert("Error creating listing: " + error.message);
     }
 });
+
+
+
+const userid = localStorage.getItem("userid")
+
+const API_URL = "https://mokesell-0891.restdb.io/rest/profile";
+const API_KEY = "67a4eec1fd5d5864f9efe119";
+
+const headers = {
+    'Content-Type': 'application/json',
+    'x-apikey': API_KEY
+};
+
+async function fetchProfile() {
+    try {
+        const query = userid ? `q={"userId":${userid}}` : ""; // Ensure correct formatting
+        const response = await fetch(`${API_URL}?${query}`, {
+            method: 'GET',
+            headers: headers
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch user profile. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Fetched Data:", data);
+        return data; // Ensure it returns an array
+    } catch (error) {
+        console.error("Error fetching profile:", error);
+        return []; // Return an empty array if there's an error
+    }
+}
+
+async function displayInfo() {
+    const profiles = await fetchProfile(); // Await the data properly
+
+    if (!profiles || profiles.length === 0) {
+        console.error("No profile found for the given user ID.");
+        return;
+    }
+
+    const profile = profiles[0]; // Properly access the first profile object
+
+    console.log("Profile Data:", profile); // Debugging log
+
+    // Selecting DOM elements
+    const profileimg = document.querySelector(".profile-img");
+    const profilename = document.querySelector(".profile-name");
+    const profilestatus = document.querySelector(".profile-status");
+    const profilerating = document.querySelector(".profile-rating");
+
+
+    if (profileimg) profileimg.src = profile.icon || "default.jpg"; 
+    if (profilename) profilename.textContent = profile.username || "Unknown User";
+    if (profilestatus) profilestatus.textContent = profile.status || "No status available";
+    if (profilerating) profilerating.textContent = `${profile.rating}⭐  | ${profile.years}sdsd` || "N/A";
+}
+
+// Run when the document is fully loaded
+document.addEventListener("DOMContentLoaded", displayInfo);
+
+

@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Make register button unclickable as it now shows username
         registerButton.style.cursor = "default";
         registerButton.removeAttribute("onclick");
+        registerButton.removeEventListener("click", anonymousHandler)
 
         // Logout functionality
         loginButton.addEventListener("click", function () {

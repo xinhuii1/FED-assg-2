@@ -12,15 +12,8 @@ function signIn(event) {
     }
 
     // Define your restdb.io API endpoint and API key
-    const API_KEY = '6797a9b3f9d2bb2d72181e49';
-    $.ajaxPrefilter(function( options ) {
-        if ( !options.beforeSend) {
-            options.beforeSend = function (xhr) { 
-                xhr.setRequestHeader('x-apikey', API_KEY);
-            }
-        }
-    });
-    const DATABASE_URL = 'https://interactivedev-98b2.restdb.io/rest/usersdemo'; // Replace with your actual URL
+    const API_KEY = '67a4eec1fd5d5864f9efe119';
+    const DATABASE_URL = 'https://mokesell-0891.restdb.io/rest/user-profile'; // Make sure this points to your correct collection
 
     // Headers for the GET request
     const headers = {
@@ -41,22 +34,22 @@ function signIn(event) {
         })
         .then(users => {
             console.log('Users retrieved from database:', users);
-
+            
             // Search for a matching user
             const matchedUser = users.find(user =>
-                (user.email === userInput || user.phone === userInput) && user.password === password
+                (user.gmail === userInput || user.phoneNumber === userInput) && user.password === password
             );
 
             if (matchedUser) {
                 console.log('Login successful!', matchedUser);
 
                 // Save login status and user information
-                localStorage.setItem('loginUser', matchedUser.email.split('@')[0]); // Save username
+                localStorage.setItem('loginUser', matchedUser.gmail.split('@')[0]); // Save username
                 localStorage.isLogin = true;
 
                 // Redirect to a success modal or dashboard
                 openSuccessModal();
-           
+                localStorage.setItem("userid", matchedUser.userId)
             } else {
                 alert('Invalid email/phone number or password. Please try again.');
             }
@@ -64,6 +57,25 @@ function signIn(event) {
         .catch(error => {
             console.error('Error during login:', error.message);
             alert('Login failed. Please try again later.');
+        });
+}
+
+function openSuccessModal() {
+    fetch('success_signup.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('modal-placeholder').innerHTML = html;
+
+            // Load modal scripts
+            const script = document.createElement('script');
+            script.src = 'modal.js';
+            document.body.appendChild(script);
+
+            const script2 = document.createElement('script');
+            script2.src = 'success_signup.js';
+            document.body.appendChild(script2);
+
+            Animation1('.full-screen-wrapper', '.modal-container');
         });
 }
 

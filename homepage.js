@@ -71,10 +71,13 @@ function openLoginModal(event) {
 // Select the register button by its class
 const registerButton = document.querySelector('.Register-button');
 
+const anonymousHandler = function(event) {
+    openSignUpModal(event)
+};
 // Add a click event listener to the register button
-registerButton.addEventListener('click', function(event) {
-    openSignUpModal(event); // Open the sign-up modal
-});
+
+
+registerButton.addEventListener('click', anonymousHandler);
 
 // Select the login button by its class
 const loginButton = document.querySelector('.login-button');

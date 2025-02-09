@@ -61,6 +61,7 @@ function openSuccessModal(){
             script2.onload = () => {
                 console.log('Success dialog JS loaded');
             }
+            
             document.body.appendChild(script2);
             Animation1('.full-screen-wrapper', '.modal-container');
         });

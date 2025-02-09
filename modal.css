@@ -104,11 +104,30 @@
 }
 
 /*sign_up.html*/
+/* Username Input Field Styling */
+#username {
+    width: 90%;
+    padding: 15px;
+    background-color: #F8F3EA;
+    margin: 0;
+    margin-bottom: 13px;
+    border: 1px solid #5E3E1A; /* Border color */
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Placeholder Styling for Username */
+#username::placeholder {
+    text-align: start;
+    color: #5E3E1A; /* Placeholder color */
+    opacity: 0.9;
+}
+
 #email-input {
     width: 90%;
     padding: 15px;
     background-color: #F8F3EA;
-    color: white;
     margin: 0;
     margin-bottom: 13px;
     border: 5px;
@@ -128,7 +147,6 @@
     width: 90%;
     padding: 15px;
     background-color: #F8F3EA;
-    color: white;
     margin: 0;
     margin-bottom: 13px;
     border: 5px;
@@ -181,7 +199,7 @@
 #eye-icon {
     position: absolute;
     right: 40px;
-    top: 71%;
+    top: 68%;
     transform: translateY(-50%);
     cursor: pointer;
     color: #333;
@@ -190,7 +208,7 @@
 #confirm-eye-icon {
     position: absolute;
     right: 40px;
-    top: 79%;
+    top: 56%;
     transform: translateY(-50%);
     cursor: pointer;
     color: #333;

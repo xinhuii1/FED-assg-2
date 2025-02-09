@@ -21,12 +21,13 @@
         <img src="img/logo.png" alt="logo" class="modal-logo">
         <div class="modal-content-container" style="gap: 0">
             <form onsubmit="signUp(event)">
+                <input type="text" id="username" placeholder="Enter your username" required>
                 <input type="text" id="email-input" placeholder="Enter your email" required>
                 <input type="text" id="phone-input" placeholder="Enter your phone number" required>
-                <input type="password" id="password-input" placeholder="Enter your password" required>
-                <i id="eye-icon" onclick="togglePassword('password-input')" class="fa-solid fa-eye"></i>
-                <input type="password" id="confirm-password-input" placeholder="Re-enter your password" required>
-                <i id="confirm-eye-icon" onclick="togglePassword('confirm-password-input')" class="fa-solid fa-eye"></i>
+                <input autocomplete="false" type ="password" id="password-input" placeholder="Enter your password" required>
+                <i id="confirm-eye-icon" onclick="togglePassword('password-input')" class="fa-solid fa-eye"></i>
+                <input type="password" id="confirm-password-input" placeholder="Re-enter your password" required autocomplete="">
+                <i id="eye-icon" onclick="togglePassword('confirm-password-input')" class="fa-solid fa-eye"></i>
                 <p id="error-message" style="color: red; display: none;">Passwords do not match</p>
                 <button type="submit" id="sign-up-button">Sign Up</button>
             </form>
