@@ -80,6 +80,7 @@ async function applyBump(duration, price) {
     const expiryInfo = currentListing.querySelector('.expiry-info');
     if (expiryInfo) {
         expiryInfo.textContent = `${expiryDays + 30} days left`;
+        console.log(expiryDays + 30)
     }
 
     const bumpInfo = { bump: expiryDays };  // Ensure that bump is a number, not a string
@@ -416,27 +417,27 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-    function getDaysLeft(listing) {
-        // Get the create date of the listing and convert it to a Date object
-        const createDate = new Date(listing.CreateDate);
-        
-        // Add 30 days to the create date (initial listing duration)
-        const expiryDate = new Date(createDate);
-        expiryDate.setDate(expiryDate.getDate() + 30); // Default 30 days from the create date
-        
-        // Add the bump days to the expiry date
-        const bumpDays = listing.bump || 0;
-        expiryDate.setDate(expiryDate.getDate() + bumpDays); // Add bump days to expiry date
-        
-        // Calculate the difference between the current date and the expiry date in milliseconds
-        const currentDate = new Date();
-        const timeDifference = expiryDate - currentDate;
-        
-        // Convert the time difference to days (milliseconds to days)
-        const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        
-        return daysLeft;
-    }
+function getDaysLeft(listing) {
+    // Get the create date of the listing and convert it to a Date object
+    const createDate = new Date(listing.CreateDate);
+    
+    // Add 30 days to the create date (initial listing duration)
+    const expiryDate = new Date(createDate);
+    expiryDate.setDate(expiryDate.getDate() + 30); // Default 30 days from the create date
+    
+    // Add the bump days to the expiry date
+    const bumpDays = listing.bump || 0;
+    expiryDate.setDate(expiryDate.getDate() + bumpDays); // Add bump days to expiry date
+    
+    // Calculate the difference between the current date and the expiry date in milliseconds
+    const currentDate = new Date();
+    const timeDifference = expiryDate - currentDate;
+    
+    // Convert the time difference to days (milliseconds to days)
+    const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    
+    return daysLeft;
+}
     
 
 

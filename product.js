@@ -26,10 +26,12 @@
 
 
 var allListings = []; // Global variable
+var sellerusername = []
 
 document.addEventListener("DOMContentLoaded", async function() {
     await fetchallListings();
     console.log("final listings:", allListings); // Using a comma instead of '+' for better logging
+    await fetchSellerUsername();
     displayListings();
 });
 
@@ -52,27 +54,37 @@ async function fetchallListings() {
 
 function displayListings() {
     const productGrid = document.querySelector("#productGrid");
-    allListings.forEach(listing => {
-        if(isListingActive(listing)) {
-        const productItem = document.createElement("div");
-        productItem.className = "product-item";
-        productItem.innerHTML = `
-            <img src="${listing.image}" alt="${listing.itemname}">
-            <div>
-                <div class="product-title">${listing.itemname}</div>
-                <div class="product-header">
-                    <img class="product-icon" src="${listing.icon}" alt="${listing.itemname}">
-                    <span class="username">${listing.category}</span>
-                    <div class="product-price">$${formatPrice(listing.price)}</div>
+    
+    for (const listing of allListings) {
+        if (isListingActive(listing)) {
+            const productItem = document.createElement("div");
+            productItem.className = "product-item";
+            var Username = "Unknown";
+            sellerusername.forEach(seller => {
+                if (listing.ownerId === seller.userId) {
+                    Username = seller.username;}
+            });
+            productItem.innerHTML = `
+                <img src="${listing.image}" alt="${listing.itemname}">
+                <div>
+                    <div class="product-title">${listing.itemname}</div>
+                    <div class="product-header">
+                        <img class="product-icon" src="${listing.icon}" alt="${listing.itemname}">
+                        <span class="username">${Username}</span>
+                        <div class="product-price">$${formatPrice(listing.price)}</div>
+                    </div>
                 </div>
-            </div>
-        `;
-        productItem.addEventListener("click", () => {
-            window.location.href = `product_details.html?id=${listing.listingid}`;
-        });
-        productGrid.appendChild(productItem);}
-    });
+            `;
+
+            productItem.addEventListener("click", () => {
+                window.location.href = `product_details.html?id=${listing.listingid}`;
+            });
+
+            productGrid.appendChild(productItem);
+        }
+    }
 }
+
 
 function formatPrice(price) {
     return `$${parseFloat(price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -91,3 +103,26 @@ function isListingActive(listing) {
 
 
 
+async function fetchSellerUsername() {
+    try {
+        let response = await fetch(`https://mokesell-0891.restdb.io/rest/user-profile`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": "67a4eec1fd5d5864f9efe119"
+            }
+        });
+
+        let data = await response.json();
+        console.log("seller username data:", data); 
+        if (data.length > 0) {
+            sellerusername = data
+        } else {
+            console.error("No username found for userId:", userId);
+        }
+
+        console.log("Fetched username:", sellerusername);
+    } catch (error) {
+        console.error("Error fetching username:", error);
+    }
+}
