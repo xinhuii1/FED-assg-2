@@ -1,4 +1,14 @@
 
+/*  Google Font  */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Body Styles */
+body {
+  font-family: 'Varela Round', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F8F3EA;
+}
 
 /* Main Content Section */
 main {
@@ -212,7 +222,7 @@ main {
 .modal-content {
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 40px;
     width: 500px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

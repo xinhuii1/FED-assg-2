@@ -22,29 +22,33 @@ function fetchFeedbackData() {
 // Display feedback data in the table
 function displayFeedback(feedbacks) {
     const tableBody = document.querySelector('#feedback-table tbody');  // Get the table body element
+    const noFeedbackMessage = document.querySelector('#no-feedback-message');  // Get the no feedback message element
     tableBody.innerHTML = '';                                           // Clear the table before adding new data
 
-    // Loop through each feedback item and create a table row
-    feedbacks.forEach(feedback => {
-        const row = document.createElement('tr');  // Create a new row
+    // Check if no feedback data is available
+    if (feedbacks.length === 0) {
+        noFeedbackMessage.style.display = 'block'; // Show the no feedback message
+    } else {
+        noFeedbackMessage.style.display = 'none';  // Hide the no feedback message
+        feedbacks.forEach(feedback => {
+            const row = document.createElement('tr');  // Create a new row
 
-        // Insert the feedback data into the table row
-        row.innerHTML = `
-            <td>${feedback.user_id}</td>
-            <td>${feedback.category}</td>
-            <td>${feedback.feedback_message}</td>
-            <td>${feedback.status}</td>
-            <td>${feedback.assigned_to || 'Not Assigned'}</td>
-            <td>${feedback.rating || 'N/A'}</td>
-            <td>
-                <button onclick="resolveFeedback('${feedback._id}')">Resolve</button>
-                <button onclick="assignStaff('${feedback._id}')">Assign Staff</button>
-            </td>
-        `;
-
-        // Append the newly created row to the table body
-        tableBody.appendChild(row);
-    });
+            // Insert the feedback data into the table row
+            row.innerHTML = `
+                <td>${feedback.user_id}</td>
+                <td>${feedback.category}</td>
+                <td>${feedback.feedback_message}</td>
+                <td>${feedback.status}</td>
+                <td>${feedback.assigned_to || 'Not Assigned'}</td>
+                <td>${feedback.rating || 'N/A'}</td>
+                <td>
+                    <button onclick="resolveFeedback('${feedback._id}')">Resolve</button>
+                    <button onclick="assignStaff('${feedback._id}')">Assign Staff</button>
+                </td>
+            `;
+            tableBody.appendChild(row);  // Append the new row to the table
+        });
+    }
 }
 
 // Assign staff to the feedback
@@ -56,7 +60,7 @@ function assignStaff(feedbackId) {
 
     // Validate if the input staff ID exists in the staff list
     if (staff.includes(assignedTo)) {
-        updateFeedbackAssignment(feedbackId, assignedTo);                               // Update the feedback assignment
+        updateFeedbackAssignment(feedbackId, assignedTo);  // Update the feedback assignment
     } else {
         alert('Invalid staff ID. Please choose a valid staff member from the list.');  // Alert if the ID is invalid
     }
@@ -100,24 +104,32 @@ function resolveFeedback(feedbackId) {
 // Update feedback rating and status using CORS proxy
 function updateFeedbackRating(feedbackId, rating) {
     // Send PATCH request to update the rating and status of the feedback using CORS proxy
-    fetch('https://cors-anywhere.herokuapp.com/https://mokesell-0891.restdb.io/rest/feedback/' + feedbackId, {
+    fetch(`https://mokesell-0891.restdb.io/rest/feedback/${feedbackId}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
-            'x-apikey': '67a4eec1fd5d5864f9efe119',  
+            'x-apikey': '67a4eec1fd5d5864f9efe119',
             'cache-control': 'no-cache'
         },
-        body: JSON.stringify({ rating: rating, status: 'resolved' })  // Update the feedback with rating and status
+        body: JSON.stringify({ rating: rating, status: 'resolved' })
     })
-    .then(response => response.json())  // Parse the JSON response
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
-        console.log('Feedback resolved and rating updated:', data);  // Log the result
-        alert('Feedback resolved! Rating updated.');  // Notify the admin
-        fetchFeedbackData();  // Refresh the table to reflect the change
+        console.log('Feedback resolved and rating updated:', data);
+        alert('Feedback resolved! Rating updated.');
+        fetchFeedbackData();
     })
     .catch((error) => {
         console.error('Error resolving feedback:', error);
-        alert('An error occurred while resolving the feedback.');  // Alert if there's an issue with resolution
+        alert('An error occurred while resolving the feedback.');
     });
-}
-
+}    
+// Call fetchFeedbackData on page load to populate the table with feedback data
+document.addEventListener('DOMContentLoaded', function() {
+    fetchFeedbackData();
+});
