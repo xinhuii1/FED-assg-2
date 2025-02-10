@@ -44,17 +44,28 @@
   
 }
 
+/* Container for category items with horizontal scrolling */
 .category-list {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 15px;
+  justify-content: flex-start; /* Align the items to the left */
+  gap: 50px;  /* Keep your original spacing between items */
+  overflow-x: auto;  /* Enable horizontal scrolling */
+  padding: 10px 0;   /* Add padding for visual spacing */
+  width: 100%;       /* Ensures the container takes up the full width of its parent container */
+  white-space: nowrap; /* Prevent items from wrapping to a new line */
+  align-items: center; /* Align items vertically */
 }
 
+/* Move the first item to the right */
+.category-list .category-item:first-child {
+  margin-left: 30px; /* Adjust this value to move it further right */
+}
+
+/* Each category item */
 .category-item {
   width: 120px;
   height: 130px;
-  display: flex;
+  display: flex; /* Change to flex to maintain column layout */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -64,24 +75,29 @@
   padding: 10px;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
+  flex-shrink: 0; /* Prevent shrinking of items */
 }
 
+/* Hover effect */
 .category-item:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Icon styling inside each category */
 .category-icon {
   width: 60px;
   height: 60px;
   margin-bottom: 10px;
 }
 
+/* Text inside each category item */
 .category-item p {
   font-size: 14px;
   color: #000000;
   font-weight: bold;
 }
+
 
 /* Featured Items */
 .featured-items {

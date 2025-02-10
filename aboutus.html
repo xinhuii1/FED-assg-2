@@ -6,6 +6,7 @@
     <title>About Us Page</title>
     <link rel="stylesheet" href="header_footer.css">
     <link rel="stylesheet" href="aboutus.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
     <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -23,7 +24,9 @@
             <input type="text" placeholder="Search for products"/>
         </div>
         <div>
-            <i class="fa-solid fa-cart-shopping cart_icon"></i>
+            <a href="cart.html">
+                <i class="fa-solid fa-cart-shopping cart_icon"></i>
+            </a>            
             <button class="login-button">Login</button>
             <button class="Register-button">Register</button>
         </div>
@@ -103,22 +106,22 @@
         <h2>Submit Your Feedback</h2>
         <form id="feedback-form">
             <label for="category">Category</label>
-            <select id="category" name="category">
+            <select id="category" name="category" required>
                 <option value="bug">Bug/Issue</option>
                 <option value="suggestion">Suggestion</option>
                 <option value="general">General Feedback</option>
             </select>
 
             <label for="feedback">Your Feedback</label>
-            <textarea id="feedback" name="feedback" rows="5" placeholder="Enter your feedback here..."></textarea>
-
-            <label for="rating">Rate the Support (1-5)</label>
-            <input type="number" id="rating" name="rating" min="1" max="5" placeholder="Rate the support staff">
+            <textarea id="feedback" name="feedback" rows="5" placeholder="Enter your feedback here..." required></textarea>
 
             <button type="submit">Submit Feedback</button>
         </form>
     </div>
 </div>
+
+
+
 
 <footer id="footer">
     <div style="text-align: center;">

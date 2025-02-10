@@ -53,21 +53,26 @@ function signUp(event) {
     }
 
     // Prepare the user data for restdb.io
-    const userData = { "username": username,"gmail": email, "password": password, "phoneNumber": phone };
-
+    const userData = { 
+        "username": username,
+        "gmail": email,
+        "password": password,
+        "phoneNumber": phone 
+    };
+    
     // Replace with your restdb.io API endpoint and API key
     const API_KEY = '67a4eec1fd5d5864f9efe119'; 
     const DATABASE_URL = 'https://mokesell-0891.restdb.io/rest/user-profile';
-
+    
     // Headers for the request
     const headers = {
         'Content-Type': 'application/json',
         'x-apikey': API_KEY
     };
-
+    
     console.log('Sending request to:', DATABASE_URL); // Debugging
     console.log('Request body:', userData); // Debugging
-
+    
     // Send a POST request to restdb.io
     fetch(DATABASE_URL, {
         method: 'POST',
@@ -86,11 +91,11 @@ function signUp(event) {
         })
         .then(data => {
             console.log('User created successfully!', data);
-
+    
             // Save user data to localStorage (optional)
             localStorage.setItem('loginUser', username); // Save username
             localStorage.isLogin = true; // Update login status
-
+    
             // Show success message or redirect
 
             localStorage.setItem("userid", data.userId);

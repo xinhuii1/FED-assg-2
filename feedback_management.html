@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Management</title>
+    <link rel="stylesheet" href="feedback_management.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Feedback Management</h1>
+    </header>
+
+    <main>
+        <section id="feedback-list">
+            <!-- No Feedback Message -->
+            <div id="no-feedback-message" style="display: none; text-align: center; font-size: 1.2rem; color: #555;">
+                No feedback available at the moment. Please check back later.
+            </div>
+            <!-- Feedback Table-->
+            <table id="feedback-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Category</th>
+                        <th>Feedback Message</th>
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th>Rating</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Feedback items will be populated here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Admin Panel for Managing Feedback - MokeSell</p>
+    </footer>
+
+    <script src="feedback_management.js"></script>
+</body>
+</html>
