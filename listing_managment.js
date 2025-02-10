@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         newListing.innerHTML = `
         <div>
             <img src="${listing.image}" alt="${listing.image}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
-            <h3>${listing.itemname}</h3>
+            <h3>${truncateString(listing.itemname, 10)}</h3>
             <p>${formatPrice(listing.price)}</p>
             <p class="item-condition">${listing.condition}</p>
             <p>${listing.description}</p>
@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             newListing.innerHTML = `
             <div class="inactive">
             <img src="${listing.image}" alt="${listing.image}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
-            <h3>${listing.itemname}</h3>
+            <h3>${truncateString(listing.itemname, 10)}</h3>
             <p>${formatPrice(listing.price)}</p>
             <p class="item-condition">${listing.condition}</p>
             <p>${listing.description}</p>
@@ -520,3 +520,10 @@ async function getUsername() {
 }
 
 
+function truncateString(str, length) {
+    if (str.length > length) {
+      return str.substring(0, length) + '...'; // Adding ellipsis at the end
+    } else {
+      return str;
+    }
+  }

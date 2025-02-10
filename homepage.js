@@ -212,7 +212,7 @@ function showResults() {
             <div class="square-box">
                 <img src="${listing.image}" alt="Image inside box" class="square-image">
             </div>
-            <h4>${listing.itemname} ></h4>
+            <h4>${truncateString(listing.itemname, 20)} ></h4>
         </div>
             `
         }
@@ -253,3 +253,12 @@ categoryList.addEventListener('mousemove', (e) => {
 
     categoryList.scrollLeft = scrollLeft - move;   // Update the scroll position based on movement
 });
+
+
+function truncateString(str, length) {
+    if (str.length > length) {
+      return str.substring(0, length) + '...'; // Adding ellipsis at the end
+    } else {
+      return str;
+    }
+  }
