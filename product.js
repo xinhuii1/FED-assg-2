@@ -67,10 +67,10 @@ function displayListings() {
             productItem.innerHTML = `
                 <img src="${listing.image}" alt="${listing.itemname}">
                 <div>
-                    <div class="product-title">${truncateString(listing.itemname, 10)}</div>
+                    <div class="product-title">${truncateString(listing.itemname, 20)}</div>
                     <div class="product-header">
                         <img class="product-icon" src="${listing.icon}" alt="${listing.itemname}">
-                        <span class="username">${truncateString(Username, 6)}</span>
+                        <span class="username">${truncateString(Username, 10)}</span>
                         <div class="product-price">${formatPrice(listing.price)}</div>
                     </div>
                 </div>
