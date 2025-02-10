@@ -174,7 +174,8 @@ function getFeatured() {
     // Assuming `allListings` is an array of products
     console.log (allListings);
     allListings.forEach(listing => {
-        console.log(listing.category);
+        if (isListingActive(listing)) {
+            console.log(listing.category);
         product1.innerHTML += `
         <div class="product-item col-12 col-sm-6 col-md-4 col-lg-3" data-category="${listing.category}">
             <div class="square-box">
@@ -183,6 +184,7 @@ function getFeatured() {
             <h4>${listing.itemname} ></h4>
         </div>
         `;
+        }
     });
 
     // Reapply category filter functionality after generating new products
