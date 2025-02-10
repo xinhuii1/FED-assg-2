@@ -67,11 +67,11 @@ function displayListings() {
             productItem.innerHTML = `
                 <img src="${listing.image}" alt="${listing.itemname}">
                 <div>
-                    <div class="product-title">${listing.itemname}</div>
+                    <div class="product-title">${truncateString(listing.itemname, 20)}</div>
                     <div class="product-header">
                         <img class="product-icon" src="${listing.icon}" alt="${listing.itemname}">
-                        <span class="username">${Username}</span>
-                        <div class="product-price">$${formatPrice(listing.price)}</div>
+                        <span class="username">${truncateString(Username, 10)}</span>
+                        <div class="product-price">${formatPrice(listing.price)}</div>
                     </div>
                 </div>
             `;
@@ -84,6 +84,14 @@ function displayListings() {
         }
     }
 }
+
+function truncateString(str, length) {
+    if (str.length > length) {
+      return str.substring(0, length) + '...'; // Adding ellipsis at the end
+    } else {
+      return str;
+    }
+  }
 
 
 function formatPrice(price) {
