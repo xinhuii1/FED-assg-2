@@ -218,6 +218,38 @@ function updateProfile() {
     document.querySelector(".seller-joined").textContent = sellerProfile.years ? `${sellerProfile.years} years ago` : "Unknown";
 
     console.log("Updated Profile:", sellerProfile);
+
+    let rating = sellerProfile.rating;
+    let stars = document.querySelectorAll(".seller-container .stars i");
+
+    for (let i = 0; i < stars.length; i++) {
+        if (i < rating) {
+            stars[i].classList.remove("fa-regular");
+            stars[i].classList.add("fa-solid");
+        } else {
+            stars[i].classList.remove("fa-solid");
+            stars[i].classList.add("fa-regular");
+        }
+    }
+
+    document.querySelector(".review-rating").textContent = sellerProfile.rating.toFixed(1);
+    document.querySelector(".total-reviews").textContent = `of ${sellerProfile.totalReview} reviews`;
+
+    // View Profile Button Redirect
+    const visitProfileButton = document.querySelector(".visit-profile-button");
+    visitProfileButton.setAttribute("data-id", sellerProfile.userId);
+    visitProfileButton.addEventListener("click", function () {
+        window.location.href = `seller_profile.html?id=${sellerProfile.userId}`;
+    });
+
+    const tagsContainer = document.querySelector(".seller-tags");
+    tagsContainer.innerHTML = "";
+    sellerProfile.comments.forEach(comment => {
+        const tagDiv = document.createElement("div");
+        tagDiv.classList.add("tag");
+        tagDiv.innerHTML = `<i class="fa-solid fa-thumbs-up"></i> ${comment}`;
+        tagsContainer.appendChild(tagDiv);
+    });
 }
     
 
