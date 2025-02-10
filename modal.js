@@ -1,6 +1,13 @@
-window.onload = () => {
-    document.querySelector('.full-screen-wrapper').classList.add('loaded');  //Select the id and make it an element
-};
+/*window.onload = () => {
+    let wrapper = document.querySelector('.full-screen-wrapper');
+    if (wrapper) {
+        wrapper.classList.add('loaded');
+    } else {
+        console.error("Element '.full-screen-wrapper' not found in DOM.");
+        console.log("Current Document URL:", document.location.href);
+
+    }
+};*/
 
 function closeModal(){
     const modal = document.querySelector('.full-screen-wrapper');            //Hides the modal to make it transparent
@@ -51,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loginButton.addEventListener("click", function () {
             localStorage.removeItem('isLogin'); // Remove login status
             localStorage.removeItem('loginUser'); // Remove stored username
+            localStorage.removeItem('userid');
             window.location.reload(); // Reload page to reset buttons
         });
     }

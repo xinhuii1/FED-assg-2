@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <header>
     <nav class="navigation-container">
         <h1 class="signature">MOKESELL</h1>
@@ -32,36 +33,29 @@
         </div>
     </nav>
 </header>
+
 <main>
     <div class="Background_img">
         <button>Shop now</button>
     </div>
     <div class="browse-category">
         <h2 class="title">Browse By Category</h2>
-        <div class="category-list">
-            <div class="category-item">
-                <img src="images/phone.webp" alt="Phones" class="category-icon">
-                <p>Phones</p>
+        <div class="category-list row">
+            <div class="category-item col-4">
+                <img src="images/phone.webp" alt="Electronics" class="category-icon">
+                <p>Electronics</p>
             </div>
-            <div class="category-item">
-                <img src="images/laptop.avif" alt="Computers" class="category-icon">
-                <p>Computers</p>
+            <div class="category-item col-4">
+                <img src="images/laptop.avif" alt="Clothing" class="category-icon">
+                <p>Clothing</p>
             </div>
-            <div class="category-item">
-                <img src="images/watch.jpg" alt="Watches" class="category-icon">
-                <p>Watches</p>
+            <div class="category-item col-4">
+                <img src="images/watch.jpg" alt="Home & Living" class="category-icon">
+                <p>Home & Living</p>
             </div>
-            <div class="category-item">
-                <img src="images/camera.webp" alt="Cameras" class="category-icon">
-                <p>Cameras</p>
-            </div>
-            <div class="category-item">
-                <img src="images/headphone.jpg" alt="Headphones" class="category-icon">
-                <p>Headphones</p>
-            </div>
-            <div class="category-item">
-                <img src="images/gaming.jpg" alt="Gaming" class="category-icon">
-                <p>Gaming</p>
+            <div class="category-item col-4">
+                <img src="images/camera.webp" alt="Toys" class="category-icon">
+                <p>Toys</p>
             </div>
             <div class="category-item">
                 <img src="images/gaming.jpg" alt="Gaming" class="category-icon">
@@ -74,46 +68,22 @@
             
         </div>
     </div>
+    
     <div class="home-box">
         <h2 class="featured-products">Featured products:</h2>
-        <div class="Product1">
-            <div>
-                <div class="square-box">
-                    <img src="img/Advertisement2.png" alt="Image inside box" class="square-image">
-                </div>
-                <h4>Miffy Sitting Corduroy Plush ></h4>
-            </div>
-            <div>
-                <div class="square-box">
-                    <img src="img/image/product2.png" alt="Image inside box" class="square-image">
-                </div>
-                <h4>Miffy face tote bag ></h4>
-            </div>
-            <div>
-                <div class="square-box">
-                    <img src="img/image/product3.png" alt="Image inside box" class="square-image">
-                </div>
-                <h4>Miffy face keychain ></h4>
-            </div>
-            <div>
-                <div class="square-box">
-                    <img src="img/image/product4.png" alt="Image inside box" class="square-image">
-                </div>
-                <h4>Miffy Terry Soft Plush ></h4>
-            </div>
-            <div>
-                <div class="square-box">
-                    <img src="img/image/Product16.png" alt="Image inside box" class="square-image">
-                </div>
-                <h4>Miffy Face Outline Baby Bib ></h4>
-            </div>
+        <div class="Product1 row">
+            <!-- Product items will be inserted here dynamically -->
         </div>
     </div>
+    
+    
     <div class="advertisements">
         <img src="img/Advertisement2.png" alt="Advertisement 2" class="advertisement">
         <img src="img/Advertisement3.png" alt="Advertisement 3" class="advertisement">
     </div>
+    
 </main>
+
 <footer id="footer">
     <div style="text-align: center;">
         <img src="img/logo.png" alt="product image">
@@ -159,6 +129,7 @@
         <div id="modal-placeholder"></div>
     </div>
 </footer>
+
 <script src="homepage.js"></script>
 <script src="modal.js"></script>
 </body>

@@ -1,5 +1,8 @@
 let currentListing = null; // Stores the currently selected listing for bumping
-var myListing = []
+
+var myListings = []
+var active = []
+var inactive = []
 
 // Handles bumping a listing.
 // Opens the bump modal.
@@ -38,7 +41,7 @@ function setFreeListingExpiry(listing) {
 
 // Select all bump options and listen for click events
 document.querySelectorAll('.bump-option').forEach(option => {
-    option.addEventListener('click', function () {
+    option.addEventListener('click', async function () {
         // Remove 'selected' class from all options first
         document.querySelectorAll('.bump-option').forEach(opt => opt.classList.remove('selected'));
 
@@ -48,13 +51,15 @@ document.querySelectorAll('.bump-option').forEach(option => {
         // Apply the bump to the listing
         const duration = this.getAttribute('data-duration');
         const price = this.getAttribute('data-price');
-        applyBump(duration, price);
+        await applyBump(duration, price);
     });
 });
 
+
 // Applies the selected bump duration to the listing.
-function applyBump(duration, price) {
+async function applyBump(duration, price) {
     if (!currentListing) return;
+    console.log(currentListing);
 
     let expiryDays;
     if (duration === '1-week') {
@@ -76,7 +81,40 @@ function applyBump(duration, price) {
     if (expiryInfo) {
         expiryInfo.textContent = `${expiryDays + 30} days left`;
     }
+
+    const bumpInfo = { bump: expiryDays };  // Ensure that bump is a number, not a string
+
+    const listingId = currentListing.getAttribute('data-id'); // Assuming listing has an ID attribute
+
+    try {
+        // Define headers
+        const headers = {
+            'Content-Type': 'application/json',
+            'x-apikey': API_KEY,  // Replace with your actual API key
+            'cache-control': 'no-cache'
+        };
+
+        // Send PATCH request to update the bump value
+        const patchBump = await fetch(`https://mokesell-0891.restdb.io/rest/listings/${listingId}`, {
+            method: "PATCH",
+            headers: headers,
+            body: JSON.stringify(bumpInfo)  // Send bump as an object with numeric value
+        });
+
+        if (!patchBump.ok) {
+            throw new Error("Bump Failed");
+        }
+
+        const bump = await patchBump.json();
+        console.log('Bump updated successfully:', bump);
+
+    } catch (error) {
+        console.error("Error bumping listing (fetch):", error);
+        return;
+    }
 }
+
+
 
 // Confirms and applies the bump effect.
 function confirmBump() {
@@ -166,8 +204,32 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
     const condition = document.getElementById("condition").value;
     const description = document.getElementById("description").value;
 
+    const listingImage = document.getElementById("image");
+    const imageFile = listingImage.files[0];
+    const imageFormData = new FormData();
+    imageFormData.append("file", imageFile);
+    imageFormData.append("upload_preset", "Belle'sMokesell"); // Replace with your preset name
+    imageFormData.append("cloud_name", "dnvvhbjnv"); // Replace with your Cloudinary cloud name
+
     // Hardcoded Direct Image URL 
-    const imageUrl = "https://i.ibb.co/5xBHMh9Y/sweater.webp"; 
+    let imageUrl = "";
+        try {
+            const imageUploadResponse = await fetch("https://api.cloudinary.com/v1_1/dnvvhbjnv/image/upload", {
+                method: "POST",
+                body: imageFormData,
+            });
+
+            if (!imageUploadResponse.ok) {
+                throw new Error("Image upload failed");
+            }
+
+            const imageData = await imageUploadResponse.json();
+            imageUrl = imageData.secure_url; // Use the secure_url to get the image URL
+        } catch (error) {
+            console.error("Error uploading image:", error);
+            alert("Failed to upload image.");
+            return;
+        }
 
     console.log("Image URL being sent:", imageUrl); // 
 
@@ -177,12 +239,14 @@ document.getElementById("create-listing-form").addEventListener("submit", async 
     try {
         // Prepare JSON data
         const listingData = {
-            category,
-            'item-name': itemName,
-            price,
-            condition,
-            description,
+            category: category,
+            itemname: itemName,
+            price: price,
+            condition: condition,
+            description: description,
             image: imageUrl, // Store the image URL in RestDB
+            ownerId: userid,
+            CreateDate: new Date().toISOString()
         };
 
         // Send to RestDB
@@ -287,56 +351,147 @@ async function displayInfo() {
     const profilestatus = document.querySelector(".profile-status");
     const profilerating = document.querySelector(".profile-rating");
 
+    const username = await getUsername();
+    console.log("Username:", username);
 
     if (profileimg) profileimg.src = profile.icon || "default.jpg"; 
-    if (profilename) profilename.textContent = profile.username || "Unknown User";
+    if (profilename) profilename.textContent = username || "Unknown User";
     if (profilestatus) profilestatus.textContent = profile.status || "No status available";
-    if (profilerating) profilerating.textContent = `${profile.rating}⭐  | ${profile.years}sdsd` || "N/A";
+    if (profilerating) profilerating.textContent = `${profile.rating}⭐  | ${profile.years}y` || "N/A";
 }
 
 // Run when the document is fully loaded
 document.addEventListener("DOMContentLoaded", displayInfo);
 
 
+document.addEventListener("DOMContentLoaded", async function () {
+    myListings = await getMyListings();
+    seperateListings();
+    console.log("My Listings:", myListings);
 
-document.addEventListener("DOMContentLoaded", async function() {
-    // Retrieve user ID from localStorage
-    const userId = localStorage.getItem('userid'); // Ensure 'userid' is stored in localStorage during login
+    const listingsContainer = document.querySelector(".listings-container");
+    myListings.forEach(listing => {
+        const newListing = document.createElement("div");
+        newListing.classList.add("listing-item");
+        newListing.setAttribute("data-id", listing._id);
 
-    if (!userId) {
-        console.error("User ID not found. Please ensure the user is logged in.");
-        return; // Exit the function if the user is not logged in
-    }
+        if(isListingActive(listing)) {
+        newListing.innerHTML = `
+        <div>
+            <img src="${listing.image}" alt="${listing.image}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
+            <h3>${listing.itemname}</h3>
+            <p>${formatPrice(listing.price)}</p>
+            <p class="item-condition">${listing.condition}</p>
+            <p>${listing.description}</p>
+            <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
+            <p class="expiry-info">30 days left (Free)</p>
+        </div>
+        `;
+        } else {
+            newListing.innerHTML = `
+            <div class="inactive">
+            <img src="${listing.image}" alt="${listing.image}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
+            <h3>${listing.itemname}</h3>
+            <p>${formatPrice(listing.price)}</p>
+            <p class="item-condition">${listing.condition}</p>
+            <p>${listing.description}</p>
+            <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
+            <p class="expiry-info">expired</p>
+            </div>
+        `;}
 
-    // Construct the API URL dynamically using the userId
-    const API_URL = `https://mokesell-0891.restdb.io/rest/listings?q={"ownerId":"${userId}"}`;
-    const API_KEY = "67a4eec1fd5d5864f9efe119"; // Make sure this is your valid API key
+        listingsContainer.appendChild(newListing);
+    });
 
-    const headers = {
-        'Content-Type': 'application/json',
-        'x-apikey': API_KEY
-    };
 
+
+
+
+
+
+
+
+    const activeCountElement = document.getElementById("active-listings-counts");
+    activeCountElement.textContent = `${active.length}`;
+});
+
+function formatPrice(price) {
+    return `$${parseFloat(price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+function isListingActive(listing) {
+    const currentDate = new Date();
+    console.log(listing.CreateDate);
+    const listingCreateDate = new Date(listing.CreateDate);
+    const bump = listing.bump || 0;
+    let activeUntil = new Date(listingCreateDate);
+
+
+    activeUntil.setDate(activeUntil.getDate() + 30 + bump);
+    return currentDate <= activeUntil;
+}
+
+async function getMyListings() {
+    if (!userid) {return []};
+    console.log(`curr user id: ${userid}`)
     try {
-        // Fetch data from the API
-        const response = await fetch(API_URL, {
-            method: "GET",
-            headers: headers,  // Use headers variable here
+        const response = await fetch(`https://mokesell-0891.restdb.io/rest/listings?q={"ownerId": ${userid}}`, {
+            method: 'GET',
+            headers: headers
         });
 
         if (!response.ok) {
-            throw new Error(`Error fetching listings. Status: ${response.status}`);
+            throw new Error(`Failed to fetch listings. Status: ${response.status}`);
         }
 
-        const myListing = await response.json(); // Parse the response body
-        console.log(myListing); // Log the listings
-
-        // Process the listings if needed, e.g., render them on the page
-
+        const data = await response.json();
+        console.log("Fetched Listings:", data);
+        return data;
     } catch (error) {
-        console.error('Error during fetching data:', error.message);
-        alert('Failed to fetch your listings. Please try again later.');
+        console.error("Error fetching listings:", error);
+        return [];
     }
-});
+}
 
 
+function seperateListings() {
+    myListings.forEach(listing => {
+        if(isListingActive(listing)) {
+            active.push(listing);
+        } else {
+            inactive.push(listing);
+        }
+    });
+    myListings = [...active, ...inactive]
+}
+
+
+
+async function getUsername() {
+    try {
+        const response = await fetch(`https://mokesell-0891.restdb.io/rest/user-profile?q={"userId": ${userid}}`, {
+            method: 'GET',
+            headers: headers
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch listings. Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched Listings:", data);
+        return data[0].username;
+    } catch (error) {
+        console.error("Error fetching listings:", error);
+        return null;
+    }
+}
+
+
+const login = document.querySelector(".login-button");
+const register = document.querySelector(".register-button");
+if(localStorage.getItem("userid")) {
+    login.href = "#";
+    register.href = "#";
+    login.textContent = "Logout";
+    register.textContent = `${localStorage.getItem("loginUser")}`;
+}

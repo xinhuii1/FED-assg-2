@@ -18,6 +18,7 @@ function signUp(event) {
     event.preventDefault(); // Prevent form submission
 
     // Get input values
+    const username = document.getElementById('username').value.trim();
     const email = document.getElementById('email-input').value.trim();
     const password = document.getElementById('password-input').value.trim();
     const confirmPassword = document.getElementById('confirm-password-input').value.trim();
@@ -92,47 +93,19 @@ function signUp(event) {
             console.log('User created successfully!', data);
     
             // Save user data to localStorage (optional)
-            localStorage.setItem('loginUser', email.split('@')[0]); // Save username
+            localStorage.setItem('loginUser', username); // Save username
             localStorage.isLogin = true; // Update login status
     
             // Show success message or redirect
-    
-            getUserIdByEmail(email);  // Call getUserId function here
+
+            localStorage.setItem("userid", data.userId);
+            console.log(localStorage.getItem("userid"));
+            openSuccessModal();
         })
         .catch(error => {
             console.error('Error:', error.message);
             alert('Signup failed. Please try again.');
         });
-    
-    // Function to get the user ID based on email
-    async function getUserIdByEmail(email) {
-        try {
-            // Construct the query string properly with email
-            const response = await fetch(`https://mokesell-0891.restdb.io/rest/user-profile?q={"gmail":"${email}"}`, {
-                method: 'GET',
-                headers: headers,
-            });
-    
-            if (!response.ok) {
-                throw new Error(`Failed to fetch user. Status: ${response.status}`);
-            }
-    
-            const data = await response.json();
-            console.log('User ID successfully retrieved!', data);
-    
-            // Assuming the first result in the response data contains the user ID
-            if (data.length > 0) {
-                const userId = data[0].userId; // Modify according to your data structure
-                localStorage.setItem('userid', userId);  // Store the user ID
-                openSuccessModal();  // Open success modal
-            } else {
-                alert('No user found with this email!');
-            }
-        } catch (error) {
-            console.error('Error:', error.message);
-            alert('Error fetching user data. Please try again later.');
-        }
-    }
 }
 
 

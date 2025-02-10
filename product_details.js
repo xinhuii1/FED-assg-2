@@ -46,11 +46,14 @@ function addCartItem(itemId, itemName, itemPrice, itemQuantity) {
     .catch(error => console.error('Error adding item:', error));
 }
 
+
+
+
 // Fetch product details based on productId from URL
 const urlParams = new URLSearchParams(window.location.search); // Get query params
 const productId = parseInt(urlParams.get('id')); // Get product ID from URL
 
-fetch('products.json') // Fetch the products.json
+/*fetch('products.json') // Fetch the products.json
     .then(response => response.json()) // Parses info into an array
     .then(products => {
         const product = products.find(p => p.productId === productId); // Find product using productId
@@ -81,10 +84,147 @@ fetch('products.json') // Fetch the products.json
             // Fetch profile using userId from product
             fetchProfile(product.userId);
         }
-    });
+    });*/
+
+var currProduct = [];
+var sellerProfile = [];
+var sellerUsername = null;
+
+document.addEventListener("DOMContentLoaded", async function () {
+    await fetchCurrProduct();
+    console.log("Final listings:", currProduct);
+
+    updateProduct();
+
+    if (currProduct.length > 0) {
+        await fetchProfile(currProduct[0].ownerId);
+    }
+
+    if (sellerProfile && sellerProfile.userId) {
+        await fetchSellerUsername(currProduct[0].ownerId);
+    }
+
+    updateProfile();
+
+    console.log("Product Owner: ", currProduct[0].ownerId);
+    console.log("seller profile:", sellerProfile)
+    console.log("Seller Profile Id: ", sellerProfile.userId);
+    console.log("Seller Username: ", sellerUsername);
+});
+
+async function fetchCurrProduct() {
+    try {
+        let response = await fetch(
+            `https://mokesell-0891.restdb.io/rest/listings?q={"listingid":${productId}}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": "67a4eec1fd5d5864f9efe119"
+                }
+            }
+        );
+
+        let data = await response.json();
+        if (data.length > 0) {
+            currProduct = data;
+        } else {
+            console.error("No product found for listingid:", productId);
+        }
+
+        console.log("Fetched listings:", currProduct);
+    } catch (error) {
+        console.error("Error fetching listings:", error);
+    }
+}
+
+function updateProduct() {
+    if (currProduct.length === 0) return;
+
+    const product = currProduct[0];
+    document.querySelector(".product-title").textContent = product.itemname;
+    document.querySelector(".product-price").textContent = `${formatPrice(product.price)}`;
+    document.querySelector(".product-image").src = product.image;
+
+    console.log("currProduct.name:", product.itemname);
+    console.log("currProduct.price:", product.price);
+    console.log("currProduct.image:", product.image);
+}
+
+function formatPrice(price) {
+    return `$${parseFloat(price).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })}`;
+}
+
+async function fetchProfile(userId) {
+    try {
+        let query = encodeURIComponent(JSON.stringify({ "userId": userId }));
+
+        let response = await fetch(`https://mokesell-0891.restdb.io/rest/profile?q={"userId":${userId}}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": "67a4eec1fd5d5864f9efe119"
+            }
+        });
+
+        let data = await response.json();
+        if (data.length > 0) {
+            sellerProfile = data[0];
+        } else {
+            console.error("No profile found for userId:", userId);
+        }
+
+        console.log("Fetched profile:", sellerProfile);
+    } catch (error) {
+        console.error("Error fetching profile:", error);
+    }
+}
+
+async function fetchSellerUsername(userId) {
+    try {
+        let query = encodeURIComponent(JSON.stringify({ userId: userId }));
+
+        let response = await fetch(`https://mokesell-0891.restdb.io/rest/user-profile?q={"userId":${userId}}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": "67a4eec1fd5d5864f9efe119"
+            }
+        });
+
+        let data = await response.json();
+        console.log("seller username data:", data); 
+        if (data.length > 0) {
+            sellerUsername = data[0].username;
+        } else {
+            console.error("No username found for userId:", userId);
+        }
+
+        console.log("Fetched username:", sellerUsername);
+    } catch (error) {
+        console.error("Error fetching username:", error);
+    }
+}
+
+function updateProfile() {
+    if (!sellerProfile || Object.keys(sellerProfile).length === 0) return;
+
+    document.querySelector(".seller-icon").src = sellerProfile.icon || "default.jpg";
+    document.querySelector(".seller-name").textContent = sellerUsername || "Unknown Seller";
+    document.querySelector(".seller-status").textContent = sellerProfile.status || "N/A";
+    document.querySelector(".seller-joined").textContent = sellerProfile.years ? `${sellerProfile.years} years ago` : "Unknown";
+
+    console.log("Updated Profile:", sellerProfile);
+}
+    
+
+
 
 // Fetch the seller profile
-function fetchProfile(userId) {
+/*function fetchProfile(userId) {
     fetch('profile.json') // Fetch profile.json using userId
         .then(response => response.json())
         .then(profiles => {
@@ -129,4 +269,4 @@ function fetchProfile(userId) {
                 });
             }
         });
-}
+}*/

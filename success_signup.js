@@ -8,5 +8,5 @@ function closeModalAndRedirect() {
     
     //set login status
     localStorage.isLogin = true;
-    window.location.href = 'homepage.html';
+    //window.location.href = 'homepage.html';
 }

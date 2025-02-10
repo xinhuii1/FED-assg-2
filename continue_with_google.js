@@ -44,7 +44,7 @@ function signIn(event) {
                 console.log('Login successful!', matchedUser);
 
                 // Save login status and user information
-                localStorage.setItem('loginUser', matchedUser.gmail.split('@')[0]); // Save username
+                localStorage.setItem('loginUser', matchedUser.username); // Save username
                 localStorage.isLogin = true;
 
                 // Redirect to a success modal or dashboard
