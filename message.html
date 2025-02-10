@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication and Transaction Page</title>
+    <link rel="stylesheet" href="header_footer.css">
+    <link rel="stylesheet" href="message.css">
+    <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Header Section: Contains the navigation and logo -->
+<header>
+    <nav class="navigation-container">
+        <h2 class="signature">MOKESELL</h2>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="listing_management.html">Profile</a></li>
+        </ul>
+        <div class="Searchbar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search for products"/>
+        </div>
+        <div>
+            <a href="cart.html">
+                <i class="fa-solid fa-cart-shopping cart_icon"></i>
+            </a>            
+            <button class="login-button">Login</button>
+            <button class="Register-button">Register</button>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Communication and Transaction Section -->
+<main class="message-container">
+    <div class="sidebar">
+        <h3>Messages</h3>
+        <input type="search" class="search-input" placeholder="Search messages...">
+        <div class="user-list">
+            <div class="user-item">
+                <img class="user-profile-pic" src="img/staff3.avif" alt="Eten Hunt">
+                <div class="user-details">
+                    <span class="user-name">Eten Hunt</span>
+                    <span class="user-role">Agent</span>
+                    <span class="last-message">Thank you very much. I'm glad ...</span>
+                </div>
+                <span class="user-status online"><i class="fa-solid fa-check-circle"></i></span>
+            </div>
+            <div class="user-item">
+                <img class="user-profile-pic" src="img/seller_pfp.jpg" alt="Jakob Saris">
+                <div class="user-details">
+                    <span class="user-name">Jakob Saris</span>
+                    <span class="user-role">Buyer</span>
+                    <span class="last-message">Can you meetup? Let me tell you about ...</span>
+                </div>
+                <span class="user-status"><i class="fa-solid fa-check-circle"></i></span>
+            </div>
+            <div class="user-item">
+                <img class="user-profile-pic" src="img/profile.png" alt="Jeremy Zucker">
+                <div class="user-details">
+                    <span class="user-name">Jeremy Zucker</span>
+                    <span class="user-role">Seller</span>
+                    <span class="last-message">Sure! Let me teach you about ...</span>
+                </div>
+                <span class="user-status"><i class="fa-solid fa-check-circle"></i></span>
+            </div>
+            <div class="user-item">
+                <img class="user-profile-pic" src="img/staff2.webp" alt="Nadia Lauren">
+                <div class="user-details">
+                    <span class="user-name">Nadia Lauren</span>
+                    <span class="user-role">Support</span>
+                    <span class="last-message">Anything I can do to help?...</span>
+                </div>
+                <span class="user-status offline"><i class="fa-solid fa-times-circle"></i></span>
+            </div>
+            <div class="end-of-chat">
+                <hr>
+                <p class="end-text">End of Chat</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Window Area -->
+    <div class="chat-window">
+        <div class="chat-header">
+            <!-- Product info with price below the name -->
+            <div class="product-info">
+                <img class="product-image" src="img/sticker.webp" alt="Product Image">
+                <div class="product-details">
+                    <span class="product-name">Around the World Coloring Cards</span>
+                    <span class="product-price">$9.99</span>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="buy-button">Buy Now</button>
+                <button class="offer-button" onclick="openOfferForm()">Make an Offer</button>
+            </div>
+        </div>
+    
+        <div class="chat-body">
+            <!-- "Today" label -->
+            <div class="today-label">
+                Today
+            </div>
+            <!-- Messages will be dynamically added here -->
+            <div class="message received">
+                <p>Hi! How long do you take to deliver?</p>
+            </div>
+            <div class="message sent">
+                <p>Delivery usually takes about 3-5 business days depending on your location.</p>
+            </div>
+        </div>
+
+        <!-- Offer Modal Popup -->
+        <div id="offer-modal" class="offer-modal">
+            <div class="offer-modal-content">
+                <span class="close-btn" onclick="closeOfferForm()">&times;</span>
+                <h2>Make an Offer</h2>
+                <form id="offer-form" onsubmit="submitOffer(); return false;">
+                    <label for="offer-price">Offer Price</label>
+                    <input type="number" id="offer-price" name="offer-price" required placeholder="Enter your offer price" />
+                    <button type="submit" class="send-button">Submit Offer</button>
+                </form>
+            </div>
+        </div>
+        <!-- Chat Footer for sending messages -->
+        <div class="chat-footer">
+            <input type="text" class="message-input" placeholder="Type your message...">
+            <button class="send-button">Send</button>
+        </div> 
+</main>
+
+<!-- Footer Section -->
+<footer id="footer">
+    <div style="text-align: center;">
+        <img src="img/logo.png" alt="product image">
+    </div>
+    <div id="footer1" style="margin-top: 0px;">
+        <div id="part1">
+            <h2 class="signature signature_footer">MOKESELL</h2>
+            <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
+        </div>
+        <div>
+            <h2>Information</h2>
+            <p>About</p>
+            <p>Contact us</p>
+            <p>FAQs</p>
+            <p>Account</p>
+        </div>
+        <div>
+            <h2>Contact</h2>
+            <p>Stanley House</p>
+            <p>Masterlord Village,</p>
+            <p>West Rd, Ipswich<br> 95X</p>
+        </div>
+        <div>
+            <h2>Legal</h2>
+            <p>Cookie Policy</p>
+            <p>Privacy Policy</p>
+        </div>
+    </div>
+</footer>
+
+<script src="message.js"></script>
+</body>
+</html>

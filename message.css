@@ -1,0 +1,365 @@
+/* General Styles */
+* {
+    box-sizing: border-box; /* Makes sure padding and border don't cause overflow */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Container for the message page */
+.message-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    overflow-x: hidden; /* Ensure no horizontal scrolling */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background-color: #fafafa;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.user-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* User Item */
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s, transform 0.2s ease;
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+.user-item:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+}
+
+.user-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-details {
+    flex-grow: 1;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.user-role {
+    font-size: 12px;
+    color: #888;
+}
+
+.last-message {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+.user-status {
+    font-size: 18px;
+}
+
+.user-status.online {
+    color: green;
+}
+
+.user-status.offline {
+    color: red;
+}
+
+/* End of Chat */
+.end-of-chat {
+    margin-top: 20px;
+    text-align: center;
+    color: #888;
+}
+
+.end-of-chat hr {
+    border: 1px solid #ddd;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.end-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Chat Window */
+.chat-window {
+    flex-grow: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.chat-header {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.chat-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info .user-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info .user-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user-info .user-status {
+    font-size: 14px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.product-info .product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.product-info .product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-info .product-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.product-info .product-price {
+    font-size: 16px;
+    color: #555;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.buy-button, .offer-button {
+    background-color: #5E3E1A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.buy-button:hover, .offer-button:hover {
+    background-color: #A87768;
+}
+
+/* Chat Body - Messages */
+.chat-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 50px;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.message {
+    max-width: 70%;
+    margin-bottom: 35px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    word-wrap: break-word; /* Ensures long words don't overflow */
+}
+
+.message.received {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+}
+
+.message.sent {
+    background-color: #A87768;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+/* Today Label */
+.today-label {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-left: 550px;
+    background-color: whitesmoke;
+    width: 70px;
+}
+
+/* Offer Modal */
+.offer-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+.offer-modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 80%; /* 80% of the screen width */
+    max-width: 400px;
+}
+
+.offer-modal h2 {
+    margin-top: 0;
+}
+
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.offer-modal input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.offer-modal button {
+    background-color: #5E3E1A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.offer-modal button:hover {
+    background-color: #A87768;
+}
+
+/* Chat Footer */
+.chat-footer {
+    padding: 20px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.message-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.send-button {
+    background-color: #5E3E1A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.send-button:hover {
+    background-color: #A87768;
+}

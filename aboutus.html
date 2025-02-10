@@ -4,45 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us Page</title>
+    <!-- External CSS files for header, footer, and the aboutus page -->
     <link rel="stylesheet" href="header_footer.css">
     <link rel="stylesheet" href="aboutus.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.min.css">
+    <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/e2940c24d9.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<!-- Header Section: Contains the navigation and logo -->
 <header>
     <nav class="navigation-container">
-        <h1 class="signature">MOKESELL</h1>
+        <!-- Main site logo  -->
+        <h2 class="signature">MOKESELL</h2>
+        <!-- Navigation menu -->
         <ul>
             <li><a href="homepage.html">Home</a></li>
             <li><a href="product.html">Products</a></li>
             <li><a href="aboutus.html">About Us</a></li>
             <li><a href="listing_management.html">Profile</a></li>
         </ul>
+        <!-- Search bar section -->
         <div class="Searchbar">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Search for products"/>
         </div>
+        <!-- Cart and login/register buttons -->
         <div>
             <a href="cart.html">
                 <i class="fa-solid fa-cart-shopping cart_icon"></i>
-            </a>            
+            </a>  
             <button class="login-button">Login</button>
             <button class="Register-button">Register</button>
         </div>
     </nav>
 </header>
+
+<!-- Main content section for the "About Us" page -->
 <main>
     <section class="about-us">
-        <div class="about-header">
-            <!-- Our Story Text -->
-            <h2>Our Story</h2>
-            <p>Launched in 2015, Exclusive is South Asia's premier online shopping marketplace with an active presence in Bangladesh. Supported by a wide range of tailored marketing, data, and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3 million customers across the region. Exclusive has more than 1 million products to offer, growing at a very fast pace. Exclusive offers a diverse assortment in categories ranging from consumer.</p>
-        </div>
-        <!-- Shopping Image -->
+        <!-- Header for the About Us section -->
+        <h1>Our Story</h1>
+        <p>
+            Launched in 2015, Exclusive is South Asia's premier online shopping marketplace with an active presence in Bangladesh. 
+            Supported by a wide range of tailored marketing, data, and service solutions, Exclusive has 10,500 sellers and 300 brands 
+            and serves 3 million customers across the region. Exclusive has more than 1 million products to offer, growing at a very fast pace.
+        </p>
+        <!-- Image section related to shopping -->
         <div class="shopping-image">
             <img src="img/online_shopping.avif" alt="Shopping Image" />
         </div>
+
+        <!-- Stats section: displays key statistics -->
         <div class="stats">
             <div class="stat-card">
                 <span class="stat-title">10.5k</span>
@@ -61,6 +74,8 @@
                 <span class="stat-desc">Annual gross sale on our site</span>
             </div>
         </div>
+
+        <!-- Team section: Shows the team members -->
         <div class="team">
             <div class="team-member">
                 <img src="img/staff1.jpg" alt="Tom Cruise">
@@ -93,20 +108,24 @@
                 </div>
             </div>
         </div>
-        <!-- Feedback Button -->
+
+        <!-- Feedback Section: Encourages users to give feedback -->
         <h3>We Appreciate Your Support!</h3>
         <button class="feedback-button" onclick="openFeedbackModal()">Give Feedback</button>
     </section>
 </main>
 
-<!-- Feedback Modal -->
+<!-- Feedback Modal: The form for submitting feedback -->
 <div id="feedback-modal" class="feedback-modal">
     <div class="modal-content">
+        <!-- Close button for the modal -->
         <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
+        <!-- Modal header and form -->
         <h2>Submit Your Feedback</h2>
         <form id="feedback-form">
             <label for="category">Category</label>
             <select id="category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
                 <option value="bug">Bug/Issue</option>
                 <option value="suggestion">Suggestion</option>
                 <option value="general">General Feedback</option>
@@ -120,16 +139,15 @@
     </div>
 </div>
 
-
-
-
+<!-- Footer Section: Contains footer content such as contact info and social media links -->
 <footer id="footer">
     <div style="text-align: center;">
         <img src="img/logo.png" alt="product image">
     </div>
     <div id="footer1" style="margin-top: 0px;">
         <div id="part1">
-            <h1 class="signature signature_footer">MOKESELL</h1>
+            <!-- Footer title -->
+            <h2 class="signature signature_footer">MOKESELL</h2>
             <p>Web shop fulfilled by <span style="text-decoration: underline">Star <br> Editions</span></p>
             <div style="display: flex; justify-content: space-between">
                 <div class="part1-icon">
@@ -169,6 +187,7 @@
     </div>
 </footer>
 
+<!-- Link to the aboutus JavaScript  -->
 <script src="aboutus.js"></script>
 </body>
 </html>

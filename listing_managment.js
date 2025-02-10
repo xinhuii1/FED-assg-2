@@ -346,8 +346,8 @@ async function displayInfo() {
 
     if (!profiles || profiles.length === 0) {
         console.error("No profile found for the given user ID.");
-        if (profileimg) profileimg.src = "default.jpg"; 
-        if (profilename) profilename.textContent = "Unknown User";
+        if (profileimg) profileimg.src = "img/default-profile.png"; 
+        if (profilename) profilename.textContent = "Login to view profile";
         if (profilestatus) profilestatus.textContent = "No status available";
         if (profilerating) profilerating.textContent = "N/A";
         return
