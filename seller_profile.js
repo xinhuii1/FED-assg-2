@@ -95,6 +95,9 @@ async function fetchSellerListings(userId) {
                 });
 
                 listingsContainer.appendChild(listingItem);
+
+                const activeCountElement = document.getElementById("active-listings-counts");
+                activeCountElement.textContent = parseInt(activeCountElement.textContent) + 1;
             }
             });
         } else {
