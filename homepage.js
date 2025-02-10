@@ -106,7 +106,6 @@ function filterProductsByCategory(category) {
     });
 }
 
-
 // Function to show all products
 function showAllProducts() {
     const productItems = document.querySelectorAll('.product-item');
@@ -121,16 +120,22 @@ function handleCategoryClick() {
         category.addEventListener('click', function() {
             const selectedCategory = category.querySelector('p').textContent;
 
-            // First, remove 'selected' class from all categories
-            document.querySelectorAll('.category-item').forEach(function(cat) {
-                cat.classList.remove('selected');
-            });
+            // Check if the clicked category is already selected
+            if (category.classList.contains('selected')) {
+                category.classList.remove('selected');
+                showAllProducts(); // Show all products when deselected
+            } else {
+                // First, remove 'selected' class from all categories
+                document.querySelectorAll('.category-item').forEach(function(cat) {
+                    cat.classList.remove('selected');
+                });
+                
+                // Now, add the 'selected' class to the clicked category
+                category.classList.add('selected');
 
-            // Now, add the 'selected' class to the clicked category
-            category.classList.add('selected');
-
-            // Filter products based on selected category
-            filterProductsByCategory(selectedCategory);
+                // Filter products based on selected category
+                filterProductsByCategory(selectedCategory);
+            }
         });
     });
 }
@@ -209,3 +214,11 @@ function isListingActive(listing) {
 }
 
 
+const scrollContainers = document.querySelectorAll('.Product1');
+scrollContainers.forEach(function (scrollContainer) {
+    scrollContainer.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        const scrollSpeed = 3;
+        scrollContainer.scrollLeft += e.deltaY * scrollSpeed;
+    });
+});

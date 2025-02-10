@@ -56,6 +56,19 @@
   align-items: center; /* Align items vertically */
 }
 
+.category-list {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  height: 271px;
+  position: relative;
+}
+
+.category-list::-webkit-scrollbar {
+  display: none;
+}
+
 /* Move the first item to the right */
 .category-list .category-item:first-child {
   margin-left: 30px; /* Adjust this value to move it further right */
@@ -151,13 +164,35 @@
   margin-left: 30px; /* Adds spacing from the right edge */
   
 }
-.Product1 {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
+.Product1.row {
+  display: flex; /* Enables flexbox for horizontal layout */
+  overflow-x: auto; /* Allows horizontal scrolling */
+  white-space: nowrap; /* Prevents items from wrapping */
+  gap: 20px; /* Adds some spacing between products */
+  scroll-snap-type: x mandatory; /* Enables smooth scrolling */
+  padding-bottom: 10px; /* Prevents cut-off at the bottom */
+}
+
+.product-item {
+  flex: 0 0 auto; /* Ensures items don’t shrink */
+  width: 200px; /* Adjust width based on your design */
+  scroll-snap-align: start; /* Ensures smooth snap scrolling */
 }
 .Product1 h4{
    text-align: center;
+}
+
+.Product1.row::-webkit-scrollbar {
+  height: 8px; /* Adjust scrollbar height */
+}
+
+.Product1.row::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar color */
+  border-radius: 10px;
+}
+
+.Product1.row::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track background */
 }
 .square-box {
   width: 200px;           
