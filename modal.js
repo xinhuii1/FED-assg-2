@@ -16,8 +16,7 @@ function closeModal(){
     modal.style.opacity = '0';
     loginContainer.style.top = '-100%'; 
     document.body.style.overflow = 'auto'; 
-    
-    window.history.back();//Restore back the scroll function
+
 }   
 
 function Animation1(modalSelector, containerSelector) {
