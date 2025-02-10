@@ -313,6 +313,7 @@ const headers = {
 };
 
 async function fetchProfile() {
+    if (userid){
     try {
         const query = userid ? `q={"userId":${userid}}` : ""; // Ensure correct formatting
         const response = await fetch(`${API_URL}?${query}`, {
@@ -332,24 +333,30 @@ async function fetchProfile() {
         return []; // Return an empty array if there's an error
     }
 }
+}
 
 async function displayInfo() {
     const profiles = await fetchProfile(); // Await the data properly
-
-    if (!profiles || profiles.length === 0) {
-        console.error("No profile found for the given user ID.");
-        return;
-    }
-
-    const profile = profiles[0]; // Properly access the first profile object
-
-    console.log("Profile Data:", profile); // Debugging log
-
-    // Selecting DOM elements
     const profileimg = document.querySelector(".profile-img");
     const profilename = document.querySelector(".profile-name");
     const profilestatus = document.querySelector(".profile-status");
     const profilerating = document.querySelector(".profile-rating");
+
+
+    if (!profiles || profiles.length === 0) {
+        console.error("No profile found for the given user ID.");
+        if (profileimg) profileimg.src = "default.jpg"; 
+        if (profilename) profilename.textContent = "Unknown User";
+        if (profilestatus) profilestatus.textContent = "No status available";
+        if (profilerating) profilerating.textContent = "N/A";
+        return
+    }
+    const profile = profiles[0];
+
+
+    console.log("Profile Data:", profile); // Debugging log
+
+    // Selecting DOM elements
 
     const username = await getUsername();
     console.log("Username:", username);
@@ -384,7 +391,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             <p class="item-condition">${listing.condition}</p>
             <p>${listing.description}</p>
             <button class="bump-btn" onclick="bumpListing(this)">Bump</button>
-            <p class="expiry-info">30 days left (Free)</p>
+            <p class="expiry-info">
+                ${getDaysLeft(listing)} days left 
+                (${listing.bump ? 'paid' : 'free'})
+            </p>
+
         </div>
         `;
         } else {
@@ -405,7 +416,28 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-
+    function getDaysLeft(listing) {
+        // Get the create date of the listing and convert it to a Date object
+        const createDate = new Date(listing.CreateDate);
+        
+        // Add 30 days to the create date (initial listing duration)
+        const expiryDate = new Date(createDate);
+        expiryDate.setDate(expiryDate.getDate() + 30); // Default 30 days from the create date
+        
+        // Add the bump days to the expiry date
+        const bumpDays = listing.bump || 0;
+        expiryDate.setDate(expiryDate.getDate() + bumpDays); // Add bump days to expiry date
+        
+        // Calculate the difference between the current date and the expiry date in milliseconds
+        const currentDate = new Date();
+        const timeDifference = expiryDate - currentDate;
+        
+        // Convert the time difference to days (milliseconds to days)
+        const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        
+        return daysLeft;
+    }
+    
 
 
 
@@ -487,11 +519,3 @@ async function getUsername() {
 }
 
 
-const login = document.querySelector(".login-button");
-const register = document.querySelector(".register-button");
-if(localStorage.getItem("userid")) {
-    login.href = "#";
-    register.href = "#";
-    login.textContent = "Logout";
-    register.textContent = `${localStorage.getItem("loginUser")}`;
-}
