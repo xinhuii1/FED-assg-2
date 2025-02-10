@@ -18,6 +18,7 @@ function signUp(event) {
     event.preventDefault(); // Prevent form submission
 
     // Get input values
+    const username = document.getElementById('username').value.trim();
     const email = document.getElementById('email-input').value.trim();
     const password = document.getElementById('password-input').value.trim();
     const confirmPassword = document.getElementById('confirm-password-input').value.trim();
@@ -87,12 +88,13 @@ function signUp(event) {
             console.log('User created successfully!', data);
 
             // Save user data to localStorage (optional)
-            localStorage.setItem('loginUser', email.split('@')[0]); // Save username
+            localStorage.setItem('loginUser', username); // Save username
             localStorage.isLogin = true; // Update login status
 
             // Show success message or redirect
 
-            localStorage.setItem('userid', )
+            localStorage.setItem("userid", data.userId);
+            console.log(localStorage.getItem("userid"));
             openSuccessModal();
         })
         .catch(error => {
@@ -101,35 +103,6 @@ function signUp(event) {
         });
 }
 
-async function getuserid() {
-fetch(DATABASE_URL, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(userData)
-})
-    .then(response => {
-        console.log('Response status:', response.status); // Debugging
-        if (response.ok) {
-            return response.json();
-        } else {
-            return response.json().then(err => {
-                throw new Error(`Failed to get userid. Status: ${response.status}. Message: ${err.message}`);
-            });
-        }
-    })
-    .then(data => {
-        console.log('Userid successfully receives!', data);
-
-        // Save user data to localStorage (optional)
-        localStorage.setItem('loginUser', email.split('@')[0]); // Save username
-        localStorage.isLogin = true; // Update login status
-
-        // Show success message or redirect
-
-        localStorage.setItem('userid', )
-        openSuccessModal();
-    })
-}
 
 function openContinueWithGoogleModal() {
     event.preventDefault();                                                        // Prevent default behavior, refreshing

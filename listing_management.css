@@ -449,3 +449,8 @@ body {
         width: 100%;
     }
 }
+
+
+.inactive {
+    opacity: 0.5;
+}
