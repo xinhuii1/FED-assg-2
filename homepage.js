@@ -92,18 +92,20 @@ loginButton.addEventListener('click', function(event) {
 // Function to filter products by category
 function filterProductsByCategory(category) {
     const productItems = document.querySelectorAll('.product-item');
+    const selectedCategory = category.toLowerCase(); // Convert to lowercase
 
     productItems.forEach(function(product) {
-        const productCategory = product.getAttribute('data-category');
+        const productCategory = product.getAttribute('data-category').toLowerCase(); // Convert to lowercase
 
         // Show product if it matches the selected category or 'All' is selected
-        if (productCategory === category || category === 'All') {
+        if (productCategory === selectedCategory || selectedCategory === 'all') {
             product.style.display = 'block';
         } else {
             product.style.display = 'none';
         }
     });
 }
+
 
 // Function to show all products
 function showAllProducts() {
