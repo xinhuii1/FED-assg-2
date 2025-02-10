@@ -58,9 +58,12 @@ function handleCategoryClick() {
 var allListings = []
 var featured = []
 
+const searchbar = document.querySelector('.searchbar');
+
 document.addEventListener('DOMContentLoaded', async function() {
     await fetchallListings();
     getFeatured();
+    autocomplete(searchbar, allListings.map(listing => listing.itemname));
 });
 
 
@@ -132,3 +135,86 @@ scrollContainers.forEach(function (scrollContainer) {
         scrollContainer.scrollLeft += e.deltaY * scrollSpeed;
     });
 });
+
+
+
+
+function autocomplete(inp, arr) {
+    var currentFocus;
+    inp.addEventListener("input", function (e) {
+        var a, b, i, val = this.value;
+        closeAllLists();
+        if (!val) return false;
+
+        currentFocus = -1;
+
+        /* Create a container for autocomplete items inside .Searchbar */
+        let searchbarContainer = document.querySelector(".Searchbar"); // Ensure it's appended inside this
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+
+        /* Append it inside the Searchbar instead of parentNode */
+        searchbarContainer.appendChild(a);
+
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                b = document.createElement("DIV");
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+
+                b.addEventListener("click", function (e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+
+                a.appendChild(b);
+            }
+        }
+    });
+
+    function closeAllLists(elmnt) {
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+}
+
+  
+
+  document.querySelector(".searchbar").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {  // or event.keyCode === 13
+        event.preventDefault(); // Prevent form submission (if inside a form)
+        console.log("Enter key pressed!");
+        showResults();
+    }
+});
+
+
+function showResults() {
+    const resultSection = document.querySelector('main')
+    resultSection.innerHTML = 
+    `
+    <h2>Search Results for ${searchbar.value}</h2>
+    `;
+    allListings.forEach(listing => {
+        if (listing.itemname.toLowerCase().includes(searchbar.value.toLowerCase())) {
+            resultSection.innerHTML += `
+            <div class="product-item col-12 col-sm-6 col-md-4 col-lg-3" data-category="${listing.category}">
+            <div class="square-box">
+                <img src="${listing.image}" alt="Image inside box" class="square-image">
+            </div>
+            <h4>${listing.itemname} ></h4>
+        </div>
+            `
+        }
+    })
+}
