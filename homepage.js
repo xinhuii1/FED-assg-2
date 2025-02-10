@@ -218,3 +218,38 @@ function showResults() {
         }
     })
 }
+const categoryList = document.querySelector('.category-list');
+
+// Variables to track the starting mouse position and scroll position
+let isMouseDown = false;
+let startX;
+let scrollLeft;
+
+// Listen for mouse down event to start tracking the drag
+categoryList.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+    startX = e.pageX - categoryList.offsetLeft;  // Get the starting X position of the mouse
+    scrollLeft = categoryList.scrollLeft;        // Get the current scroll position of the container
+    categoryList.style.cursor = 'grabbing';       // Change cursor to indicate dragging
+});
+
+// Stop the drag when mouse button is released or mouse leaves the area
+categoryList.addEventListener('mouseup', () => {
+    isMouseDown = false;
+    categoryList.style.cursor = 'grab';           // Reset cursor when mouse is released
+});
+
+categoryList.addEventListener('mouseleave', () => {
+    isMouseDown = false;
+    categoryList.style.cursor = 'grab';           // Reset cursor when mouse leaves the area
+});
+
+// Handle mouse move to scroll horizontally when dragging
+categoryList.addEventListener('mousemove', (e) => {
+    if (!isMouseDown) return;  // Don't do anything if mouse is not down
+
+    const x = e.pageX - categoryList.offsetLeft;  // Get the new position of the mouse
+    const move = (x - startX) * 2;                 // Calculate movement distance (adjust for speed)
+
+    categoryList.scrollLeft = scrollLeft - move;   // Update the scroll position based on movement
+});
