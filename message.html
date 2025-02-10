@@ -97,10 +97,10 @@
 
             <div class="buttons">
                 <button class="buy-button">Buy Now</button>
-                <button class="offer-button">Make an Offer</button>
+                <button class="offer-button" onclick="openOfferForm()">Make an Offer</button>
             </div>
         </div>
-
+    
         <div class="chat-body">
             <!-- "Today" label -->
             <div class="today-label">
@@ -115,6 +115,18 @@
             </div>
         </div>
 
+        <!-- Offer Modal Popup -->
+        <div id="offer-modal" class="offer-modal">
+            <div class="offer-modal-content">
+                <span class="close-btn" onclick="closeOfferForm()">&times;</span>
+                <h2>Make an Offer</h2>
+                <form id="offer-form" onsubmit="submitOffer(); return false;">
+                    <label for="offer-price">Offer Price</label>
+                    <input type="number" id="offer-price" name="offer-price" required placeholder="Enter your offer price" />
+                    <button type="submit" class="send-button">Submit Offer</button>
+                </form>
+            </div>
+        </div>
         <!-- Chat Footer for sending messages -->
         <div class="chat-footer">
             <input type="text" class="message-input" placeholder="Type your message...">
